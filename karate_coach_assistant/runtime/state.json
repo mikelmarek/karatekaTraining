@@ -4,6 +4,7 @@
   "training_day": "středa",
   "training_duration_minutes": 60,
   "age_group": "5-10",
+  "training_group": "beginner",
   "current_lesson": 1,
   "lesson_sequence_start_date": "2026-03-11",
   "last_training_date": null,
@@ -19,7 +20,6 @@
   "curriculum_exhausted_at": null,
   "lesson_history": [],
   "sent_reminders": {},
-  "training_group": "beginner",
   "lesson_tracks": {
     "beginner": {
       "current_lesson": 1,

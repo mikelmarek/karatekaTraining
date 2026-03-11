@@ -1,0 +1,65 @@
+name: Karate reminders
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  reminder:
+    name: Reminder – ${{ matrix.groupLabel }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - group: beginner
+            groupLabel: začátečníci
+            trainingEventQuery: Karate veltrusy - začátečníci
+            stateFile: ./runtime/state.json
+            gistFilename: state.beginner.json
+          - group: advanced
+            groupLabel: pokročilí
+            trainingEventQuery: Karate veltrusy - pokročilí
+            stateFile: ./runtime/state.advanced.json
+            gistFilename: state.advanced.json
+    concurrency:
+      group: karate-reminder-${{ matrix.group }}
+      cancel-in-progress: false
+    defaults:
+      run:
+        working-directory: karate_coach_assistant
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: karate_coach_assistant/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run one reminder check
+        run: npm run check
+        env:
+          TIMEZONE: Europe/Prague
+          CHECK_CRON: '*/15 * * * *'
+          TRAINING_EVENT_QUERY: ${{ matrix.trainingEventQuery }}
+          LOG_FILE: ./runtime/job.github.${{ matrix.group }}.log
+          MANUAL_FILE: ../content/kompletni_trenersky_manual_shorin_ryu_deti_v2.md
+          ADVANCED_MANUAL_FILE: ../content/kompletni_trenersky_manual_shorin_ryu_pokrocili_8_6_kyu_v1.md
+          STATE_BACKEND: github-gist
+          STATE_FILE: ${{ matrix.stateFile }}
+          GITHUB_STATE_GIST_ID: ${{ secrets.KARATE_STATE_GIST_ID }}
+          GITHUB_STATE_FILENAME: ${{ matrix.gistFilename }}
+          GITHUB_STATE_TOKEN: ${{ secrets.KARATE_STATE_GIST_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}

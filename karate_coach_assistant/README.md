@@ -25,6 +25,7 @@ Pro tento use case není OpenClaw nutný. Tohle řešení je jednodušší, prů
 - [runtime/state.json](runtime/state.json) – aktuální stav a odeslané připomínky
 - [runtime/training_log.md](runtime/training_log.md) – log po trénincích
 - [docs/automation_plan.md](docs/automation_plan.md) – návrh automatizací
+- [docs/GITHUB_ACTIONS_DEPLOYMENT.md](docs/GITHUB_ACTIONS_DEPLOYMENT.md) – cloud běh přes GitHub Actions + Gist
 - [docs/SETUP_CREDENTIALS.md](docs/SETUP_CREDENTIALS.md) – nastavení přístupů
 - [src/index.js](src/index.js) – vstupní bod aplikace
 - [src/scheduler.js](src/scheduler.js) – plánování a rozhodování 30h / 6h
@@ -69,8 +70,11 @@ Volitelné:
 
 - `TRAINING_EVENT_QUERY=karate`
 - `CHECK_CRON=*/15 * * * *`
+- `STATE_BACKEND=local`
 - `LOG_FILE=./runtime/job.log`
 - `TIMEZONE=Europe/Prague`
+
+Pro GitHub Actions variantu s externím stavem je návod v [docs/GITHUB_ACTIONS_DEPLOYMENT.md](docs/GITHUB_ACTIONS_DEPLOYMENT.md).
 
 ### 3. Google Calendar přístup
 
@@ -278,6 +282,25 @@ Nejjednodušší MVP je:
 - kalendář mít read-only,
 - lekci ručně posouvat přes `set-lesson`,
 - po tréninku doplňovat poznámky do [runtime/training_log.md](runtime/training_log.md).
+
+## GitHub Actions bez zapnutého Macu
+
+Pokud nechceš mít zapnutý Mac, je připravená i cloud varianta:
+
+- workflow: [../.github/workflows/karate-reminders.yml](../.github/workflows/karate-reminders.yml)
+- návod: [docs/GITHUB_ACTIONS_DEPLOYMENT.md](docs/GITHUB_ACTIONS_DEPLOYMENT.md)
+
+V této variantě:
+
+- scheduler neběží přes `launchd`,
+- GitHub Actions spustí kontrolu každých 15 minut,
+- stav se ukládá externě do GitHub Gistu,
+- začátečníci a pokročilí mají oddělené JSON soubory stavu.
+
+Důležité:
+
+- nepoužívej současně GitHub Actions a lokální `launchd` nad stejným stavem,
+- při přechodu na cloud je lepší Mac joby vypnout.
 
 ## Co je další rozumný krok
 

@@ -16,6 +16,13 @@ function requireEnv(name) {
   return value;
 }
 
+function requireEnvWhen(condition, name) {
+  if (!condition) {
+    return process.env[name] || null;
+  }
+  return requireEnv(name);
+}
+
 function resolveFromProject(relativeOrAbsolutePath) {
   if (!relativeOrAbsolutePath) {
     return null;
@@ -29,6 +36,7 @@ export const config = {
   projectRoot,
   timezone: process.env.TIMEZONE || 'Europe/Prague',
   checkCron: process.env.CHECK_CRON || '*/15 * * * *',
+  stateBackend: process.env.STATE_BACKEND || 'local',
   logFile: resolveFromProject(process.env.LOG_FILE || './runtime/job.log'),
   trainingEventQuery: (process.env.TRAINING_EVENT_QUERY || 'karate').toLowerCase(),
   telegramBotToken: requireEnv('TELEGRAM_BOT_TOKEN'),
@@ -37,6 +45,9 @@ export const config = {
   googleClientSecret: requireEnv('GOOGLE_CLIENT_SECRET'),
   googleRefreshToken: requireEnv('GOOGLE_REFRESH_TOKEN'),
   googleCalendarId: process.env.GOOGLE_CALENDAR_ID || 'primary',
+  githubStateGistId: requireEnvWhen((process.env.STATE_BACKEND || 'local') === 'github-gist', 'GITHUB_STATE_GIST_ID'),
+  githubStateFilename: process.env.GITHUB_STATE_FILENAME || 'state.json',
+  githubStateToken: requireEnvWhen((process.env.STATE_BACKEND || 'local') === 'github-gist', 'GITHUB_STATE_TOKEN'),
   manualFile: resolveFromProject(process.env.MANUAL_FILE || '../content/kompletni_trenersky_manual_shorin_ryu_deti_v2.md'),
   advancedManualFile: resolveFromProject(process.env.ADVANCED_MANUAL_FILE || '../content/kompletni_trenersky_manual_shorin_ryu_pokrocili_8_6_kyu_v1.md'),
   stateFile: resolveFromProject(process.env.STATE_FILE || './runtime/state.json'),

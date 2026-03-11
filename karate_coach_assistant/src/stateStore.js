@@ -1,4 +1,4 @@
-import fs from 'node:fs/promises';
+import { readBootstrapStateFile, readPersistedState, writePersistedState } from './statePersistence.js';
 
 function createDefaultTrackState(group) {
   return {
@@ -122,9 +122,36 @@ export function setTrackState(state, trainingGroup, updates) {
   return syncActiveTrackFields(nextState);
 }
 
-export async function loadState(stateFile) {
+function resolveStateTarget(stateTarget) {
+  if (typeof stateTarget === 'string') {
+    return {
+      stateBackend: 'local',
+      stateFile: stateTarget,
+      githubStateGistId: null,
+      githubStateFilename: null,
+      githubStateToken: null
+    };
+  }
+
+  return stateTarget;
+}
+
+async function loadBootstrapState(stateFile) {
   try {
-    const raw = await fs.readFile(stateFile, 'utf8');
+    const raw = await readBootstrapStateFile(stateFile);
+    return JSON.parse(raw);
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      return createDefaultState();
+    }
+    throw error;
+  }
+}
+
+export async function loadState(stateTarget) {
+  const target = resolveStateTarget(stateTarget);
+  try {
+    const raw = await readPersistedState(target);
     const parsed = JSON.parse(raw);
     const normalized = {
       ...createDefaultState(),
@@ -144,15 +171,16 @@ export async function loadState(stateFile) {
     return syncActiveTrackFields(normalized);
   } catch (error) {
     if (error.code === 'ENOENT') {
-      const fallbackState = createDefaultState();
-      await saveState(stateFile, fallbackState);
+      const fallbackState = syncActiveTrackFields(await loadBootstrapState(target.stateFile));
+      await saveState(target, fallbackState);
       return fallbackState;
     }
     throw error;
   }
 }
 
-export async function saveState(stateFile, state) {
+export async function saveState(stateTarget, state) {
+  const target = resolveStateTarget(stateTarget);
   const normalized = syncActiveTrackFields({
     ...createDefaultState(),
     ...state,
@@ -161,11 +189,11 @@ export async function saveState(stateFile, state) {
       advanced: normalizeTrack(state.lesson_tracks?.advanced, 'advanced')
     }
   });
-  await fs.writeFile(stateFile, `${JSON.stringify(normalized, null, 2)}\n`, 'utf8');
+  await writePersistedState(target, `${JSON.stringify(normalized, null, 2)}\n`);
 }
 
-export async function updateCurrentLesson(stateFile, lessonNumber, trainingGroup) {
-  const state = await loadState(stateFile);
+export async function updateCurrentLesson(stateTarget, lessonNumber, trainingGroup) {
+  const state = await loadState(stateTarget);
   const group = normalizeTrainingGroup(trainingGroup || state.training_group);
   const track = getTrackState(state, group);
   const nextState = setTrackState({
@@ -178,18 +206,18 @@ export async function updateCurrentLesson(stateFile, lessonNumber, trainingGroup
     curriculum_exhausted_at: null
   });
 
-  await saveState(stateFile, nextState);
+  await saveState(stateTarget, nextState);
   return nextState;
 }
 
-export async function updateTrainingGroup(stateFile, trainingGroup) {
-  const state = await loadState(stateFile);
+export async function updateTrainingGroup(stateTarget, trainingGroup) {
+  const state = await loadState(stateTarget);
   const nextState = syncActiveTrackFields({
     ...state,
     training_group: normalizeTrainingGroup(trainingGroup)
   });
 
-  await saveState(stateFile, nextState);
+  await saveState(stateTarget, nextState);
   return nextState;
 }
 

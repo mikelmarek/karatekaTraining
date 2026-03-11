@@ -34,7 +34,7 @@ function shouldSendReminder(hoursUntil, reminderConfig) {
 }
 
 export async function runReminderCheck(config, options = {}) {
-  const state = await loadState(config.stateFile);
+  const state = await loadState(config);
   const trainingGroup = state.training_group;
   const manualFile = getManualFileForState(config, state);
   const manualRepository = await loadManualRepository(manualFile);
@@ -99,7 +99,7 @@ export async function runReminderCheck(config, options = {}) {
   }
 
   pruneOldReminders(nextState);
-  await saveState(config.stateFile, nextState);
+  await saveState(config, nextState);
 
   await logInfo(config.logFile, 'Kontrolní běh dokončen', {
     checkedAt: now.toISOString(),
@@ -220,7 +220,7 @@ export function startScheduler(config) {
   });
 
   void (async () => {
-    const state = await loadState(config.stateFile);
+    const state = await loadState(config);
     const trainingGroup = state.training_group;
     await logInfo(config.logFile, 'Scheduler spuštěn', {
       checkCron: config.checkCron,

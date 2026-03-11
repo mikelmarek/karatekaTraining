@@ -61,7 +61,7 @@ async function main() {
     if (!Number.isInteger(lessonNumber) || lessonNumber < 1 || lessonNumber > 40) {
       throw new Error('Zadej číslo lekce 1 až 40.');
     }
-    const state = await updateCurrentLesson(config.stateFile, lessonNumber, trainingGroup);
+    const state = await updateCurrentLesson(config, lessonNumber, trainingGroup);
     await logInfo(config.logFile, 'Ruční změna lekce', {
       trainingGroup: state.training_group,
       currentLesson: state.current_lesson
@@ -76,7 +76,7 @@ async function main() {
       throw new Error('Zadej skupinu beginner nebo advanced.');
     }
 
-    const state = await updateTrainingGroup(config.stateFile, inputGroup);
+    const state = await updateTrainingGroup(config, inputGroup);
     await logInfo(config.logFile, 'Ruční změna skupiny', {
       trainingGroup: state.training_group,
       currentLesson: state.current_lesson
@@ -93,7 +93,7 @@ async function main() {
   }
 
   if (command === 'test-plan') {
-    const storedState = await loadState(config.stateFile);
+    const storedState = await loadState(config);
     const parsedArgs = parseTestPlanArgs(args.slice(1), storedState.training_group);
     const state = getStateWithActiveTrack(storedState, parsedArgs.trainingGroup);
     const manualRepository = await loadManualRepository(getManualFileForState(config, state));
