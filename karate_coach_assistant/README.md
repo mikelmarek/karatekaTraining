@@ -55,6 +55,37 @@ Pro tento use case není OpenClaw nutný. Tohle řešení je jednodušší, prů
 V lokálním režimu je backend stavových dat [runtime/state.json](runtime/state.json) a [runtime/state.advanced.json](runtime/state.advanced.json).
 V cloud režimu přes GitHub Actions se používá GitHub Gist.
 
+## Jak se určuje datum a číslo lekce
+
+Je dobré rozlišit 3 různé věci:
+
+- obsah lekce je v manuálu,
+- termín tréninku je v Google Calendar,
+- aktuální číslo lekce je ve stavu systému.
+
+Prakticky to funguje takto:
+
+1. Google Calendar určuje, kdy je reálný trénink.
+2. Stav systému určuje, která lekce je právě na řadě.
+3. Manuál určuje, co přesně tato lekce obsahuje.
+
+Takže například:
+
+- v kalendáři je středeční trénink,
+- stav říká `current_lesson = 1`,
+- systém tedy pošle obsah lekce 1,
+- po skončení této kalendářové události se při dalším běhu stav posune na lekci 2.
+
+Kde je co uloženo:
+
+- termíny tréninků: Google Calendar,
+- obsah lekcí začátečníků: [../content/kompletni_trenersky_manual_shorin_ryu_deti_v2.md](../content/kompletni_trenersky_manual_shorin_ryu_deti_v2.md),
+- obsah lekcí pokročilých: [../content/kompletni_trenersky_manual_shorin_ryu_pokrocili_8_6_kyu_v1.md](../content/kompletni_trenersky_manual_shorin_ryu_pokrocili_8_6_kyu_v1.md),
+- lokální bootstrap stav: [runtime/state.json](runtime/state.json) a [runtime/state.advanced.json](runtime/state.advanced.json),
+- produkční cloud stav: GitHub Gist.
+
+Termíny tedy nejsou zapsané natvrdo v projektu. Projekt si je bere dynamicky z kalendáře a ke každému termínu přiřadí aktuální číslo lekce podle stavu.
+
 ## Nastavení
 
 Podrobný postup pro všechny hodnoty v `.env` je v [docs/SETUP_CREDENTIALS.md](docs/SETUP_CREDENTIALS.md).
