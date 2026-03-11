@@ -1,0 +1,286 @@
+# Karate Coach Assistant
+
+Hotový MVP agent pro dětské tréninky.
+
+Agent dělá toto:
+
+- čte Google kalendář z Gmail účtu,
+- hledá události obsahující zadaný výraz, výchozí je `karate`,
+- vezme aktuální lekci z `runtime/state.json`,
+- připraví zprávu podle pravidel a manuálu,
+- pošle detailní rozpis 30 hodin před tréninkem,
+- pošle krátké připomenutí 6 hodin před tréninkem,
+- po skončení tréninku automaticky uzavře použitou lekci a posune `current_lesson`,
+- ukládá historii použitých lekcí do `lesson_history`,
+- po vyčerpání lekcí 1–40 pošle upozornění, že je potřeba připravit navazující sérii,
+- hlídá, aby stejnou připomínku neposlal dvakrát.
+
+Pro tento use case není OpenClaw nutný. Tohle řešení je jednodušší, průhlednější a rychleji nasaditelné.
+
+## Struktura
+
+- [config/agent_role.md](config/agent_role.md) – role asistenta
+- [config/preferences.md](config/preferences.md) – metodická pravidla
+- [config/message_templates.md](config/message_templates.md) – šablony zpráv
+- [runtime/state.json](runtime/state.json) – aktuální stav a odeslané připomínky
+- [runtime/training_log.md](runtime/training_log.md) – log po trénincích
+- [docs/automation_plan.md](docs/automation_plan.md) – návrh automatizací
+- [docs/SETUP_CREDENTIALS.md](docs/SETUP_CREDENTIALS.md) – nastavení přístupů
+- [src/index.js](src/index.js) – vstupní bod aplikace
+- [src/scheduler.js](src/scheduler.js) – plánování a rozhodování 30h / 6h
+- [src/calendarService.js](src/calendarService.js) – Google Calendar API
+- [src/telegramService.js](src/telegramService.js) – Telegram odesílání
+- [src/manualRepository.js](src/manualRepository.js) – čtení lekcí z manuálu
+- [src/planner.js](src/planner.js) – generování textu zpráv
+
+## Jak to funguje
+
+1. Každých 15 minut proběhne kontrola kalendáře.
+2. Agent hledá relevantní tréninky v okně do 32 hodin.
+3. Pokud je trénink přibližně za 30 hodin, pošle detailní plán.
+4. Pokud je trénink přibližně za 6 hodin, pošle krátké připomenutí.
+5. Odeslané připomínky uloží do [runtime/state.json](runtime/state.json).
+6. Po skončení události ji zapíše do `lesson_history` a automaticky připraví další lekci.
+
+## Nastavení
+
+Podrobný postup pro všechny hodnoty v `.env` je v [docs/SETUP_CREDENTIALS.md](docs/SETUP_CREDENTIALS.md).
+
+### 1. Instalace závislostí
+
+V adresáři [karate_coach_assistant](.) spusť:
+
+- `npm install`
+
+### 2. Vytvoření `.env`
+
+Zkopíruj [ .env.example ](.env.example) do `.env` a vyplň hodnoty.
+
+Povinné proměnné:
+
+- `TELEGRAM_BOT_TOKEN`
+- `TELEGRAM_CHAT_ID`
+- `GOOGLE_CLIENT_ID`
+- `GOOGLE_CLIENT_SECRET`
+- `GOOGLE_REFRESH_TOKEN`
+- `GOOGLE_CALENDAR_ID`
+
+Volitelné:
+
+- `TRAINING_EVENT_QUERY=karate`
+- `CHECK_CRON=*/15 * * * *`
+- `LOG_FILE=./runtime/job.log`
+- `TIMEZONE=Europe/Prague`
+
+### 3. Google Calendar přístup
+
+Použité je OAuth2 přes `refresh token`.
+
+Je potřeba:
+
+1. v Google Cloud vytvořit OAuth klienta,
+2. povolit Google Calendar API,
+3. získat `refresh token` pro účet s kalendářem,
+4. nastavit `GOOGLE_CALENDAR_ID`, obvykle `primary`.
+
+Pro získání `refresh tokenu` jsou připravené pomocné kroky:
+
+- `npm run get-google-auth-url`
+- `npm run exchange-google-code -- "PASTE_CODE_SEM"`
+
+Kalendář může zůstat pouze pro čtení.
+
+### 4. Telegram
+
+1. vytvoř bota přes BotFather,
+2. získej token,
+3. zjisti svoje `chat_id`,
+4. vlož obě hodnoty do `.env`.
+
+Pro zjištění `chat_id` je připravený helper:
+
+- `npm run get-telegram-chat-id`
+
+## Spuštění
+
+### Jednorázová kontrola
+
+- `npm run check`
+
+Každý běh se zároveň zapisuje do [runtime/job.log](runtime/job.log).
+
+### Trvalý běh agenta
+
+- `npm start`
+
+### Test Telegramu
+
+- `npm run test-telegram`
+
+### Test reálné tréninkové zprávy
+
+- detailní plán jako 30h reminder: `npm run test-plan`
+- krátké připomenutí jako 6h reminder: `npm run test-plan -- 6h`
+- test konkrétní lekce: `npm run test-plan -- 30h 3`
+- test pokročilé skupiny: `npm run test-plan -- 30h 1 advanced`
+
+### Ruční nastavení lekce
+
+- `npm run set-lesson -- 7`
+- `npm run set-lesson -- 1 advanced`
+
+### Ruční přepnutí skupiny
+
+- `npm run set-group -- beginner`
+- `npm run set-group -- advanced`
+
+## Automatický posun lekcí
+
+- Výchozí start série je v [runtime/state.json](runtime/state.json) v poli `lesson_sequence_start_date`.
+- Pro tento projekt je nastaven na `2026-03-11`, takže trénink od tohoto data bere jako lekci 1.
+- Aktivní větev určuje pole `training_group`.
+- Každá větev má vlastní průběh v `lesson_tracks.beginner` a `lesson_tracks.advanced`.
+- Jakmile kalendářová událost skončí, agent při dalším běhu:
+	- zapíše do `lesson_history`, kterou lekci použil,
+	- nastaví `last_training_date`,
+	- zvýší `current_lesson` o 1.
+- Díky tomu bude například:
+	- 11. 3. lekce 1,
+	- 18. 3. lekce 2,
+	- další týden lekce 3.
+
+Použité lekce a jejich data najdeš přímo v [runtime/state.json](runtime/state.json).
+
+## Co se stane po lekci 40
+
+- po uzavření lekce 40 se nastaví `curriculum_exhausted=true`,
+- agent už neposílá další běžný plán lekce,
+- místo toho pošle upozornění, že došly připravené lekce 1–40,
+- ve zprávě připomene, že je potřeba podívat se na `lesson_history` a připravit další sérii.
+
+Tím se zabrání tomu, aby systém tiše opakoval poslední lekci donekonečna.
+
+## Log běhů
+
+- Každý job zapisuje průběh do [runtime/job.log](runtime/job.log).
+- Uvidíš tam například:
+	- kdy proběhla kontrola,
+	- kolik událostí bylo nalezeno,
+	- zda se poslal 30h nebo 6h reminder,
+	- zda se uzavřel proběhlý trénink,
+	- případné chyby.
+
+První kontrola logu:
+
+- spusť `npm run check`
+- otevři [runtime/job.log](runtime/job.log)
+
+## Jak agent vybírá obsah
+
+- Pro `beginner` bere lekce 1 až 40 z [../content/kompletni_trenersky_manual_shorin_ryu_deti_v2.md](../content/kompletni_trenersky_manual_shorin_ryu_deti_v2.md).
+- Pro `advanced` bere lekce 1 až 40 z [../content/kompletni_trenersky_manual_shorin_ryu_pokrocili_8_6_kyu_v1.md](../content/kompletni_trenersky_manual_shorin_ryu_pokrocili_8_6_kyu_v1.md).
+- Záložní generování v [src/manualRepository.js](src/manualRepository.js) zůstává jen jako bezpečný fallback.
+- Vždy drží `Fukyugata Ichi`, jednoduchý kihon a poměr cca 70 % hry / 30 % technika.
+
+## Doporučení pro macOS provoz
+
+Pro stabilní běh použij `launchd`, `pm2` nebo jiný process manager.
+
+Připravený je i template pro `launchd`:
+
+- [launchd/com.marek.karatecoachassistant.plist.template](launchd/com.marek.karatecoachassistant.plist.template)
+- [launchd/com.marek.karatecoachassistant.advanced.plist.template](launchd/com.marek.karatecoachassistant.advanced.plist.template)
+- [scripts/run-agent.sh](scripts/run-agent.sh)
+
+Aktivní uživatelský LaunchAgent je po nasazení zkopírovaný do:
+
+- `~/Library/LaunchAgents/com.marek.karatecoachassistant.plist`
+
+## Ruční spuštění a kontrola
+
+### Když chceš job pustit ručně jednou
+
+- `npm run check`
+
+To provede jednu kontrolu kalendáře a případně pošle připomínku.
+
+### Když chceš pustit dlouhodobý režim ručně bez launchd
+
+- `npm start`
+
+To spustí scheduler v terminálu a nechá ho běžet na pozadí daného okna terminálu.
+
+### Když chceš poslat testovací zprávu
+
+- `npm run test-telegram`
+
+### Když chceš poslat testovací detailní plán
+
+- `npm run test-plan`
+- `npm run test-plan -- 30h 1 advanced`
+
+### Když chceš poslat testovací 6h souhrn
+
+- `npm run test-plan -- 6h`
+
+### Když chceš změnit aktuální lekci ručně
+
+- `npm run set-lesson -- 7`
+- `npm run set-lesson -- 1 advanced`
+
+### Když chceš přepnout aktivní skupinu
+
+- `npm run set-group -- beginner`
+- `npm run set-group -- advanced`
+
+## launchd – užitečné příkazy
+
+Všechny tyto příkazy spouštěj v macOS Terminálu:
+
+- stav služby: `launchctl print gui/$(id -u)/com.marek.karatecoachassistant`
+- restart služby: `launchctl kickstart -k gui/$(id -u)/com.marek.karatecoachassistant`
+- vypnutí služby: `launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.marek.karatecoachassistant.plist`
+- znovunačtení služby: `launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.marek.karatecoachassistant.plist`
+
+## Kde co hledat
+
+- hlavní návod: [README.md](README.md)
+- detailní revize projektu: [docs/PROJECT_REVIEW_AND_GUIDE.md](docs/PROJECT_REVIEW_AND_GUIDE.md)
+- audit připravenosti lekcí: [docs/LESSONS_1_40_READINESS.md](docs/LESSONS_1_40_READINESS.md)
+- stav systému: [runtime/state.json](runtime/state.json)
+- log běhů jobu: [runtime/job.log](runtime/job.log)
+- hlavní manuál lekcí: [../content/kompletni_trenersky_manual_shorin_ryu_deti_v2.md](../content/kompletni_trenersky_manual_shorin_ryu_deti_v2.md)
+- pokročilý manuál 8.–6. kyu: [../content/kompletni_trenersky_manual_shorin_ryu_pokrocili_8_6_kyu_v1.md](../content/kompletni_trenersky_manual_shorin_ryu_pokrocili_8_6_kyu_v1.md)
+
+Poznámka:
+
+- přepínání mezi začátečníky a pokročilými je už připravené,
+- aktivní skupinu přepíná `training_group` a příkaz `set-group`,
+- každá skupina má vlastní lekce, historii i odeslané remindery.
+
+## Dva joby v launchd
+
+Aktuální doporučení:
+
+- hlavní job [launchd/com.marek.karatecoachassistant.plist.template](launchd/com.marek.karatecoachassistant.plist.template) sleduje `Karate veltrusy - začátečníci`
+- druhý job [launchd/com.marek.karatecoachassistant.advanced.plist.template](launchd/com.marek.karatecoachassistant.advanced.plist.template) sleduje `Karate veltrusy - pokročilí`
+
+Pokročilý job má vlastní:
+
+- stav: [runtime/state.advanced.json](runtime/state.advanced.json)
+- log: [runtime/job.advanced.log](runtime/job.advanced.log)
+- stdout: [runtime/agent.advanced.stdout.log](runtime/agent.advanced.stdout.log)
+- stderr: [runtime/agent.advanced.stderr.log](runtime/agent.advanced.stderr.log)
+
+Nejjednodušší MVP je:
+
+- nechat agenta běžet trvale na jednom stroji,
+- kalendář mít read-only,
+- lekci ručně posouvat přes `set-lesson`,
+- po tréninku doplňovat poznámky do [runtime/training_log.md](runtime/training_log.md).
+
+## Co je další rozumný krok
+
+1. doplnit automatické zapsání feedbacku z Telegramu,
+2. automaticky navrhovat opakování lekce při špatném feedbacku,
+3. nasadit běh jako službu na Macu.

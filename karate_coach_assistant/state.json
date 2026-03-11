@@ -1,0 +1,22 @@
+{
+  "assistant_name": "Karate Coach Assistant",
+  "language": "cs",
+  "training_day": "středa",
+  "training_duration_minutes": 60,
+  "age_group": "5-10",
+  "current_lesson": 1,
+  "lesson_sequence_start_date": null,
+  "last_training_date": null,
+  "last_sent_plan_date": null,
+  "last_feedback_request_date": null,
+  "preferred_kata": "Fukyugata Ichi",
+  "delivery_channels": [
+    "telegram"
+  ],
+  "notes_summary": [],
+  "pending_adjustments": [],
+  "curriculum_exhausted": false,
+  "curriculum_exhausted_at": null,
+  "lesson_history": [],
+  "sent_reminders": {}
+}

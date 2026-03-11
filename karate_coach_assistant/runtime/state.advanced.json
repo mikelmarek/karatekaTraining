@@ -1,0 +1,47 @@
+{
+  "assistant_name": "Karate Coach Assistant",
+  "language": "cs",
+  "training_day": "středa",
+  "training_duration_minutes": 60,
+  "age_group": "5-10",
+  "training_group": "advanced",
+  "current_lesson": 1,
+  "lesson_sequence_start_date": "2026-03-11",
+  "last_training_date": null,
+  "last_sent_plan_date": null,
+  "last_feedback_request_date": null,
+  "preferred_kata": "Fukyugata Ichi / Naihanchi Shodan / Fukyugata Ni",
+  "delivery_channels": [
+    "telegram"
+  ],
+  "notes_summary": [],
+  "pending_adjustments": [],
+  "curriculum_exhausted": false,
+  "curriculum_exhausted_at": null,
+  "lesson_history": [],
+  "sent_reminders": {},
+  "lesson_tracks": {
+    "beginner": {
+      "current_lesson": 1,
+      "last_training_date": null,
+      "last_sent_plan_date": null,
+      "last_feedback_request_date": null,
+      "preferred_kata": "Fukyugata Ichi",
+      "curriculum_exhausted": false,
+      "curriculum_exhausted_at": null,
+      "lesson_history": [],
+      "sent_reminders": {}
+    },
+    "advanced": {
+      "current_lesson": 1,
+      "last_training_date": null,
+      "last_sent_plan_date": null,
+      "last_feedback_request_date": null,
+      "preferred_kata": "Fukyugata Ichi / Naihanchi Shodan / Fukyugata Ni",
+      "curriculum_exhausted": false,
+      "curriculum_exhausted_at": null,
+      "lesson_history": [],
+      "sent_reminders": {}
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "karate-coach-assistant",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Automatický agent pro rozpis dětského karate tréninku z Google kalendáře do Telegramu.",
+  "scripts": {
+    "start": "node src/index.js",
+    "check": "node src/index.js --once",
+    "set-lesson": "node src/index.js set-lesson",
+    "set-group": "node src/index.js set-group",
+    "test-telegram": "node src/index.js test-telegram",
+    "test-plan": "node src/index.js test-plan",
+    "get-google-token": "node scripts/get-google-refresh-token.js",
+    "get-google-auth-url": "node scripts/get-google-refresh-token.js --url",
+    "exchange-google-code": "node scripts/get-google-refresh-token.js --code",
+    "get-telegram-chat-id": "node scripts/get-telegram-chat-id.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "googleapis": "^144.0.0",
+    "node-cron": "^3.0.3"
+  }
+}
