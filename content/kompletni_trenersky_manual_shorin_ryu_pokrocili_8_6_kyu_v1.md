@@ -1,7 +1,7 @@
 # Pokročilý trénerský manuál Shorin-ryu pro děti – 8. až 6. kyu
 
 Tento dokument je navazující osnova pro děti a mladší pokročilé cvičence,
-kteří už prošli základním cyklem s `Fukyugata Ichi` a zvládají běžný rytmus dojo.
+kteří už prošli základním cyklem s `Fukyugata Ichi` a zvládají běžný rytmus dojo. Informace o historii a způsobu učení karate jsou v manualu v2 pro začátečníky.
 
 Cíl této osnovy:
 - připravit pokročilejší skupinu na pásmo 8. až 6. kyu,
