@@ -2,6 +2,15 @@
 
 Tato varianta umožní, aby se job spouštěl bez zapnutého Macu.
 
+## Aktuální stav
+
+Tahle varianta je nyní považována za hlavní produkční provoz projektu.
+
+- workflow je aktivní,
+- běží každých 15 minut,
+- lokální `launchd` joby mají být vypnuté,
+- GitHub Gist je zdroj pravdy pro cloud stav.
+
 Stav se neukládá do lokálních JSON souborů v runneru, ale do GitHub Gistu.
 Díky tomu si workflow mezi běhy pamatuje:
 
@@ -94,6 +103,7 @@ Workflow je v:
 Spouští se:
 
 - automaticky každých 15 minut
+- po pushi do `main`
 - ručně přes `Run workflow`
 
 ## 5. Jak ověřit první běh
@@ -110,6 +120,8 @@ Po ručním spuštění workflow zkontroluj:
 - Proto se používá externí stav mimo runner.
 - Lokální `launchd` a GitHub Actions nepoužívej současně nad stejným stavem, jinak by si mohly překážet.
 - Pokud přejdeš na GitHub Actions natrvalo, je dobré Mac joby vypnout.
+
+Po aktuálním přechodu do cloudu už mají být Mac joby vypnuté standardně.
 
 ## Doporučené rozdělení provozu
 

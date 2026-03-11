@@ -2,6 +2,15 @@
 
 Hotový MVP agent pro dětské tréninky.
 
+## Aktuální provozní stav
+
+Aktuálně je produkční provoz nastaven takto:
+
+- hlavní běh jede přes [../.github/workflows/karate-reminders.yml](../.github/workflows/karate-reminders.yml),
+- workflow se spouští automaticky každých 15 minut,
+- stav se ukládá externě do GitHub Gistu,
+- lokální `launchd` joby na Macu jsou jen záložní varianta a mají být vypnuté, pokud běží cloud.
+
 Agent dělá toto:
 
 - čte Google kalendář z Gmail účtu,
@@ -40,8 +49,11 @@ Pro tento use case není OpenClaw nutný. Tohle řešení je jednodušší, prů
 2. Agent hledá relevantní tréninky v okně do 32 hodin.
 3. Pokud je trénink přibližně za 30 hodin, pošle detailní plán.
 4. Pokud je trénink přibližně za 6 hodin, pošle krátké připomenutí.
-5. Odeslané připomínky uloží do [runtime/state.json](runtime/state.json).
+5. Odeslané připomínky uloží do aktivního backendu stavu.
 6. Po skončení události ji zapíše do `lesson_history` a automaticky připraví další lekci.
+
+V lokálním režimu je backend stavových dat [runtime/state.json](runtime/state.json) a [runtime/state.advanced.json](runtime/state.advanced.json).
+V cloud režimu přes GitHub Actions se používá GitHub Gist.
 
 ## Nastavení
 
@@ -113,6 +125,8 @@ Pro zjištění `chat_id` je připravený helper:
 
 Každý běh se zároveň zapisuje do [runtime/job.log](runtime/job.log).
 
+Tohle je hlavně lokální servisní příkaz pro ruční test nebo fallback provoz.
+
 ### Trvalý běh agenta
 
 - `npm start`
@@ -166,7 +180,8 @@ Tím se zabrání tomu, aby systém tiše opakoval poslední lekci donekonečna.
 
 ## Log běhů
 
-- Každý job zapisuje průběh do [runtime/job.log](runtime/job.log).
+- Lokální job zapisuje průběh do [runtime/job.log](runtime/job.log).
+- Cloud běh je vidět v GitHub Actions a stav se propisuje do GitHub Gistu.
 - Uvidíš tam například:
 	- kdy proběhla kontrola,
 	- kolik událostí bylo nalezeno,
@@ -186,9 +201,9 @@ První kontrola logu:
 - Záložní generování v [src/manualRepository.js](src/manualRepository.js) zůstává jen jako bezpečný fallback.
 - Vždy drží `Fukyugata Ichi`, jednoduchý kihon a poměr cca 70 % hry / 30 % technika.
 
-## Doporučení pro macOS provoz
+## Lokální macOS provoz jako fallback
 
-Pro stabilní běh použij `launchd`, `pm2` nebo jiný process manager.
+Pokud bys někdy potřeboval dočasně běžet mimo GitHub Actions, můžeš použít `launchd`, `pm2` nebo jiný process manager.
 
 Připravený je i template pro `launchd`:
 
@@ -199,6 +214,11 @@ Připravený je i template pro `launchd`:
 Aktivní uživatelský LaunchAgent je po nasazení zkopírovaný do:
 
 - `~/Library/LaunchAgents/com.marek.karatecoachassistant.plist`
+
+Poznámka:
+
+- při aktuálním cloud provozu mají být oba lokální `launchd` joby vypnuté,
+- zapínej je jen pokud chceš dočasný fallback mimo GitHub Actions.
 
 ## Ruční spuštění a kontrola
 
@@ -264,7 +284,7 @@ Poznámka:
 
 ## Dva joby v launchd
 
-Aktuální doporučení:
+Lokální fallback varianta:
 
 - hlavní job [launchd/com.marek.karatecoachassistant.plist.template](launchd/com.marek.karatecoachassistant.plist.template) sleduje `Karate veltrusy - začátečníci`
 - druhý job [launchd/com.marek.karatecoachassistant.advanced.plist.template](launchd/com.marek.karatecoachassistant.advanced.plist.template) sleduje `Karate veltrusy - pokročilí`
@@ -276,12 +296,7 @@ Pokročilý job má vlastní:
 - stdout: [runtime/agent.advanced.stdout.log](runtime/agent.advanced.stdout.log)
 - stderr: [runtime/agent.advanced.stderr.log](runtime/agent.advanced.stderr.log)
 
-Nejjednodušší MVP je:
-
-- nechat agenta běžet trvale na jednom stroji,
-- kalendář mít read-only,
-- lekci ručně posouvat přes `set-lesson`,
-- po tréninku doplňovat poznámky do [runtime/training_log.md](runtime/training_log.md).
+Aktuální produkce ale používá GitHub Actions, ne lokální `launchd`.
 
 ## GitHub Actions bez zapnutého Macu
 
@@ -297,6 +312,8 @@ V této variantě:
 - stav se ukládá externě do GitHub Gistu,
 - začátečníci a pokročilí mají oddělené JSON soubory stavu.
 
+Tohle je teď výchozí doporučený produkční režim.
+
 Důležité:
 
 - nepoužívej současně GitHub Actions a lokální `launchd` nad stejným stavem,
@@ -306,4 +323,4 @@ Důležité:
 
 1. doplnit automatické zapsání feedbacku z Telegramu,
 2. automaticky navrhovat opakování lekce při špatném feedbacku,
-3. nasadit běh jako službu na Macu.
+3. přidat přehled posledních běhů a kontrolu zdraví workflow.

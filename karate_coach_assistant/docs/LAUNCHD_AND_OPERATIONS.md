@@ -1,5 +1,16 @@
 # launchd a běžná obsluha
 
+## Aktuální poznámka
+
+Lokální `launchd` provoz už není hlavní produkční režim.
+
+Aktuálně je doporučený provoz přes GitHub Actions:
+
+- workflow [../.github/workflows/karate-reminders.yml](../.github/workflows/karate-reminders.yml)
+- návod [GITHUB_ACTIONS_DEPLOYMENT.md](GITHUB_ACTIONS_DEPLOYMENT.md)
+
+Tento dokument slouží hlavně pro fallback nebo lokální servisní provoz.
+
 ## Kde je launchd soubor
 
 ### Template v projektu
@@ -28,6 +39,8 @@ Z adresáře projektu:
 
 Když běží správně, uvidíš stav služby a proces.
 
+Pokud je cloud varianta aktivní, je správně, když tyto joby neběží.
+
 ## Jak službu restartovat
 
 - `launchctl kickstart -k gui/$(id -u)/com.marek.karatecoachassistant`
@@ -36,9 +49,17 @@ Když běží správně, uvidíš stav služby a proces.
 
 - `launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.marek.karatecoachassistant.plist`
 
+Pokročilý job vypneš:
+
+- `launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.marek.karatecoachassistant.advanced.plist`
+
 ## Jak ji znovu načíst
 
 - `launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.marek.karatecoachassistant.plist`
+
+Pokročilý job znovu načteš:
+
+- `launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.marek.karatecoachassistant.advanced.plist`
 
 ## Jak číst provozní logy
 

@@ -14,6 +14,13 @@ Tento dokument shrnuje, co je v projektu hotové, jak to teď funguje a jak syst
 - zapisuje běhy jobu do logu,
 - po vyčerpání lekcí 1–40 pošle upozornění místo opakování poslední lekce.
 
+Aktuální produkční nasazení:
+
+- GitHub Actions workflow [../.github/workflows/karate-reminders.yml](../.github/workflows/karate-reminders.yml),
+- externí stav přes GitHub Gist,
+- oddělené běhy pro `beginner` a `advanced`,
+- lokální `launchd` jen jako fallback.
+
 ## 2. Přehled důležitých souborů
 
 ### Konfigurace a stav
@@ -116,6 +123,16 @@ Každý job se zapíše do [../runtime/job.log](../runtime/job.log).
 
 - `npm start`
 
+### GitHub Actions
+
+Produkční cloud běh je v:
+
+- [../.github/workflows/karate-reminders.yml](../.github/workflows/karate-reminders.yml)
+
+Detailní návod je v:
+
+- [GITHUB_ACTIONS_DEPLOYMENT.md](GITHUB_ACTIONS_DEPLOYMENT.md)
+
 ### launchd na macOS
 
 Template v projektu:
@@ -132,6 +149,10 @@ Praktické příkazy:
 - restart: `launchctl kickstart -k gui/$(id -u)/com.marek.karatecoachassistant`
 - vypnutí: `launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.marek.karatecoachassistant.plist`
 - znovunačtení: `launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.marek.karatecoachassistant.plist`
+
+Poznámka:
+
+- pokud běží GitHub Actions produkce, mají být lokální Mac joby vypnuté.
 
 ## 5. Jak číst stav systému
 
@@ -196,7 +217,7 @@ Nejrozumnější navazující kroky jsou:
 1. automatický sběr feedbacku z Telegramu po tréninku,
 2. automatické ukládání odpovědí do [../runtime/training_log.md](../runtime/training_log.md),
 3. lepší generování navazujících bloků po lekci 40,
-4. nasazení přes `launchd`,
+4. přehled běhů a monitoring GitHub Actions,
 5. dashboard nebo přehled posledních běhů.
 
 ## 9. Audit připravenosti lekcí 1–40
