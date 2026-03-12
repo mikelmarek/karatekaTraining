@@ -35,6 +35,7 @@ Pro tento use case není OpenClaw nutný. Tohle řešení je jednodušší, prů
 - [runtime/training_log.md](runtime/training_log.md) – log po trénincích
 - [docs/automation_plan.md](docs/automation_plan.md) – návrh automatizací
 - [docs/GITHUB_ACTIONS_DEPLOYMENT.md](docs/GITHUB_ACTIONS_DEPLOYMENT.md) – cloud běh přes GitHub Actions + Gist
+- [docs/LLM_PROMPTS_NEXT_SERIES.md](docs/LLM_PROMPTS_NEXT_SERIES.md) – připravené prompty pro navazující lekce a AI drafty
 - [docs/NEXT_STEPS_AND_IDEAS.md](docs/NEXT_STEPS_AND_IDEAS.md) – backlog a nápady pro další rozvoj
 - [docs/SETUP_CREDENTIALS.md](docs/SETUP_CREDENTIALS.md) – nastavení přístupů
 - [src/index.js](src/index.js) – vstupní bod aplikace
