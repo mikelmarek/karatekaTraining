@@ -13,6 +13,8 @@
 
     <key>EnvironmentVariables</key>
     <dict>
+      <key>TRAINING_GROUP</key>
+      <string>advanced</string>
       <key>TRAINING_EVENT_QUERY</key>
       <string>Karate veltrusy - pokročilí</string>
       <key>STATE_FILE</key>

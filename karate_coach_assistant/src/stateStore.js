@@ -127,13 +127,28 @@ function resolveStateTarget(stateTarget) {
     return {
       stateBackend: 'local',
       stateFile: stateTarget,
+      trainingGroup: null,
       githubStateGistId: null,
       githubStateFilename: null,
       githubStateToken: null
     };
   }
 
-  return stateTarget;
+  return {
+    ...stateTarget,
+    trainingGroup: stateTarget.trainingGroup || null
+  };
+}
+
+function applyForcedTrainingGroup(state, trainingGroup) {
+  if (!trainingGroup) {
+    return state;
+  }
+
+  return {
+    ...state,
+    training_group: normalizeTrainingGroup(trainingGroup)
+  };
 }
 
 async function loadBootstrapState(stateFile) {
@@ -153,7 +168,7 @@ export async function loadState(stateTarget) {
   try {
     const raw = await readPersistedState(target);
     const parsed = JSON.parse(raw);
-    const normalized = {
+    const normalized = applyForcedTrainingGroup({
       ...createDefaultState(),
       ...parsed,
       training_group: normalizeTrainingGroup(parsed.training_group),
@@ -166,12 +181,14 @@ export async function loadState(stateTarget) {
           beginner: createLegacyBeginnerTrack(parsed),
           advanced: createDefaultTrackState('advanced')
         }
-    };
+    }, target.trainingGroup);
 
     return syncActiveTrackFields(normalized);
   } catch (error) {
     if (error.code === 'ENOENT') {
-      const fallbackState = syncActiveTrackFields(await loadBootstrapState(target.stateFile));
+      const fallbackState = syncActiveTrackFields(
+        applyForcedTrainingGroup(await loadBootstrapState(target.stateFile), target.trainingGroup)
+      );
       await saveState(target, fallbackState);
       return fallbackState;
     }
@@ -181,14 +198,14 @@ export async function loadState(stateTarget) {
 
 export async function saveState(stateTarget, state) {
   const target = resolveStateTarget(stateTarget);
-  const normalized = syncActiveTrackFields({
+  const normalized = syncActiveTrackFields(applyForcedTrainingGroup({
     ...createDefaultState(),
     ...state,
     lesson_tracks: {
       beginner: normalizeTrack(state.lesson_tracks?.beginner, 'beginner'),
       advanced: normalizeTrack(state.lesson_tracks?.advanced, 'advanced')
     }
-  });
+  }, target.trainingGroup));
   await writePersistedState(target, `${JSON.stringify(normalized, null, 2)}\n`);
 }
 

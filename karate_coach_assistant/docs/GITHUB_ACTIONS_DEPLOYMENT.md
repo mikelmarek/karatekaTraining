@@ -7,7 +7,7 @@ Tato varianta umožní, aby se job spouštěl bez zapnutého Macu.
 Tahle varianta je nyní považována za hlavní produkční provoz projektu.
 
 - workflow je aktivní,
-- běží každých 15 minut,
+- běží každých 12 hodin,
 - lokální `launchd` joby mají být vypnuté,
 - GitHub Gist je zdroj pravdy pro cloud stav.
 
@@ -29,7 +29,7 @@ Díky tomu si workflow mezi běhy pamatuje:
 
 ## Jak to funguje
 
-Workflow každých 15 minut spustí dvě kontroly:
+Workflow každých 12 hodin spustí dvě kontroly:
 
 - `začátečníci` → hledá `Karate veltrusy - začátečníci`
 - `pokročilí` → hledá `Karate veltrusy - pokročilí`
@@ -102,8 +102,7 @@ Workflow je v:
 
 Spouští se:
 
-- automaticky každých 15 minut
-- po pushi do `main`
+- automaticky každých 12 hodin
 - ručně přes `Run workflow`
 
 ## 5. Jak ověřit první běh
@@ -118,6 +117,8 @@ Po ručním spuštění workflow zkontroluj:
 
 - GitHub Actions není trvalý proces, jen periodický runner.
 - Proto se používá externí stav mimo runner.
+- Každý matrix job si zároveň vynutí vlastní `TRAINING_GROUP`, takže ani špatně uložený stav nezačne posílat zprávy za druhou skupinu.
+- Odesílá se jen detailní plán při nejbližším běhu, pokud je trénink v následujících 24 hodinách; krátký 6h reminder je vypnutý.
 - Lokální `launchd` a GitHub Actions nepoužívej současně nad stejným stavem, jinak by si mohly překážet.
 - Pokud přejdeš na GitHub Actions natrvalo, je dobré Mac joby vypnout.
 

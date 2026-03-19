@@ -69,8 +69,14 @@ function detectPrimaryKata(lines) {
   return 'kata dle lekce';
 }
 
+function isDetailedReminder(reminderType) {
+  return reminderType !== '6h';
+}
+
 function buildDetailedMessage({ lesson, state, event, reminderType }) {
-  const reminderLabel = reminderType === '30h' ? 'Detailní plán před tréninkem' : 'Připomenutí před tréninkem';
+  const reminderLabel = isDetailedReminder(reminderType)
+    ? 'Detailní plán před tréninkem'
+    : 'Připomenutí před tréninkem';
   const eventDate = new Date(event.start);
   const dateLabel = new Intl.DateTimeFormat('cs-CZ', {
     dateStyle: 'full',
@@ -153,13 +159,13 @@ function capitalize(value) {
 }
 
 export function createReminderMessage(payload) {
-  return payload.reminderType === '30h'
+  return isDetailedReminder(payload.reminderType)
     ? buildDetailedMessage(payload)
     : buildShortReminder(payload);
 }
 
 export function createCurriculumExhaustedMessage({ state, event, reminderType }) {
-  const reminderLabel = reminderType === '30h' ? 'Upozornění před tréninkem' : 'Krátké upozornění';
+  const reminderLabel = isDetailedReminder(reminderType) ? 'Upozornění před tréninkem' : 'Krátké upozornění';
   const eventDate = new Date(event.start);
   const dateLabel = new Intl.DateTimeFormat('cs-CZ', {
     dateStyle: 'full',

@@ -65,6 +65,11 @@ Poznámka:
    - `Client ID`
    - `Client Secret`
 
+Pozor:
+- pokud necháš OAuth consent screen jen v test režimu, refresh token může po pár dnech přestat fungovat,
+- typická chyba pak je `invalid_grant`,
+- pro stabilní provoz je potřeba obnovit `GOOGLE_REFRESH_TOKEN` a mít správně nastavený OAuth projekt.
+
 ### Co vložit do `.env`
 
 ```dotenv
@@ -86,7 +91,9 @@ V projektu už je hotový helper.
    `npm run get-google-auth-url`
 3. Otevři vypsaný odkaz.
 4. Přihlas se Google účtem, který má přístup ke kalendáři.
-5. Po přesměrování zkopíruj parametr `code` z URL.
+5. Po přesměrování zkopíruj parametr `code` z URL (URL se tváří jako nedostupná).
+   - můžeš vložit buď samotný kód, nebo i celý query string začínající `code=`
+   - autorizační `code` je jednorázový; po úspěšném použití už znovu nefunguje
 6. Spusť:
    `npm run exchange-google-code -- "PASTE_CODE_SEM"`
 7. Skript vypíše hotový `GOOGLE_REFRESH_TOKEN`.
@@ -129,7 +136,8 @@ Tyto můžeš nechat tak, jak jsou:
 ```dotenv
 TIMEZONE=Europe/Prague
 TRAINING_EVENT_QUERY=karate
-CHECK_CRON=*/15 * * * *
+CHECK_CRON=0 */12 * * *
+REMINDER_TYPES=24h
 LOG_FILE=./runtime/job.log
 MANUAL_FILE=../content/kompletni_trenersky_manual_shorin_ryu_deti_v2.md
 STATE_FILE=./runtime/state.json
@@ -174,4 +182,4 @@ Po vyplnění `.env` spusť:
 1. `npm run test-telegram`
 2. `npm run check`
 
-Pokud je v kalendáři akce přibližně za 24 hodin nebo 2 hodiny a obsahuje hledaný text, agent pošle zprávu.
+Pokud je v kalendáři akce v následujících 24 hodinách a obsahuje hledaný text, agent pošle detailní plán.

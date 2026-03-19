@@ -5,9 +5,9 @@
   "training_duration_minutes": 60,
   "age_group": "5-10",
   "training_group": "advanced",
-  "current_lesson": 1,
+  "current_lesson": 2,
   "lesson_sequence_start_date": "2026-03-11",
-  "last_training_date": null,
+  "last_training_date": "2026-03-11T19:15:00+01:00",
   "last_sent_plan_date": null,
   "last_feedback_request_date": null,
   "preferred_kata": "Fukyugata Ichi / Naihanchi Shodan / Fukyugata Ni",
@@ -18,8 +18,20 @@
   "pending_adjustments": [],
   "curriculum_exhausted": false,
   "curriculum_exhausted_at": null,
-  "lesson_history": [],
-  "sent_reminders": {},
+  "lesson_history": [
+    {
+      "eventId": "12q2biofk2vq04asrhurn58bt4_20260311T181500Z",
+      "summary": "Karate veltrusy - pokročilí",
+      "eventStart": "2026-03-11T19:15:00+01:00",
+      "eventEnd": "2026-03-11T20:00:00+01:00",
+      "trainingGroup": "advanced",
+      "lessonNumber": 1,
+      "processedAt": "2026-03-16T07:35:31.006Z"
+    }
+  ],
+  "sent_reminders": {
+    "12q2biofk2vq04asrhurn58bt4_20260318T181500Z:2:advanced:30h": "2026-03-17T12:00:01.564Z"
+  },
   "lesson_tracks": {
     "beginner": {
       "current_lesson": 1,
@@ -33,15 +45,27 @@
       "sent_reminders": {}
     },
     "advanced": {
-      "current_lesson": 1,
-      "last_training_date": null,
+      "current_lesson": 2,
+      "last_training_date": "2026-03-11T19:15:00+01:00",
       "last_sent_plan_date": null,
       "last_feedback_request_date": null,
       "preferred_kata": "Fukyugata Ichi / Naihanchi Shodan / Fukyugata Ni",
       "curriculum_exhausted": false,
       "curriculum_exhausted_at": null,
-      "lesson_history": [],
-      "sent_reminders": {}
+      "lesson_history": [
+        {
+          "eventId": "12q2biofk2vq04asrhurn58bt4_20260311T181500Z",
+          "summary": "Karate veltrusy - pokročilí",
+          "eventStart": "2026-03-11T19:15:00+01:00",
+          "eventEnd": "2026-03-11T20:00:00+01:00",
+          "trainingGroup": "advanced",
+          "lessonNumber": 1,
+          "processedAt": "2026-03-16T07:35:31.006Z"
+        }
+      ],
+      "sent_reminders": {
+        "12q2biofk2vq04asrhurn58bt4_20260318T181500Z:2:advanced:30h": "2026-03-17T12:00:01.564Z"
+      }
     }
   }
 }

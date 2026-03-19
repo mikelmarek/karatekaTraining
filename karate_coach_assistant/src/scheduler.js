@@ -13,9 +13,8 @@ import {
 } from './stateStore.js';
 import { sendTelegramMessage } from './telegramService.js';
 
-const REMINDER_WINDOWS = [
-  { type: '30h', targetHours: 30, toleranceMinutes: 20 },
-  { type: '6h', targetHours: 6, toleranceMinutes: 20 }
+const DEFAULT_REMINDER_WINDOWS = [
+  { type: '24h', mode: 'range', minHours: 0, maxHours: 24, targetHours: null, toleranceMinutes: 20 }
 ];
 
 function getReminderKey(event, lessonNumber, reminderType) {
@@ -29,6 +28,10 @@ function getHoursUntil(dateLike) {
 }
 
 function shouldSendReminder(hoursUntil, reminderConfig) {
+  if (reminderConfig.mode === 'range') {
+    return hoursUntil > reminderConfig.minHours && hoursUntil <= reminderConfig.maxHours;
+  }
+
   const toleranceHours = reminderConfig.toleranceMinutes / 60;
   return Math.abs(hoursUntil - reminderConfig.targetHours) <= toleranceHours;
 }
@@ -36,6 +39,9 @@ function shouldSendReminder(hoursUntil, reminderConfig) {
 export async function runReminderCheck(config, options = {}) {
   const state = await loadState(config);
   const trainingGroup = state.training_group;
+  const reminderWindows = config.reminderWindows?.length
+    ? config.reminderWindows
+    : DEFAULT_REMINDER_WINDOWS;
   const manualFile = getManualFileForState(config, state);
   const manualRepository = await loadManualRepository(manualFile);
   const activeTrack = getTrackState(state, trainingGroup);
@@ -63,7 +69,7 @@ export async function runReminderCheck(config, options = {}) {
   for (const event of upcomingEvents) {
     const hoursUntil = getHoursUntil(event.start);
 
-    for (const reminderConfig of REMINDER_WINDOWS) {
+    for (const reminderConfig of reminderWindows) {
       if (!shouldSendReminder(hoursUntil, reminderConfig)) {
         continue;
       }
@@ -108,6 +114,7 @@ export async function runReminderCheck(config, options = {}) {
     manualFile,
     foundEvents: events.length,
     upcomingEvents: upcomingEvents.length,
+    reminderWindows,
     completedTrainings,
     sentMessages,
     currentLesson: nextState.current_lesson
@@ -123,7 +130,7 @@ export async function runReminderCheck(config, options = {}) {
     if (sentMessages.length) {
       console.log('Odeslané připomínky:', sentMessages);
     } else {
-      console.log('Žádná připomínka teď nespadá do 30h ani 6h okna.');
+      console.log(`Žádná připomínka teď nespadá do aktivních oken: ${reminderWindows.map((item) => item.type).join(', ')}.`);
     }
   }
 
@@ -225,6 +232,7 @@ export function startScheduler(config) {
     await logInfo(config.logFile, 'Scheduler spuštěn', {
       checkCron: config.checkCron,
       timezone: config.timezone,
+      reminderWindows: config.reminderWindows,
       trainingGroup,
       trainingGroupLabel: getManualTypeLabel(trainingGroup),
       currentLesson: state.current_lesson,

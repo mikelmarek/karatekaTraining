@@ -1,11 +1,8 @@
 name: Karate reminders
 
 on:
-  push:
-    branches:
-      - main
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 */12 * * *'
   workflow_dispatch:
 
 jobs:
@@ -51,8 +48,10 @@ jobs:
         run: npm run check
         env:
           TIMEZONE: Europe/Prague
-          CHECK_CRON: '0 * * * *'
+          CHECK_CRON: '0 */12 * * *'
+          TRAINING_GROUP: ${{ matrix.group }}
           TRAINING_EVENT_QUERY: ${{ matrix.trainingEventQuery }}
+          REMINDER_TYPES: 24h
           LOG_FILE: ./runtime/job.github.${{ matrix.group }}.log
           MANUAL_FILE: ../content/kompletni_trenersky_manual_shorin_ryu_deti_v2.md
           ADVANCED_MANUAL_FILE: ../content/kompletni_trenersky_manual_shorin_ryu_pokrocili_8_6_kyu_v1.md

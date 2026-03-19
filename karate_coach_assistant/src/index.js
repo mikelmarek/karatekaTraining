@@ -15,12 +15,12 @@ import { createReminderMessage } from './planner.js';
 import { sendTelegramMessage } from './telegramService.js';
 
 function parseTestPlanArgs(args, currentGroup) {
-  let reminderType = '30h';
+  let reminderType = '24h';
   let lessonNumber = null;
   let trainingGroup = normalizeTrainingGroup(currentGroup);
 
   for (const arg of args) {
-    if (arg === '30h' || arg === '6h') {
+    if (arg === '24h' || arg === '30h' || arg === '6h') {
       reminderType = arg;
       continue;
     }
@@ -100,7 +100,12 @@ async function main() {
     const lessonNumber = parsedArgs.lessonNumber || state.current_lesson;
     const lesson = manualRepository.getLessonPlan(lessonNumber, state);
     const now = Date.now();
-    const eventStart = new Date(now + (parsedArgs.reminderType === '30h' ? 30 : 6) * 60 * 60 * 1000);
+    const reminderOffsetHours = parsedArgs.reminderType === '6h'
+      ? 6
+      : parsedArgs.reminderType === '30h'
+        ? 30
+        : 24;
+    const eventStart = new Date(now + reminderOffsetHours * 60 * 60 * 1000);
     const eventEnd = new Date(eventStart.getTime() + 60 * 60 * 1000);
     const text = createReminderMessage({
       lesson,

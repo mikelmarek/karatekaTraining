@@ -23,14 +23,24 @@ export async function findUpcomingTrainingEvents(config, windowEndDate) {
 
 export async function findTrainingEvents(config, { timeMin, timeMax, maxResults = 50 }) {
   const calendar = createCalendarClient(config);
-  const response = await calendar.events.list({
-    calendarId: config.googleCalendarId,
-    timeMin: timeMin.toISOString(),
-    timeMax: timeMax.toISOString(),
-    singleEvents: true,
-    orderBy: 'startTime',
-    maxResults
-  });
+  let response;
+
+  try {
+    response = await calendar.events.list({
+      calendarId: config.googleCalendarId,
+      timeMin: timeMin.toISOString(),
+      timeMax: timeMax.toISOString(),
+      singleEvents: true,
+      orderBy: 'startTime',
+      maxResults
+    });
+  } catch (error) {
+    const authError = error?.response?.data?.error || error?.message || '';
+    if (typeof authError === 'string' && authError.includes('invalid_grant')) {
+      throw new Error('Google Calendar OAuth vrátil invalid_grant. Obnov GOOGLE_REFRESH_TOKEN a zkontroluj, že OAuth klient není v expirovaném test režimu.');
+    }
+    throw error;
+  }
 
   const events = response.data.items || [];
 

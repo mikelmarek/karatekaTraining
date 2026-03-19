@@ -11,6 +11,12 @@
       <string>/Users/marekmikel/Desktop/PROJEKTY/KarateCoachAssistant/karate_coach_assistant/src/index.js</string>
     </array>
 
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>TRAINING_GROUP</key>
+      <string>beginner</string>
+    </dict>
+
     <key>RunAtLoad</key>
     <true/>
 

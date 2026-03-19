@@ -24,6 +24,30 @@ const args = process.argv.slice(2);
 const mode = args[0] || '--interactive';
 const codeFromArgs = mode === '--code' ? args[1] : null;
 
+function extractAuthorizationCode(value) {
+  if (!value) {
+    return null;
+  }
+
+  const trimmed = value.trim();
+
+  if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+    const parsedUrl = new URL(trimmed);
+    return parsedUrl.searchParams.get('code') || trimmed;
+  }
+
+  if (trimmed.startsWith('code=')) {
+    const query = new URLSearchParams(trimmed);
+    return query.get('code') || trimmed;
+  }
+
+  if (trimmed.includes('&scope=')) {
+    return trimmed.split('&scope=')[0];
+  }
+
+  return trimmed;
+}
+
 const authUrl = oauth2Client.generateAuthUrl({
   access_type: 'offline',
   prompt: 'consent',
@@ -47,12 +71,26 @@ if (!codeFromArgs) {
   process.exit(0);
 }
 
-const { tokens } = await oauth2Client.getToken(codeFromArgs.trim());
+const authorizationCode = extractAuthorizationCode(codeFromArgs);
 
-if (!tokens.refresh_token) {
-  console.error('\nRefresh token nebyl vrácen. Zkus znovu a ujisti se, že používáš prompt=consent.');
-  process.exit(1);
+try {
+  const { tokens } = await oauth2Client.getToken(authorizationCode);
+
+  if (!tokens.refresh_token) {
+    console.error('\nRefresh token nebyl vrácen. Zkus znovu a ujisti se, že používáš prompt=consent.');
+    process.exit(1);
+  }
+
+  console.log('\nHotovo. Přidej do .env tuto hodnotu:\n');
+  console.log(`GOOGLE_REFRESH_TOKEN=${tokens.refresh_token}\n`);
+} catch (error) {
+  const errorMessage = error?.response?.data?.error || error?.message || 'Neznámá chyba';
+  if (String(errorMessage).includes('invalid_grant')) {
+    console.error('\nGoogle vrátil invalid_grant. Autorizační code je jednorázový, takže po prvním úspěšném použití už znovu nefunguje.');
+    console.error('Pokud už helper jednou vypsal GOOGLE_REFRESH_TOKEN, použij právě ten token a negeneruj code znovu.');
+    console.error('Když token vypsaný nebyl, projdi autorizaci znovu přes npm run get-google-auth-url.\n');
+    process.exit(1);
+  }
+
+  throw error;
 }
-
-console.log('\nHotovo. Přidej do .env tuto hodnotu:\n');
-console.log(`GOOGLE_REFRESH_TOKEN=${tokens.refresh_token}\n`);

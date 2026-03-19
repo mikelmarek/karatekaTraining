@@ -8,6 +8,28 @@ const projectRoot = path.resolve(__dirname, '..');
 
 dotenv.config({ path: path.join(projectRoot, '.env') });
 
+const REMINDER_WINDOW_DEFINITIONS = {
+  '24h': {
+    type: '24h',
+    mode: 'range',
+    minHours: 0,
+    maxHours: 24,
+    defaultToleranceMinutes: 20
+  },
+  '30h': {
+    type: '30h',
+    mode: 'target',
+    targetHours: 30,
+    defaultToleranceMinutes: 20
+  },
+  '6h': {
+    type: '6h',
+    mode: 'target',
+    targetHours: 6,
+    defaultToleranceMinutes: 20
+  }
+};
+
 function requireEnv(name) {
   const value = process.env[name];
   if (!value) {
@@ -32,10 +54,45 @@ function resolveFromProject(relativeOrAbsolutePath) {
     : path.resolve(projectRoot, relativeOrAbsolutePath);
 }
 
+function parseReminderTypes(value) {
+  const rawTypes = (value || '24h')
+    .split(',')
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+  const uniqueTypes = [...new Set(rawTypes)].filter((type) => REMINDER_WINDOW_DEFINITIONS[type]);
+  return uniqueTypes.length ? uniqueTypes : ['24h'];
+}
+
+function parseToleranceMinutes(type) {
+  const envName = `REMINDER_TOLERANCE_MINUTES_${type.toUpperCase()}`;
+  const rawValue = process.env[envName];
+  const parsedValue = Number(rawValue);
+  return Number.isFinite(parsedValue) && parsedValue > 0
+    ? parsedValue
+    : REMINDER_WINDOW_DEFINITIONS[type].defaultToleranceMinutes;
+}
+
+function buildReminderWindows() {
+  return parseReminderTypes(process.env.REMINDER_TYPES).map((type) => {
+    const definition = REMINDER_WINDOW_DEFINITIONS[type];
+    return {
+      type,
+      mode: definition.mode || 'target',
+      minHours: definition.minHours ?? null,
+      maxHours: definition.maxHours ?? null,
+      targetHours: definition.targetHours ?? null,
+      toleranceMinutes: parseToleranceMinutes(type)
+    };
+  });
+}
+
 export const config = {
   projectRoot,
   timezone: process.env.TIMEZONE || 'Europe/Prague',
-  checkCron: process.env.CHECK_CRON || '*/15 * * * *',
+  checkCron: process.env.CHECK_CRON || '0 */12 * * *',
+  trainingGroup: process.env.TRAINING_GROUP || null,
+  reminderWindows: buildReminderWindows(),
   stateBackend: process.env.STATE_BACKEND || 'local',
   logFile: resolveFromProject(process.env.LOG_FILE || './runtime/job.log'),
   trainingEventQuery: (process.env.TRAINING_EVENT_QUERY || 'karate').toLowerCase(),

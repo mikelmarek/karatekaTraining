@@ -60,7 +60,7 @@ Aktuální produkční nasazení:
 ### Krok 1 – scheduler se spustí
 
 Agent běží podle `CHECK_CRON`.
-Výchozí hodnota je každých 15 minut.
+Výchozí hodnota je každých 12 hodin.
 
 ### Krok 2 – načte se stav
 
@@ -110,10 +110,6 @@ Každý job se zapíše do [../runtime/job.log](../runtime/job.log).
 ### Test detailního plánu
 
 - `npm run test-plan`
-
-### Test krátkého připomenutí
-
-- `npm run test-plan -- 6h`
 
 ### Ruční změna lekce
 

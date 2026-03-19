@@ -7,7 +7,7 @@ Hotový MVP agent pro dětské tréninky.
 Aktuálně je produkční provoz nastaven takto:
 
 - hlavní běh jede přes [../.github/workflows/karate-reminders.yml](../.github/workflows/karate-reminders.yml),
-- workflow se spouští automaticky každých 15 minut,
+- workflow se spouští automaticky 1x denně,
 - stav se ukládá externě do GitHub Gistu,
 - lokální `launchd` joby na Macu jsou jen záložní varianta a mají být vypnuté, pokud běží cloud.
 
@@ -39,7 +39,7 @@ Pro tento use case není OpenClaw nutný. Tohle řešení je jednodušší, prů
 - [docs/NEXT_STEPS_AND_IDEAS.md](docs/NEXT_STEPS_AND_IDEAS.md) – backlog a nápady pro další rozvoj
 - [docs/SETUP_CREDENTIALS.md](docs/SETUP_CREDENTIALS.md) – nastavení přístupů
 - [src/index.js](src/index.js) – vstupní bod aplikace
-- [src/scheduler.js](src/scheduler.js) – plánování a rozhodování 30h / 6h
+- [src/scheduler.js](src/scheduler.js) – plánování a rozhodování 24h připomenutí
 - [src/calendarService.js](src/calendarService.js) – Google Calendar API
 - [src/telegramService.js](src/telegramService.js) – Telegram odesílání
 - [src/manualRepository.js](src/manualRepository.js) – čtení lekcí z manuálu
@@ -47,14 +47,15 @@ Pro tento use case není OpenClaw nutný. Tohle řešení je jednodušší, prů
 
 ## Jak to funguje
 
-1. Každých 15 minut proběhne kontrola kalendáře.
+1. Kontrola kalendáře probíhá každých 12 hodin.
 2. Agent hledá relevantní tréninky v okně do 32 hodin.
-3. Pokud je trénink přibližně za 30 hodin, pošle detailní plán.
-4. Pokud je trénink přibližně za 6 hodin, pošle krátké připomenutí.
+3. Pokud je při běhu trénink v následujících 24 hodinách, pošle detailní plán.
+4. Krátké připomenutí pár hodin před tréninkem je vypnuté.
 5. Odeslané připomínky uloží do aktivního backendu stavu.
 6. Po skončení události ji zapíše do `lesson_history` a automaticky připraví další lekci.
 
 V lokálním režimu je backend stavových dat [runtime/state.json](runtime/state.json) a [runtime/state.advanced.json](runtime/state.advanced.json).
+Každý oddělený běh si nově vynutí svou `training_group`, takže se nezačne omylem tvářit jako druhá skupina.
 V cloud režimu přes GitHub Actions se používá GitHub Gist.
 
 ## Jak se určuje datum a číslo lekce
@@ -114,7 +115,9 @@ Povinné proměnné:
 Volitelné:
 
 - `TRAINING_EVENT_QUERY=karate`
-- `CHECK_CRON=*/15 * * * *`
+- `CHECK_CRON=0 */12 * * *`
+- `TRAINING_GROUP=beginner`
+- `REMINDER_TYPES=24h`
 - `STATE_BACKEND=local`
 - `LOG_FILE=./runtime/job.log`
 - `TIMEZONE=Europe/Prague`
@@ -170,10 +173,9 @@ Tohle je hlavně lokální servisní příkaz pro ruční test nebo fallback pro
 
 ### Test reálné tréninkové zprávy
 
-- detailní plán jako 30h reminder: `npm run test-plan`
-- krátké připomenutí jako 6h reminder: `npm run test-plan -- 6h`
-- test konkrétní lekce: `npm run test-plan -- 30h 3`
-- test pokročilé skupiny: `npm run test-plan -- 30h 1 advanced`
+- detailní plán jako 24h reminder: `npm run test-plan`
+- test konkrétní lekce: `npm run test-plan -- 24h 3`
+- test pokročilé skupiny: `npm run test-plan -- 24h 1 advanced`
 
 ### Ruční nastavení lekce
 
@@ -217,8 +219,9 @@ Tím se zabrání tomu, aby systém tiše opakoval poslední lekci donekonečna.
 - Cloud běh je vidět v GitHub Actions a stav se propisuje do GitHub Gistu.
 - Uvidíš tam například:
 	- kdy proběhla kontrola,
+	- pro jakou skupinu byl běh vynucen,
 	- kolik událostí bylo nalezeno,
-	- zda se poslal 30h nebo 6h reminder,
+	- zda se poslal 24h detailní plán,
 	- zda se uzavřel proběhlý trénink,
 	- případné chyby.
 
@@ -274,11 +277,7 @@ To spustí scheduler v terminálu a nechá ho běžet na pozadí daného okna te
 ### Když chceš poslat testovací detailní plán
 
 - `npm run test-plan`
-- `npm run test-plan -- 30h 1 advanced`
-
-### Když chceš poslat testovací 6h souhrn
-
-- `npm run test-plan -- 6h`
+- `npm run test-plan -- 24h 1 advanced`
 
 ### Když chceš změnit aktuální lekci ručně
 
@@ -341,9 +340,10 @@ Pokud nechceš mít zapnutý Mac, je připravená i cloud varianta:
 V této variantě:
 
 - scheduler neběží přes `launchd`,
-- GitHub Actions spustí kontrolu každých 15 minut,
+- GitHub Actions spustí kontrolu každých 12 hodin,
 - stav se ukládá externě do GitHub Gistu,
-- začátečníci a pokročilí mají oddělené JSON soubory stavu.
+- začátečníci a pokročilí mají oddělené JSON soubory stavu,
+- každý cloud job si vynutí vlastní `TRAINING_GROUP`.
 
 Tohle je teď výchozí doporučený produkční režim.
 

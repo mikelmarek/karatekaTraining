@@ -31,7 +31,6 @@ Z adresáře projektu:
 - dlouhodobý běh v terminálu: `npm start`
 - test Telegramu: `npm run test-telegram`
 - test detailního plánu: `npm run test-plan`
-- test krátkého souhrnu: `npm run test-plan -- 6h`
 
 ## Jak zkontrolovat, že launchd běží
 
