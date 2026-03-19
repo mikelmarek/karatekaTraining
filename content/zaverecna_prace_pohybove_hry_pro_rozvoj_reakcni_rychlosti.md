@@ -213,7 +213,3 @@ Sulla-Torres, J. A., Chavez-Salas, N. Y., Valverde-Riveros, M. F., Iquira-Becerr
 Zhong, X., Dai, Y., Xu, M., & Jiang, C. (2024). Volleyball training improves working memory in children aged 7 to 12 years old: An fNIRS study. *Cerebral Cortex, 34*, bhae275. https://doi.org/10.1093/cercor/bhae275
 
 ---
-
-## Poznámka k odevzdání
-
-Tento text je připraven jako obsahový návrh. Před finálním odevzdáním je vhodné jej převést do oficiální šablony FTK UP, doplnit titulní list, prohlášení, případně abstrakt v angličtině a zkontrolovat finální formát citací podle APA 7.
