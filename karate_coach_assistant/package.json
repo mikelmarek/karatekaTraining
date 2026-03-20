@@ -7,6 +7,8 @@
   "scripts": {
     "start": "node src/index.js",
     "check": "node src/index.js --once",
+    "pdf": "md-to-pdf",
+    "pdf:paper": "md-to-pdf ../content/zaverecna_prace_pohybove_hry_pro_rozvoj_reakcni_rychlosti.md",
     "set-lesson": "node src/index.js set-lesson",
     "set-group": "node src/index.js set-group",
     "test-telegram": "node src/index.js test-telegram",
@@ -19,6 +21,7 @@
   "dependencies": {
     "dotenv": "^16.4.7",
     "googleapis": "^144.0.0",
+    "md-to-pdf": "^5.2.5",
     "node-cron": "^3.0.3"
   }
 }
