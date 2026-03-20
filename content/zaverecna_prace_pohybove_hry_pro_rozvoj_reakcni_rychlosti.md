@@ -40,9 +40,9 @@ Karate vznikalo na Okinawě jako praktický systém sebeobrany, který byl postu
 
 Právě zde je důležitý pedagogický moment: karate pro děti není zmenšená verze výcviku dospělých. Dítě se neučí jen techniku, ale také řád, soustředění, vztah k pohybu a schopnost spolupracovat. V pojetí dětského tréninku zaměřeného na Okinawa Shorin-ryu se proto zdůrazňuje radost z pohybu, disciplína, koordinace, trpělivost a vztah k dojo. Praktické lekce jsou stavěny tak, aby se střídalo zahřátí, reakční hra, jednoduchý kihon, základní kata a partnerská či soutěživá aktivita.
 
-Z tohoto pohledu není pohybová hra něčím vedlejším. Je metodickým nástrojem, který dítě připravuje na karate. Hry jako „Stínový ninja“, „Samurai reakce“, „Dotkni se kolena“, „Karate paměť“ nebo „Ninja rovnováha“ rozvíjejí právě ty předpoklady, bez nichž nebude technika později živá a použitelná.
+Z tohoto pohledu nejsou pohybové hry ani jednoduchá partnerská reakční cvičení něčím vedlejším. Jsou metodickým nástrojem, který dítě připravuje na karate tím, že rozvíjí schopnost zachytit podnět, udržet pozornost, správně načasovat pohyb, pracovat s rovnováhou, vzdáleností a změnou směru.
 
-Stejně vhodně lze do této logiky zařadit i partnerská reakční cvičení typu „Drop & Strike“, v nichž dítě reaguje na první vizuální mikropohyb, spojuje obranně-reakční moment s okamžitým protiútokem a plynule přechází do následné kombinace.
+Právě tyto aktivity vytvářejí základní předpoklady pro pozdější technickou živost a použitelnost. Dítě se v nich neučí jen tvar pohybu, ale také vnímat situaci, rozhodnout se pro vhodnou odpověď, spojit obrannou reakci s okamžitým protiútokem a plynule přecházet do další akce.
 
 ---
 
