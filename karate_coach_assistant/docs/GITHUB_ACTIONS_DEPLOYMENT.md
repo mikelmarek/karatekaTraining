@@ -4,10 +4,10 @@ Tato varianta umožní, aby se job spouštěl bez zapnutého Macu.
 
 ## Aktuální stav
 
-Tahle varianta je nyní považována za hlavní produkční provoz projektu.
+Tahle varianta je momentálně připravená pro ruční spuštění.
 
-- workflow je aktivní,
-- běží každých 12 hodin,
+- workflow je dostupný jen pro ruční spuštění,
+- automatický cron běh je vypnutý,
 - lokální `launchd` joby mají být vypnuté,
 - GitHub Gist je zdroj pravdy pro cloud stav.
 
@@ -29,7 +29,7 @@ Díky tomu si workflow mezi běhy pamatuje:
 
 ## Jak to funguje
 
-Workflow každých 12 hodin spustí dvě kontroly:
+Při ručním spuštění workflow proběhnou dvě kontroly:
 
 - `začátečníci` → hledá `Karate veltrusy - začátečníci`
 - `pokročilí` → hledá `Karate veltrusy - pokročilí`
