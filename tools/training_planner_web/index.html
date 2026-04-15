@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karate Planner</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Okinawa Shorin-ryu</p>
+          <h1>Roční plán tréninků dětí</h1>
+          <p class="subtitle">
+            Kalendář lekcí, detail tréninku, šuplík cviků a průběžné trenérské poznámky nad Markdown podklady.
+          </p>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel planner-panel">
+          <div class="panel-header planner-header">
+            <div>
+              <h2 id="plannerTitle">Načítám plán...</h2>
+              <p id="plannerMeta"></p>
+            </div>
+            <div class="planner-header-actions">
+              <div class="badge-row">
+                <button id="calendarTabButton" class="chip-button active">Kalendář</button>
+                <button id="drawerTabButton" class="chip-button">Šuplík cviků</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="calendarView" class="tab-view active">
+            <section class="month-strip-wrap">
+              <div class="section-heading">
+                <div>
+                  <h3>Kalendář roku</h3>
+                  <p>Vyber měsíc a hned pod ním vidíš jeho rámec i týdenní lekce.</p>
+                </div>
+              </div>
+              <nav id="monthNav" class="month-nav month-nav-inline"></nav>
+              <section id="monthSummary" class="month-summary month-summary-inline"></section>
+            </section>
+
+            <div class="planner-grid">
+              <section>
+                <h3>Týdenní lekce</h3>
+                <div id="weekGrid" class="week-grid"></div>
+              </section>
+
+              <section>
+                <details id="annualFocusPanel" class="focus-panel">
+                  <summary>
+                    <span>Roční fokus</span>
+                    <span class="focus-panel-hint">Rozbalit měsíční rámec</span>
+                  </summary>
+                  <div id="annualFocusCard" class="focus-card"></div>
+                </details>
+              </section>
+            </div>
+
+            <section class="plan-detail">
+              <div class="plan-detail-header">
+                <div>
+                  <p class="eyebrow" id="selectedLessonBadge"></p>
+                  <h3 id="selectedLessonTitle">Vyber týden</h3>
+                </div>
+              </div>
+
+              <div id="selectedLessonMeta" class="selected-lesson-meta"></div>
+
+              <div id="lessonCarryover" class="lesson-carryover"></div>
+
+              <div id="planSections" class="plan-sections"></div>
+
+              <section class="notes-card">
+                <h4>Trenérské poznámky</h4>
+                <div class="notes-grid">
+                  <label>
+                    Co jsme stihli
+                    <textarea id="completedInput" rows="3"></textarea>
+                  </label>
+                  <label>
+                    Co jsme nestihli
+                    <textarea id="incompleteInput" rows="3"></textarea>
+                  </label>
+                  <label>
+                    Co příště přidat
+                    <textarea id="nextTimeInput" rows="3"></textarea>
+                  </label>
+                  <label>
+                    Další poznámky
+                    <textarea id="trainerNotesInput" rows="3"></textarea>
+                  </label>
+                </div>
+              </section>
+
+              <details class="notes-card utility-panel">
+                <summary>
+                  <span>Správa změn a sdílení</span>
+                  <span id="sharedStateBadge" class="state-badge">Sdílení: bez sdíleného JSON</span>
+                </summary>
+                <p class="utility-copy">
+                  Má smysl jen pokud si změny předáváte mezi trenéry přes JSON soubor. Jinak stačí lokální úpravy v prohlížeči.
+                </p>
+                <div class="utility-actions">
+                  <button id="exportStateButton" class="ghost-button small-button">Export lokálních změn</button>
+                  <button id="downloadSharedStateButton" class="ghost-button small-button">Stáhnout sdílený JSON</button>
+                  <label class="ghost-button small-button file-label" for="importStateInput">Import změn</label>
+                  <input id="importStateInput" type="file" accept="application/json" hidden />
+                  <button id="resetStateButton" class="ghost-button small-button">Vymazat lokální změny</button>
+                </div>
+              </details>
+            </section>
+          </div>
+
+          <div id="drawerView" class="tab-view">
+            <div class="drawer-view-header">
+              <div>
+                <h3>Šuplík cviků</h3>
+                <p>Přidávej cvičení do vybraného týdne a proklikem z plánu si otevři detail cviku.</p>
+              </div>
+            </div>
+
+            <section id="selectedWeekContext" class="selected-week-context"></section>
+
+            <label class="search-field drawer-search">
+              <span>Hledat</span>
+              <input id="exerciseSearchInput" type="search" placeholder="např. reakce, žebřík, rovnováha" />
+            </label>
+
+            <div id="categoryFilters" class="category-filters"></div>
+
+            <div class="drawer-layout">
+              <div id="exerciseList" class="exercise-list"></div>
+              <section id="exerciseDetail" class="focus-card exercise-detail"></section>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="exerciseModal" class="modal-backdrop" hidden>
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="exerciseModalTitle">
+        <div class="modal-header">
+          <p class="eyebrow">Detail cviku</p>
+          <button id="closeExerciseModalButton" type="button" class="ghost-button small-button">Zavřít</button>
+        </div>
+        <div id="exerciseModalContent" class="modal-content"></div>
+      </div>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

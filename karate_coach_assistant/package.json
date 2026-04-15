@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node src/index.js",
     "check": "node src/index.js --once",
+    "planner:web:build": "node ../tools/training_planner_web/scripts/build-planner-data.js",
     "pdf": "md-to-pdf",
     "pdf:paper": "md-to-pdf ../content/zaverecna_prace_pohybove_hry_pro_rozvoj_reakcni_rychlosti.md",
     "set-lesson": "node src/index.js set-lesson",

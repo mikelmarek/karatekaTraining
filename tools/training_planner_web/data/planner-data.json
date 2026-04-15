@@ -1,0 +1,3323 @@
+{
+  "generatedAt": "2026-04-15T11:48:22.021Z",
+  "sources": {
+    "monthlyPlan": "plan/mesicni_treninkovy_plan_deti_karate_6_12.md",
+    "annualPlan": "plan/karate_deti_rocni_plan_a_nastroje/rocni_plan_deti_karate_6_12.md",
+    "exerciseDrawer": "plan/karate_deti_rocni_plan_a_nastroje/suplik_cviceni_deti_karate.md",
+    "monthlyTemplate": "plan/mesicni_sablona_treninkoveho_planu_deti_karate.md",
+    "toolsGuide": "plan/karate_deti_rocni_plan_a_nastroje/pomucky_pro_detske_treninky.md"
+  },
+  "calendar": [
+    {
+      "id": "zari",
+      "name": "ZÁŘÍ",
+      "mainGoal": "Nastavit režim dojo, disciplínu a základní pohybové návyky.",
+      "technicalGoals": [
+        "základní postoje",
+        "základní ruční techniky",
+        "úvod do Kihon Waza Dai Ichi"
+      ],
+      "movementGoals": [
+        "reakce na povel",
+        "orientace v prostoru",
+        "koordinace",
+        "rovnováha"
+      ],
+      "monthTools": [],
+      "checkpoint": "Děti znají základní řád dojo a zvládnou první techniky s nápovědou.",
+      "weeks": [
+        {
+          "id": "zari-week-1",
+          "weekNumber": 1,
+          "title": "Týden 1",
+          "theme": "Nástup, rei, pravidla dojo, základní postoj, první úder",
+          "lessonGoal": "Nástup, rei, pravidla dojo, základní postoj, první úder",
+          "content": [
+            "zahřátí: Běh se změnou směru, Karate socha",
+            "mobilita: ramena, lokty, kyčle, kotníky",
+            "reakční blok: Dojo semafor",
+            "kihon: základní postoj, oi tsuki",
+            "hra: Dotkni se kolena",
+            "závěr: co je rei, jak se stojí v řadě"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Běh se změnou směru, Karate socha"
+            ],
+            "mobilita": [
+              "ramena, lokty, kyčle, kotníky"
+            ],
+            "reakce": [
+              "Dojo semafor"
+            ],
+            "kihon": [
+              "základní postoj, oi tsuki"
+            ],
+            "hra": [
+              "Dotkni se kolena"
+            ],
+            "zaver": [
+              "co je rei, jak se stojí v řadě"
+            ]
+          }
+        },
+        {
+          "id": "zari-week-2",
+          "weekNumber": 2,
+          "title": "Týden 2",
+          "theme": "Základní blokové pohyby a disciplína",
+          "lessonGoal": "Základní blokové pohyby a disciplína",
+          "content": [
+            "zahřátí: Stínový ninja",
+            "mobilita: Kroužení ramen a loktů v rytmu, Dynamické vytahování paží + rotace trupu",
+            "koordinace: Žebřík – základní kroky",
+            "kihon: age uke, gedan barai – úvod v postoji",
+            "hra: Samurai reakce",
+            "závěr: kdo si pamatuje pravidla dojo"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Stínový ninja"
+            ],
+            "mobilita": [
+              "Kroužení ramen a loktů v rytmu, Dynamické vytahování paží + rotace trupu"
+            ],
+            "koordinace": [
+              "Žebřík – základní kroky"
+            ],
+            "kihon": [
+              "age uke, gedan barai – úvod v postoji"
+            ],
+            "hra": [
+              "Samurai reakce"
+            ],
+            "zaver": [
+              "kdo si pamatuje pravidla dojo"
+            ]
+          }
+        },
+        {
+          "id": "zari-week-3",
+          "weekNumber": 3,
+          "title": "Týden 3",
+          "theme": "Postoj, ruce a reakce na vizuální podnět",
+          "lessonGoal": "Postoj, ruce a reakce na vizuální podnět",
+          "content": [
+            "zahřátí: Běh se změnou směru, Karate socha",
+            "mobilita: Zápěstní vlna a sevření–uvolnění, Dynamické vytahování paží + rotace trupu",
+            "reakce: Reakce na barvu / světlo",
+            "kihon: oi tsuki, age uke v jednoduchém spojení",
+            "hra: Dotkni se kolena",
+            "závěr: krátké opakování názvů technik"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Běh se změnou směru, Karate socha"
+            ],
+            "mobilita": [
+              "Zápěstní vlna a sevření–uvolnění, Dynamické vytahování paží + rotace trupu"
+            ],
+            "reakce": [
+              "Reakce na barvu / světlo"
+            ],
+            "kihon": [
+              "oi tsuki, age uke v jednoduchém spojení"
+            ],
+            "hra": [
+              "Dotkni se kolena"
+            ],
+            "zaver": [
+              "krátké opakování názvů technik"
+            ]
+          }
+        },
+        {
+          "id": "zari-week-4",
+          "weekNumber": 4,
+          "title": "Týden 4",
+          "theme": "Spojení prvních technik do krátkého celku",
+          "lessonGoal": "Spojení prvních technik do krátkého celku",
+          "content": [
+            "zahřátí: Dojo semafor",
+            "mobilita: celé tělo se zaměřením na držení postoje",
+            "koordinace: Žebřík + technický výstup",
+            "kihon: oi tsuki, age uke, gedan barai v krátkém sledu",
+            "hra: Obrana hradu",
+            "závěr: mini kontrola držení postoje a pozornosti"
+          ],
+          "sections": {},
+          "tools": [
+            "kloboučky",
+            "pěnové tyče",
+            "žebřík",
+            "míčky"
+          ],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Dojo semafor"
+            ],
+            "mobilita": [
+              "celé tělo se zaměřením na držení postoje"
+            ],
+            "koordinace": [
+              "Žebřík + technický výstup"
+            ],
+            "kihon": [
+              "oi tsuki, age uke, gedan barai v krátkém sledu"
+            ],
+            "hra": [
+              "Obrana hradu"
+            ],
+            "zaver": [
+              "mini kontrola držení postoje a pozornosti"
+            ]
+          }
+        }
+      ],
+      "annualFocus": {
+        "id": "zari",
+        "name": "Září",
+        "focus": "adaptační a vstupní období",
+        "mainGoal": [
+          "vytvořit režim dojo",
+          "naučit základní disciplínu",
+          "rozvíjet obecný pohybový základ"
+        ],
+        "technicalGoal": [
+          "základní postoje",
+          "základní techniky rukou",
+          "jednoduché přesuny",
+          "úvod do Kihon Waza Dai Ichi"
+        ],
+        "movementGoal": [
+          "reakce na signál",
+          "orientace v prostoru",
+          "koordinace rukou a nohou",
+          "práce s rovnováhou"
+        ],
+        "gameTypes": [
+          "Stínový ninja",
+          "Karate socha",
+          "Dojo semafor",
+          "Dotkni se kolena",
+          "jednoduché běžecké a chytací hry s pravidlem"
+        ],
+        "checkpoint": [
+          "dítě zná nástup, rei, základní pravidla dojo",
+          "umí stát v základním postoji a reagovat na jednoduchý povel"
+        ]
+      }
+    },
+    {
+      "id": "rijen",
+      "name": "ŘÍJEN",
+      "mainGoal": "Upevnit základy a zlepšit rytmus technik.",
+      "technicalGoals": [
+        "pokračování Kihon Waza Dai Ichi",
+        "přesnější ruce",
+        "spojování 2 technik"
+      ],
+      "movementGoals": [
+        "reakce",
+        "rytmus",
+        "jistější pohyb vpřed a vzad"
+      ],
+      "monthTools": [],
+      "checkpoint": "Děti zvládnou víc technik po sobě a lépe reagují na změnu pravidla.",
+      "weeks": [
+        {
+          "id": "rijen-week-1",
+          "weekNumber": 1,
+          "title": "Týden 1",
+          "theme": "Ruce a reakce na signál",
+          "lessonGoal": "Ruce a reakce na signál",
+          "content": [
+            "zahřátí: Samurai reakce",
+            "mobilita: Kroužení ramen a loktů v rytmu, Zápěstní vlna a sevření–uvolnění",
+            "reakce: Reakční ruce na barevný signál",
+            "kihon: oi tsuki, age uke, gedan barai s důrazem na přesnost rukou",
+            "hra: Karate paměť",
+            "závěr: zopakovat, která technika patří na který signál"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Samurai reakce"
+            ],
+            "mobilita": [
+              "Kroužení ramen a loktů v rytmu, Zápěstní vlna a sevření–uvolnění"
+            ],
+            "reakce": [
+              "Reakční ruce na barevný signál"
+            ],
+            "kihon": [
+              "oi tsuki, age uke, gedan barai s důrazem na přesnost rukou"
+            ],
+            "hra": [
+              "Karate paměť"
+            ],
+            "zaver": [
+              "zopakovat, která technika patří na který signál"
+            ]
+          }
+        },
+        {
+          "id": "rijen-week-2",
+          "weekNumber": 2,
+          "title": "Týden 2",
+          "theme": "Bloky a první část Kihon Waza Dai Ichi",
+          "lessonGoal": "Bloky a první část Kihon Waza Dai Ichi",
+          "content": [
+            "zahřátí: Stínový ninja v postojích",
+            "mobilita: Uke dril bez síly, Dynamické vytahování paží + rotace trupu",
+            "koordinace: Žebřík + technický výstup",
+            "kihon: první část Kihon Waza Dai Ichi s důrazem na blokové dráhy",
+            "hra: Dotkni se kolena",
+            "závěr: připomenout držení rukou nahoře"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Stínový ninja v postojích"
+            ],
+            "mobilita": [
+              "Uke dril bez síly, Dynamické vytahování paží + rotace trupu"
+            ],
+            "koordinace": [
+              "Žebřík + technický výstup"
+            ],
+            "kihon": [
+              "první část Kihon Waza Dai Ichi s důrazem na blokové dráhy"
+            ],
+            "hra": [
+              "Dotkni se kolena"
+            ],
+            "zaver": [
+              "připomenout držení rukou nahoře"
+            ]
+          }
+        },
+        {
+          "id": "rijen-week-3",
+          "weekNumber": 3,
+          "title": "Týden 3",
+          "theme": "Reakce, obrana a jednoduché spojení technik",
+          "lessonGoal": "Reakce, obrana a jednoduché spojení technik",
+          "content": [
+            "zahřátí: Dojo semafor",
+            "mobilita: Kroužení ramen a loktů v rytmu, Uke dril bez síly",
+            "reakce: Pěnová tyč – úhyb + blokový náznak",
+            "kihon: age uke, gedan barai, oi tsuki v jednoduchém spojení",
+            "hra: Obrana hradu",
+            "závěr: krátké shrnutí, kdy se hodí blok a kdy vstup"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Dojo semafor"
+            ],
+            "mobilita": [
+              "Kroužení ramen a loktů v rytmu, Uke dril bez síly"
+            ],
+            "reakce": [
+              "Pěnová tyč – úhyb + blokový náznak"
+            ],
+            "kihon": [
+              "age uke, gedan barai, oi tsuki v jednoduchém spojení"
+            ],
+            "hra": [
+              "Obrana hradu"
+            ],
+            "zaver": [
+              "krátké shrnutí, kdy se hodí blok a kdy vstup"
+            ]
+          }
+        },
+        {
+          "id": "rijen-week-4",
+          "weekNumber": 4,
+          "title": "Týden 4",
+          "theme": "Rytmus technik a orientace v prostoru",
+          "lessonGoal": "Rytmus technik a orientace v prostoru",
+          "content": [
+            "zahřátí: Karate socha",
+            "koordinace: Kloboučky – slalom vpřed a vzad",
+            "mobilita: Dynamické vytahování paží + rotace trupu",
+            "kihon: opakování části Kihon Waza Dai Ichi v rytmu počítání",
+            "hra: Reakce na barvu / světlo",
+            "závěr: interní mini kontrola rytmu a soustředění"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Karate socha"
+            ],
+            "mobilita": [
+              "Dynamické vytahování paží + rotace trupu"
+            ],
+            "koordinace": [
+              "Kloboučky – slalom vpřed a vzad"
+            ],
+            "kihon": [
+              "opakování části Kihon Waza Dai Ichi v rytmu počítání"
+            ],
+            "hra": [
+              "Reakce na barvu / světlo"
+            ],
+            "zaver": [
+              "interní mini kontrola rytmu a soustředění"
+            ]
+          }
+        }
+      ],
+      "annualFocus": {
+        "id": "rijen",
+        "name": "Říjen",
+        "focus": "upevnění základů",
+        "mainGoal": [
+          "větší jistota v základních technikách",
+          "zlepšit koordinaci a rytmus"
+        ],
+        "technicalGoal": [
+          "pokračování Kihon Waza Dai Ichi",
+          "přesnější práce rukou",
+          "jednoduché spojení technik po dvojicích"
+        ],
+        "movementGoal": [
+          "rychlá reakce",
+          "správný start",
+          "přesnější načasování",
+          "držení postoje při pohybu"
+        ],
+        "gameTypes": [
+          "Samurai reakce",
+          "Karate paměť",
+          "Dotkni se kolena",
+          "barevné mety / reakce na barvu",
+          "Stínový ninja v karate postojích"
+        ],
+        "checkpoint": [
+          "dítě zvládá základní techniky s menší nápovědou",
+          "udrží pozornost v kratších blocích"
+        ]
+      }
+    },
+    {
+      "id": "listopad",
+      "name": "LISTOPAD",
+      "mainGoal": "Spojit pohyb s technikou a začít orientaci na kata.",
+      "technicalGoals": [
+        "větší celek Kihon Waza Dai Ichi",
+        "přechody mezi postoji",
+        "úvod do Fukyugata Ichi"
+      ],
+      "movementGoals": [
+        "orientace vpřed / vzad / do stran",
+        "brzda a akcelerace",
+        "koordinace s rozhodováním"
+      ],
+      "monthTools": [],
+      "checkpoint": "Skupina chápe začátek Fukyugata Ichi a drží lepší rytmus v kihonu.",
+      "weeks": [
+        {
+          "id": "listopad-week-1",
+          "weekNumber": 1,
+          "title": "Týden 1",
+          "theme": "Přechody v postoji a vstup do kata",
+          "lessonGoal": "Přechody v postoji a vstup do kata",
+          "content": [
+            "zahřátí: Dojo semafor",
+            "mobilita: celé tělo se zaměřením na kyčle a kotníky",
+            "koordinace: Žebřík – základní kroky",
+            "kihon: větší celek Kihon Waza Dai Ichi s přechody mezi postoji",
+            "kata: úvod do Fukyugata Ichi, nástup a první směr",
+            "hra: Ninja průchod",
+            "závěr: kdo si pamatuje první směr kata"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Dojo semafor"
+            ],
+            "mobilita": [
+              "celé tělo se zaměřením na kyčle a kotníky"
+            ],
+            "koordinace": [
+              "Žebřík – základní kroky"
+            ],
+            "kihon": [
+              "větší celek Kihon Waza Dai Ichi s přechody mezi postoji"
+            ],
+            "kata": [
+              "úvod do Fukyugata Ichi, nástup a první směr"
+            ],
+            "hra": [
+              "Ninja průchod"
+            ],
+            "zaver": [
+              "kdo si pamatuje první směr kata"
+            ]
+          }
+        },
+        {
+          "id": "listopad-week-2",
+          "weekNumber": 2,
+          "title": "Týden 2",
+          "theme": "Ruce, zrak a první část Fukyugata Ichi",
+          "lessonGoal": "Ruce, zrak a první část Fukyugata Ichi",
+          "content": [
+            "zahřátí: Stínový ninja",
+            "mobilita: Kroužení ramen a loktů v rytmu, Zápěstní vlna a sevření–uvolnění",
+            "reakce: Míček o zeď",
+            "kihon: opakování a opravy ručních technik z Kihon Waza Dai Ichi",
+            "kata: první část Fukyugata Ichi pomalu a přesně",
+            "hra: Dotkni se kolena",
+            "závěr: připomenout směr a návrat ruky na hikite"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Stínový ninja"
+            ],
+            "mobilita": [
+              "Kroužení ramen a loktů v rytmu, Zápěstní vlna a sevření–uvolnění"
+            ],
+            "reakce": [
+              "Míček o zeď"
+            ],
+            "kihon": [
+              "opakování a opravy ručních technik z Kihon Waza Dai Ichi"
+            ],
+            "kata": [
+              "první část Fukyugata Ichi pomalu a přesně"
+            ],
+            "hra": [
+              "Dotkni se kolena"
+            ],
+            "zaver": [
+              "připomenout směr a návrat ruky na hikite"
+            ]
+          }
+        },
+        {
+          "id": "listopad-week-3",
+          "weekNumber": 3,
+          "title": "Týden 3",
+          "theme": "Práce nohou a technika v pohybu",
+          "lessonGoal": "Práce nohou a technika v pohybu",
+          "content": [
+            "zahřátí: Běh se změnou směru",
+            "mobilita: výpady vpřed a do stran s návratem, Kiba / zenkutsu freeze",
+            "koordinace: Kloboučky – slalom vpřed a vzad",
+            "kihon: Kihon Waza Dai Ichi s důrazem na práci nohou",
+            "kata: první část Fukyugata Ichi se směrem a zastavením v postoji",
+            "hra: Obrana hradu",
+            "závěr: krátké shrnutí práce nohou"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Běh se změnou směru"
+            ],
+            "mobilita": [
+              "výpady vpřed a do stran s návratem, Kiba / zenkutsu freeze"
+            ],
+            "koordinace": [
+              "Kloboučky – slalom vpřed a vzad"
+            ],
+            "kihon": [
+              "Kihon Waza Dai Ichi s důrazem na práci nohou"
+            ],
+            "kata": [
+              "první část Fukyugata Ichi se směrem a zastavením v postoji"
+            ],
+            "hra": [
+              "Obrana hradu"
+            ],
+            "zaver": [
+              "krátké shrnutí práce nohou"
+            ]
+          }
+        },
+        {
+          "id": "listopad-week-4",
+          "weekNumber": 4,
+          "title": "Týden 4",
+          "theme": "Opakování směru a rytmu před první kontrolou",
+          "lessonGoal": "Opakování směru a rytmu před první kontrolou",
+          "content": [
+            "zahřátí: Samurai reakce",
+            "koordinace: Žebřík + technický výstup",
+            "mobilita: celé tělo",
+            "kihon: opakování většího celku Kihon Waza Dai Ichi",
+            "kata: první část Fukyugata Ichi se společným počítáním",
+            "závěr: kontrola, kdo si pamatuje směr a nástup"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Samurai reakce"
+            ],
+            "mobilita": [
+              "celé tělo"
+            ],
+            "koordinace": [
+              "Žebřík + technický výstup"
+            ],
+            "kihon": [
+              "opakování většího celku Kihon Waza Dai Ichi"
+            ],
+            "kata": [
+              "první část Fukyugata Ichi se společným počítáním"
+            ],
+            "zaver": [
+              "kontrola, kdo si pamatuje směr a nástup"
+            ]
+          }
+        }
+      ],
+      "annualFocus": {
+        "id": "listopad",
+        "name": "Listopad",
+        "focus": "stabilizace a rytmus",
+        "mainGoal": [
+          "opakování bez ztráty kvality",
+          "spojit pohyb s technikou"
+        ],
+        "technicalGoal": [
+          "Kihon Waza Dai Ichi ve větších celcích",
+          "jednoduché přechody mezi postoji",
+          "začátek orientace na Fukyugata Ichi"
+        ],
+        "movementGoal": [
+          "práce s rytmem",
+          "brzda a akcelerace",
+          "orientace vpřed / vzad / do stran"
+        ],
+        "gameTypes": [
+          "Dojo semafor",
+          "Ninja průchod",
+          "reakce na barvu a směr",
+          "žebřík + technický výstup",
+          "míček o zeď / chyť a reaguj"
+        ],
+        "checkpoint": [
+          "dítě zvládne větší část Kihon Waza Dai Ichi",
+          "reaguje na změnu pravidla bez velkého chaosu"
+        ]
+      }
+    },
+    {
+      "id": "prosinec",
+      "name": "PROSINEC",
+      "mainGoal": "Upevnit první část roku a lehce ověřit, co skupina umí.",
+      "technicalGoals": [
+        "základní techniky",
+        "Kihon Waza Dai Ichi",
+        "první smysluplný celek Fukyugata Ichi"
+      ],
+      "movementGoals": [
+        "reakce",
+        "práce ve dvojici",
+        "soustředění v kratších blocích"
+      ],
+      "monthTools": [],
+      "checkpoint": "Trenéři si zapíšou, co je třeba vrátit po lednovém návratu.",
+      "weeks": [
+        {
+          "id": "prosinec-week-1",
+          "weekNumber": 1,
+          "title": "Týden 1",
+          "theme": "Reakce a připomenutí dosavadního technického základu",
+          "lessonGoal": "Reakce a připomenutí dosavadního technického základu",
+          "content": [
+            "zahřátí: Dojo semafor",
+            "reakce: Samurai reakce",
+            "mobilita: Kroužení ramen a loktů v rytmu, Zápěstní vlna a sevření–uvolnění",
+            "kihon: Kihon Waza Dai Ichi v dosavadním rozsahu",
+            "kata: Fukyugata Ichi – dosavadní část",
+            "hra: Přehazovaná v postoji"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Dojo semafor"
+            ],
+            "mobilita": [
+              "Kroužení ramen a loktů v rytmu, Zápěstní vlna a sevření–uvolnění"
+            ],
+            "reakce": [
+              "Samurai reakce"
+            ],
+            "kihon": [
+              "Kihon Waza Dai Ichi v dosavadním rozsahu"
+            ],
+            "kata": [
+              "Fukyugata Ichi – dosavadní část"
+            ],
+            "hra": [
+              "Přehazovaná v postoji"
+            ]
+          }
+        },
+        {
+          "id": "prosinec-week-2",
+          "weekNumber": 2,
+          "title": "Týden 2",
+          "theme": "Dvojice, distance a přesnost rukou",
+          "lessonGoal": "Dvojice, distance a přesnost rukou",
+          "content": [
+            "zahřátí: Běh se změnou směru",
+            "mobilita: Dynamické vytahování paží + rotace trupu, Uke dril bez síly",
+            "kihon: opravný blok ručních technik a postoje",
+            "kata: Fukyugata Ichi s opravou nejčastějších chyb",
+            "hra: Dotkni se kolena",
+            "závěr: krátce zapsat, co se skupině daří a co vrátit po pauze"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Běh se změnou směru"
+            ],
+            "mobilita": [
+              "Dynamické vytahování paží + rotace trupu, Uke dril bez síly"
+            ],
+            "kihon": [
+              "opravný blok ručních technik a postoje"
+            ],
+            "kata": [
+              "Fukyugata Ichi s opravou nejčastějších chyb"
+            ],
+            "hra": [
+              "Dotkni se kolena"
+            ],
+            "zaver": [
+              "krátce zapsat, co se skupině daří a co vrátit po pauze"
+            ]
+          }
+        },
+        {
+          "id": "prosinec-week-3",
+          "weekNumber": 3,
+          "title": "Týden 3",
+          "theme": "Malé ověření bez zbytečného tlaku",
+          "lessonGoal": "Malé ověření bez zbytečného tlaku",
+          "content": [
+            "zahřátí: Stínový ninja",
+            "koordinace: Žebřík – základní kroky",
+            "kihon: menší kontrola základních technik a části Kihon Waza Dai Ichi",
+            "kata: menší kontrola Fukyugata Ichi v dosavadním rozsahu",
+            "hra: Karate paměť",
+            "závěr: pochvala za snahu a připomenutí pravidel dojo"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Stínový ninja"
+            ],
+            "koordinace": [
+              "Žebřík – základní kroky"
+            ],
+            "kihon": [
+              "menší kontrola základních technik a části Kihon Waza Dai Ichi"
+            ],
+            "kata": [
+              "menší kontrola Fukyugata Ichi v dosavadním rozsahu"
+            ],
+            "hra": [
+              "Karate paměť"
+            ],
+            "zaver": [
+              "pochvala za snahu a připomenutí pravidel dojo"
+            ]
+          }
+        },
+        {
+          "id": "prosinec-week-4",
+          "weekNumber": 4,
+          "title": "Týden 4",
+          "theme": "Lehká motivační lekce na uzavření roku",
+          "lessonGoal": "Lehká motivační lekce na uzavření roku",
+          "content": [
+            "zahřátí: Karate socha",
+            "koordinace: Míček kolem těla",
+            "kihon: krátké opakování oblíbených technik",
+            "kata: společně 1 až 2 pomalá provedení Fukyugata Ichi",
+            "hra: Ninja průchod",
+            "závěr: pozitivní uzavření roku a pochvala celé skupiny"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Karate socha"
+            ],
+            "koordinace": [
+              "Míček kolem těla"
+            ],
+            "kihon": [
+              "krátké opakování oblíbených technik"
+            ],
+            "kata": [
+              "společně 1 až 2 pomalá provedení Fukyugata Ichi"
+            ],
+            "hra": [
+              "Ninja průchod"
+            ],
+            "zaver": [
+              "pozitivní uzavření roku a pochvala celé skupiny"
+            ]
+          }
+        }
+      ],
+      "annualFocus": {
+        "id": "prosinec",
+        "name": "Prosinec",
+        "focus": "předkontrolní období",
+        "mainGoal": [
+          "upevnit první půlku roku",
+          "lehká interní kontrola"
+        ],
+        "technicalGoal": [
+          "opakování základních technik",
+          "Kihon Waza Dai Ichi",
+          "první smysluplné bloky Fukyugata Ichi"
+        ],
+        "movementGoal": [
+          "reakce pod tlakem",
+          "disciplína v tréninku",
+          "práce ve dvojici"
+        ],
+        "gameTypes": [
+          "krátké duelové hry",
+          "Samurai reakce",
+          "Dotkni se kolena",
+          "Drop & Strike v lehké variantě",
+          "týmové reakční štafety"
+        ],
+        "checkpoint": [
+          "interní ověření: co skupina umí, co je třeba vrátit v lednu"
+        ]
+      }
+    },
+    {
+      "id": "leden",
+      "name": "LEDEN",
+      "mainGoal": "Obnovit rytmus po pauze a vrátit děti do režimu.",
+      "technicalGoals": [
+        "zopakovat základy",
+        "vrátit Kihon Waza Dai Ichi",
+        "navázat na Fukyugata Ichi"
+      ],
+      "movementGoals": [
+        "všestrannost",
+        "obratnost",
+        "soustředění"
+      ],
+      "monthTools": [],
+      "checkpoint": "Skupina je zpět v rytmu a ví, co se po ní chce.",
+      "weeks": [
+        {
+          "id": "leden-week-1",
+          "weekNumber": 1,
+          "title": "Týden 1",
+          "theme": "Návrat do rytmu a připomenutí pravidel dojo",
+          "lessonGoal": "Návrat do rytmu a připomenutí pravidel dojo",
+          "content": [
+            "zahřátí: Karate socha",
+            "mobilita: celé tělo",
+            "koordinace: Žebřík – základní kroky",
+            "kihon: návrat k základům – postoj, oi tsuki, age uke",
+            "hra: Stínový ninja",
+            "závěr: zopakovat, co se od dětí čeká po nástupu"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Karate socha"
+            ],
+            "mobilita": [
+              "celé tělo"
+            ],
+            "koordinace": [
+              "Žebřík – základní kroky"
+            ],
+            "kihon": [
+              "návrat k základům – postoj, oi tsuki, age uke"
+            ],
+            "hra": [
+              "Stínový ninja"
+            ],
+            "zaver": [
+              "zopakovat, co se od dětí čeká po nástupu"
+            ]
+          }
+        },
+        {
+          "id": "leden-week-2",
+          "weekNumber": 2,
+          "title": "Týden 2",
+          "theme": "Reakce a návrat ke kihonu i kata",
+          "lessonGoal": "Reakce a návrat ke kihonu i kata",
+          "content": [
+            "zahřátí: Chyť po odrazu",
+            "reakce: Dojo semafor",
+            "mobilita: Kroužení ramen a loktů v rytmu, Dynamické vytahování paží + rotace trupu",
+            "kihon: Kihon Waza Dai Ichi v pomalejším rytmu",
+            "kata: Fukyugata Ichi – připomenutí dosavadní verze",
+            "hra: Dotkni se kolena"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Chyť po odrazu"
+            ],
+            "mobilita": [
+              "Kroužení ramen a loktů v rytmu, Dynamické vytahování paží + rotace trupu"
+            ],
+            "reakce": [
+              "Dojo semafor"
+            ],
+            "kihon": [
+              "Kihon Waza Dai Ichi v pomalejším rytmu"
+            ],
+            "kata": [
+              "Fukyugata Ichi – připomenutí dosavadní verze"
+            ],
+            "hra": [
+              "Dotkni se kolena"
+            ]
+          }
+        },
+        {
+          "id": "leden-week-3",
+          "weekNumber": 3,
+          "title": "Týden 3",
+          "theme": "Ruce, bloky a jistota v postoji",
+          "lessonGoal": "Ruce, bloky a jistota v postoji",
+          "content": [
+            "zahřátí: Běh se změnou směru, Karate socha",
+            "mobilita: Uke dril bez síly, Zápěstní vlna a sevření–uvolnění",
+            "kihon: ruční techniky a bloky v jednoduchých kombinacích",
+            "kata: Fukyugata Ichi s důrazem na postoje",
+            "hra: Obrana hradu",
+            "závěr: krátce označit, kdo potřebuje větší pomoc"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Běh se změnou směru, Karate socha"
+            ],
+            "mobilita": [
+              "Uke dril bez síly, Zápěstní vlna a sevření–uvolnění"
+            ],
+            "kihon": [
+              "ruční techniky a bloky v jednoduchých kombinacích"
+            ],
+            "kata": [
+              "Fukyugata Ichi s důrazem na postoje"
+            ],
+            "hra": [
+              "Obrana hradu"
+            ],
+            "zaver": [
+              "krátce označit, kdo potřebuje větší pomoc"
+            ]
+          }
+        },
+        {
+          "id": "leden-week-4",
+          "weekNumber": 4,
+          "title": "Týden 4",
+          "theme": "Opakování s větší jistotou a menší nápovědou",
+          "lessonGoal": "Opakování s větší jistotou a menší nápovědou",
+          "content": [
+            "zahřátí: Samurai reakce",
+            "koordinace: Žebřík + technický výstup",
+            "mobilita: celé tělo se zaměřením na držení postoje",
+            "kihon: opakování Kihon Waza Dai Ichi s menší nápovědou",
+            "kata: společně celá dosavadní verze Fukyugata Ichi",
+            "závěr: zapsat, kdo potřebuje větší pomoc"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Samurai reakce"
+            ],
+            "mobilita": [
+              "celé tělo se zaměřením na držení postoje"
+            ],
+            "koordinace": [
+              "Žebřík + technický výstup"
+            ],
+            "kihon": [
+              "opakování Kihon Waza Dai Ichi s menší nápovědou"
+            ],
+            "kata": [
+              "společně celá dosavadní verze Fukyugata Ichi"
+            ],
+            "zaver": [
+              "zapsat, kdo potřebuje větší pomoc"
+            ]
+          }
+        }
+      ],
+      "annualFocus": {
+        "id": "leden",
+        "name": "Leden",
+        "focus": "návrat po pauze",
+        "mainGoal": [
+          "znovu nastartovat skupinu",
+          "vrátit základní jistotu"
+        ],
+        "technicalGoal": [
+          "zopakovat Kihon Waza Dai Ichi",
+          "vrátit základní techniky",
+          "znovu navázat Fukyugata Ichi"
+        ],
+        "movementGoal": [
+          "koordinace po pauze",
+          "všeobecná obratnost",
+          "disciplína a soustředění"
+        ],
+        "gameTypes": [
+          "Stínový ninja",
+          "Karate socha",
+          "kloboučkové honičky",
+          "žebřík",
+          "lehké švihadlové bloky"
+        ],
+        "checkpoint": [
+          "skupina je zpět v rytmu",
+          "děti ví, co se od nich čeká"
+        ]
+      }
+    },
+    {
+      "id": "unor",
+      "name": "ÚNOR",
+      "mainGoal": "Začít výrazněji směřovat ke zkouškám.",
+      "technicalGoals": [
+        "Kihon Waza Dai Ichi téměř celé",
+        "Fukyugata Ichi po částech",
+        "jistější základní techniky"
+      ],
+      "movementGoals": [
+        "přesnost",
+        "reakce",
+        "propojení techniky a pohybu"
+      ],
+      "monthTools": [],
+      "checkpoint": "Děti se výrazně přiblížily zkouškovému minimu.",
+      "weeks": [
+        {
+          "id": "unor-week-1",
+          "weekNumber": 1,
+          "title": "Týden 1",
+          "theme": "Vizuální reakce a přesnost ručních technik",
+          "lessonGoal": "Vizuální reakce a přesnost ručních technik",
+          "content": [
+            "zahřátí: Dojo semafor",
+            "reakce: Reakce na barvu / světlo",
+            "mobilita: Kroužení ramen a loktů v rytmu, Zápěstní vlna a sevření–uvolnění",
+            "kihon: větší celek Kihon Waza Dai Ichi s důrazem na přesnost rukou",
+            "kata: další část Fukyugata Ichi",
+            "hra: Míček a barva"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Dojo semafor"
+            ],
+            "mobilita": [
+              "Kroužení ramen a loktů v rytmu, Zápěstní vlna a sevření–uvolnění"
+            ],
+            "reakce": [
+              "Reakce na barvu / světlo"
+            ],
+            "kihon": [
+              "větší celek Kihon Waza Dai Ichi s důrazem na přesnost rukou"
+            ],
+            "kata": [
+              "další část Fukyugata Ichi"
+            ],
+            "hra": [
+              "Míček a barva"
+            ]
+          }
+        },
+        {
+          "id": "unor-week-2",
+          "weekNumber": 2,
+          "title": "Týden 2",
+          "theme": "Ruce, cílení a technická přesnost",
+          "lessonGoal": "Ruce, cílení a technická přesnost",
+          "content": [
+            "zahřátí: Stínový ninja",
+            "mobilita: Dynamické vytahování paží + rotace trupu, Uke dril bez síly",
+            "kihon: opravný blok ručních technik a bloků",
+            "kata: Fukyugata Ichi s opravou rukou a směru",
+            "hra: Dotyk na lapu",
+            "závěr: připomenout kvalitu zásahu před silou"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Stínový ninja"
+            ],
+            "mobilita": [
+              "Dynamické vytahování paží + rotace trupu, Uke dril bez síly"
+            ],
+            "kihon": [
+              "opravný blok ručních technik a bloků"
+            ],
+            "kata": [
+              "Fukyugata Ichi s opravou rukou a směru"
+            ],
+            "hra": [
+              "Dotyk na lapu"
+            ],
+            "zaver": [
+              "připomenout kvalitu zásahu před silou"
+            ]
+          }
+        },
+        {
+          "id": "unor-week-3",
+          "weekNumber": 3,
+          "title": "Týden 3",
+          "theme": "Rytmus lekce a stabilní celek kihonu",
+          "lessonGoal": "Rytmus lekce a stabilní celek kihonu",
+          "content": [
+            "zahřátí: Samurai reakce",
+            "koordinace: Žebřík + technický výstup",
+            "mobilita: celé tělo se zaměřením na postoj a přenos váhy",
+            "kihon: Kihon Waza Dai Ichi téměř celé",
+            "kata: Fukyugata Ichi v delším souvislém bloku",
+            "hra: Dotkni se kolena"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Samurai reakce"
+            ],
+            "mobilita": [
+              "celé tělo se zaměřením na postoj a přenos váhy"
+            ],
+            "koordinace": [
+              "Žebřík + technický výstup"
+            ],
+            "kihon": [
+              "Kihon Waza Dai Ichi téměř celé"
+            ],
+            "kata": [
+              "Fukyugata Ichi v delším souvislém bloku"
+            ],
+            "hra": [
+              "Dotkni se kolena"
+            ]
+          }
+        },
+        {
+          "id": "unor-week-4",
+          "weekNumber": 4,
+          "title": "Týden 4",
+          "theme": "Mini zkouškový blok bez přetížení",
+          "lessonGoal": "Mini zkouškový blok bez přetížení",
+          "content": [
+            "zahřátí: Běh se změnou směru",
+            "reakce: Pěnová tyč – úhyb + blokový náznak",
+            "mobilita: Kroužení ramen a loktů v rytmu, výpady vpřed a do stran s návratem",
+            "kihon: téměř celý celek s důrazem na plynulost",
+            "kata: téměř celý celek Fukyugata Ichi",
+            "závěr: mini zkouškový blok a stručná zpětná vazba"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Běh se změnou směru"
+            ],
+            "mobilita": [
+              "Kroužení ramen a loktů v rytmu, výpady vpřed a do stran s návratem"
+            ],
+            "reakce": [
+              "Pěnová tyč – úhyb + blokový náznak"
+            ],
+            "kihon": [
+              "téměř celý celek s důrazem na plynulost"
+            ],
+            "kata": [
+              "téměř celý celek Fukyugata Ichi"
+            ],
+            "zaver": [
+              "mini zkouškový blok a stručná zpětná vazba"
+            ]
+          }
+        }
+      ],
+      "annualFocus": {
+        "id": "unor",
+        "name": "Únor",
+        "focus": "specifické období pro zkoušku",
+        "mainGoal": [
+          "posunout trénink víc ke zkouškovému obsahu",
+          "zachovat atraktivitu hodin"
+        ],
+        "technicalGoal": [
+          "Kihon Waza Dai Ichi téměř celý",
+          "Fukyugata Ichi po částech",
+          "jistější techniky rukou i nohou"
+        ],
+        "movementGoal": [
+          "reakce na signál",
+          "práce s přesností",
+          "lepší propojení techniky a pohybu"
+        ],
+        "gameTypes": [
+          "barevné mety s technikou",
+          "Dojo semafor",
+          "Karate paměť",
+          "míčky ve dvojicích",
+          "lapy na přesnost"
+        ],
+        "checkpoint": [
+          "děti se blíží zkouškovému minimu",
+          "trenér ví, kdo potřebuje větší podporu"
+        ]
+      }
+    },
+    {
+      "id": "brezen",
+      "name": "BŘEZEN",
+      "mainGoal": "Budovat jistotu a stabilitu.",
+      "technicalGoals": [
+        "Kihon Waza Dai Ichi bez velké pomoci",
+        "Fukyugata Ichi srozumitelně a stabilně"
+      ],
+      "movementGoals": [
+        "reakce pod lehkým tlakem",
+        "přesnost",
+        "soustředění"
+      ],
+      "monthTools": [],
+      "checkpoint": "Rozdělit děti na:",
+      "weeks": [
+        {
+          "id": "brezen-week-1",
+          "weekNumber": 1,
+          "title": "Týden 1",
+          "theme": "Modelová lekce s důrazem na přesnost základů",
+          "lessonGoal": "Modelová lekce s důrazem na přesnost základů",
+          "content": [
+            "zahřátí: Samurai reakce, Karate socha",
+            "mobilita: Kroužení ramen a loktů v rytmu, Zápěstní vlna a sevření–uvolnění",
+            "kihon: modelový blok základních technik a Kihon Waza Dai Ichi",
+            "kata: modelový blok Fukyugata Ichi po částech",
+            "hra: Dotkni se kolena",
+            "závěr: krátká pochvala za přesnost a soustředění"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Samurai reakce, Karate socha"
+            ],
+            "mobilita": [
+              "Kroužení ramen a loktů v rytmu, Zápěstní vlna a sevření–uvolnění"
+            ],
+            "kihon": [
+              "modelový blok základních technik a Kihon Waza Dai Ichi"
+            ],
+            "kata": [
+              "modelový blok Fukyugata Ichi po částech"
+            ],
+            "hra": [
+              "Dotkni se kolena"
+            ],
+            "zaver": [
+              "krátká pochvala za přesnost a soustředění"
+            ]
+          }
+        },
+        {
+          "id": "brezen-week-2",
+          "weekNumber": 2,
+          "title": "Týden 2",
+          "theme": "Oprava detailů na rukou a postojích",
+          "lessonGoal": "Oprava detailů na rukou a postojích",
+          "content": [
+            "zahřátí: Stínový ninja",
+            "mobilita: Uke dril bez síly, Dynamické vytahování paží + rotace trupu",
+            "kihon: opravy detailů ručních technik a hikite",
+            "kata: opravy detailů postojů a směru ve Fukyugata Ichi",
+            "hra: Obrana hradu",
+            "závěr: každý dostane jednu jednoduchou věc k vylepšení"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Stínový ninja"
+            ],
+            "mobilita": [
+              "Uke dril bez síly, Dynamické vytahování paží + rotace trupu"
+            ],
+            "kihon": [
+              "opravy detailů ručních technik a hikite"
+            ],
+            "kata": [
+              "opravy detailů postojů a směru ve Fukyugata Ichi"
+            ],
+            "hra": [
+              "Obrana hradu"
+            ],
+            "zaver": [
+              "každý dostane jednu jednoduchou věc k vylepšení"
+            ]
+          }
+        },
+        {
+          "id": "brezen-week-3",
+          "weekNumber": 3,
+          "title": "Týden 3",
+          "theme": "Samostatnost a reakce v kratších intervalech",
+          "lessonGoal": "Samostatnost a reakce v kratších intervalech",
+          "content": [
+            "zahřátí: Samurai reakce",
+            "koordinace: Žebřík + technický výstup",
+            "mobilita: celé tělo se zaměřením na přenos váhy",
+            "kihon: větší samostatnost v Kihon Waza Dai Ichi",
+            "kata: větší samostatnost ve Fukyugata Ichi",
+            "hra: Reakce na ukázanou lapu"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Samurai reakce"
+            ],
+            "mobilita": [
+              "celé tělo se zaměřením na přenos váhy"
+            ],
+            "koordinace": [
+              "Žebřík + technický výstup"
+            ],
+            "kihon": [
+              "větší samostatnost v Kihon Waza Dai Ichi"
+            ],
+            "kata": [
+              "větší samostatnost ve Fukyugata Ichi"
+            ],
+            "hra": [
+              "Reakce na ukázanou lapu"
+            ]
+          }
+        },
+        {
+          "id": "brezen-week-4",
+          "weekNumber": 4,
+          "title": "Týden 4",
+          "theme": "Mini test a rozdělení podpory pro další období",
+          "lessonGoal": "Mini test a rozdělení podpory pro další období",
+          "content": [
+            "zahřátí: Dojo semafor",
+            "kihon: mini test základních technik a části Kihon Waza Dai Ichi",
+            "kata: mini test Fukyugata Ichi",
+            "hra: Ninja průchod",
+            "závěr: rozdělit děti na jisté, průměrné a potřebují větší pomoc"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Dojo semafor"
+            ],
+            "kihon": [
+              "mini test základních technik a části Kihon Waza Dai Ichi"
+            ],
+            "kata": [
+              "mini test Fukyugata Ichi"
+            ],
+            "hra": [
+              "Ninja průchod"
+            ],
+            "zaver": [
+              "rozdělit děti na jisté, průměrné a potřebují větší pomoc"
+            ]
+          }
+        }
+      ],
+      "annualFocus": {
+        "id": "brezen",
+        "name": "Březen",
+        "focus": "předzkouškové období I",
+        "mainGoal": [
+          "posilovat jistotu",
+          "začít modelovat zkouškovou situaci"
+        ],
+        "technicalGoal": [
+          "Kihon Waza Dai Ichi bez velké pomoci",
+          "Fukyugata Ichi ve srozumitelné podobě",
+          "čistší postoje a směr pohybu"
+        ],
+        "movementGoal": [
+          "reakce",
+          "přesnost",
+          "soustředění pod lehkým tlakem"
+        ],
+        "gameTypes": [
+          "krátké reakční intervaly",
+          "Dotkni se kolena",
+          "Samurai reakce",
+          "jednoduché týmové soutěže s technickým prvkem",
+          "pěnové tyče jako signál / cíl / překážka"
+        ],
+        "checkpoint": [
+          "modelový mini test",
+          "označit děti: jisté / potřebují zopakovat / potřebují individuální pomoc"
+        ]
+      }
+    },
+    {
+      "id": "duben",
+      "name": "DUBEN",
+      "mainGoal": "Posun od „umí“ k „umí stabilně“.",
+      "technicalGoals": [
+        "Kihon Waza Dai Ichi stabilně",
+        "Fukyugata Ichi stabilně",
+        "lepší rei, nástup, kázeň"
+      ],
+      "movementGoals": [
+        "plynulost",
+        "kontrola těla",
+        "práce s menším chaosem"
+      ],
+      "monthTools": [],
+      "checkpoint": "Většina skupiny by měla zvládat zkouškové minimum.",
+      "weeks": [
+        {
+          "id": "duben-week-1",
+          "weekNumber": 1,
+          "title": "Týden 1",
+          "theme": "Stabilita ručních technik a přesný zásah",
+          "lessonGoal": "Stabilita ručních technik a přesný zásah",
+          "content": [
+            "zahřátí: Reakce na barvu / světlo",
+            "mobilita: Kroužení ramen a loktů v rytmu, Zápěstní vlna a sevření–uvolnění",
+            "kihon: Kihon Waza Dai Ichi stabilně se zaměřením na ruce",
+            "kata: Fukyugata Ichi stabilně v prvních dvou směrech",
+            "hra: Dotyk na lapu",
+            "závěr: připomenout kázeň v nástupu a rei"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Reakce na barvu / světlo"
+            ],
+            "mobilita": [
+              "Kroužení ramen a loktů v rytmu, Zápěstní vlna a sevření–uvolnění"
+            ],
+            "kihon": [
+              "Kihon Waza Dai Ichi stabilně se zaměřením na ruce"
+            ],
+            "kata": [
+              "Fukyugata Ichi stabilně v prvních dvou směrech"
+            ],
+            "hra": [
+              "Dotyk na lapu"
+            ],
+            "zaver": [
+              "připomenout kázeň v nástupu a rei"
+            ]
+          }
+        },
+        {
+          "id": "duben-week-2",
+          "weekNumber": 2,
+          "title": "Týden 2",
+          "theme": "Zrak, rozhodnutí a plynulá reakce na signál",
+          "lessonGoal": "Zrak, rozhodnutí a plynulá reakce na signál",
+          "content": [
+            "zahřátí: Reakce na barvu / světlo",
+            "mobilita: Dynamické vytahování paží + rotace trupu, Kroužení ramen a loktů v rytmu",
+            "kihon: samostatnější provedení Kihon Waza Dai Ichi bez dlouhé nápovědy",
+            "kata: samostatnější provedení Fukyugata Ichi s kontrolou směru",
+            "hra: Míček o zeď",
+            "závěr: krátké zklidnění a shrnutí, co šlo samostatně dobře"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Reakce na barvu / světlo"
+            ],
+            "mobilita": [
+              "Dynamické vytahování paží + rotace trupu, Kroužení ramen a loktů v rytmu"
+            ],
+            "kihon": [
+              "samostatnější provedení Kihon Waza Dai Ichi bez dlouhé nápovědy"
+            ],
+            "kata": [
+              "samostatnější provedení Fukyugata Ichi s kontrolou směru"
+            ],
+            "hra": [
+              "Míček o zeď"
+            ],
+            "zaver": [
+              "krátké zklidnění a shrnutí, co šlo samostatně dobře"
+            ]
+          }
+        },
+        {
+          "id": "duben-week-3",
+          "weekNumber": 3,
+          "title": "Týden 3",
+          "theme": "Oprava chyb a udržení kvality pod lehkým tlakem",
+          "lessonGoal": "Oprava chyb a udržení kvality pod lehkým tlakem",
+          "content": [
+            "zahřátí: Žebřík + technický výstup",
+            "mobilita: celé tělo se zaměřením na postoje a přenos váhy",
+            "kihon: blok na chyby v Kihon Waza Dai Ichi",
+            "kata: blok na chyby ve Fukyugata Ichi",
+            "hra: Reakce na ukázanou lapu",
+            "závěr: každý si odnese jednu opravu pro příští lekci"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Žebřík + technický výstup"
+            ],
+            "mobilita": [
+              "celé tělo se zaměřením na postoje a přenos váhy"
+            ],
+            "kihon": [
+              "blok na chyby v Kihon Waza Dai Ichi"
+            ],
+            "kata": [
+              "blok na chyby ve Fukyugata Ichi"
+            ],
+            "hra": [
+              "Reakce na ukázanou lapu"
+            ],
+            "zaver": [
+              "každý si odnese jednu opravu pro příští lekci"
+            ]
+          }
+        },
+        {
+          "id": "duben-week-4",
+          "weekNumber": 4,
+          "title": "Týden 4",
+          "theme": "Modelová zkoušková lekce s pozitivní zpětnou vazbou",
+          "lessonGoal": "Modelová zkoušková lekce s pozitivní zpětnou vazbou",
+          "content": [
+            "zahřátí: Dojo semafor",
+            "mobilita: krátká celotělová průprava bez zdržování",
+            "kihon: modelové provedení zkouškového minima",
+            "kata: modelové provedení Fukyugata Ichi",
+            "hra: Dotkni se kolena",
+            "závěr: pozitivní zpětná vazba a připomenutí, co už děti umí stabilně"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Dojo semafor"
+            ],
+            "mobilita": [
+              "krátká celotělová průprava bez zdržování"
+            ],
+            "kihon": [
+              "modelové provedení zkouškového minima"
+            ],
+            "kata": [
+              "modelové provedení Fukyugata Ichi"
+            ],
+            "hra": [
+              "Dotkni se kolena"
+            ],
+            "zaver": [
+              "pozitivní zpětná vazba a připomenutí, co už děti umí stabilně"
+            ]
+          }
+        }
+      ],
+      "annualFocus": {
+        "id": "duben",
+        "name": "Duben",
+        "focus": "předzkouškové období II",
+        "mainGoal": [
+          "posun od “umí někdy” k “umí stabilně”",
+          "zlepšit technickou kázeň"
+        ],
+        "technicalGoal": [
+          "Kihon Waza Dai Ichi stabilně",
+          "Fukyugata Ichi stabilně",
+          "lepší nástup, rei, etiketa"
+        ],
+        "movementGoal": [
+          "udržet hravost, ale snížit chaos",
+          "kontrola těla",
+          "plynulost"
+        ],
+        "gameTypes": [
+          "kratší, přesnější bloky",
+          "lapy na přesnost",
+          "reakce na signál",
+          "míčky na periferní vnímání",
+          "žebřík + technika"
+        ],
+        "checkpoint": [
+          "děti by měly zvládat většinu zkouškového minima"
+        ]
+      }
+    },
+    {
+      "id": "kveten",
+      "name": "KVĚTEN",
+      "mainGoal": "Ladění ke zkouškám.",
+      "technicalGoals": [
+        "základní techniky",
+        "Kihon Waza Dai Ichi",
+        "Fukyugata Ichi"
+      ],
+      "movementGoals": [
+        "přesnost",
+        "rytmus",
+        "sebeovládání",
+        "reakce v kratších dávkách"
+      ],
+      "monthTools": [],
+      "checkpoint": "Téměř plná připravenost ke zkoušce.",
+      "weeks": [
+        {
+          "id": "kveten-week-1",
+          "weekNumber": 1,
+          "title": "Týden 1",
+          "theme": "Krátká přesná lekce bez zahlcení",
+          "lessonGoal": "Krátká přesná lekce bez zahlcení",
+          "content": [
+            "zahřátí: Karate socha",
+            "mobilita: Kroužení ramen a loktů v rytmu, výpady vpřed a do stran s návratem",
+            "kihon: technický blok Kihon Waza Dai Ichi s důrazem na nejčastější chyby",
+            "kata: technický blok Fukyugata Ichi po částech",
+            "hra: Dotyk na lapu",
+            "závěr: připomenout klid a přesnost před rychlostí"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Karate socha"
+            ],
+            "mobilita": [
+              "Kroužení ramen a loktů v rytmu, výpady vpřed a do stran s návratem"
+            ],
+            "kihon": [
+              "technický blok Kihon Waza Dai Ichi s důrazem na nejčastější chyby"
+            ],
+            "kata": [
+              "technický blok Fukyugata Ichi po částech"
+            ],
+            "hra": [
+              "Dotyk na lapu"
+            ],
+            "zaver": [
+              "připomenout klid a přesnost před rychlostí"
+            ]
+          }
+        },
+        {
+          "id": "kveten-week-2",
+          "weekNumber": 2,
+          "title": "Týden 2",
+          "theme": "Rychlá reakce, opravy a cílení",
+          "lessonGoal": "Rychlá reakce, opravy a cílení",
+          "content": [
+            "zahřátí: Samurai reakce",
+            "reakce: Reakce na ukázanou lapu",
+            "mobilita: Dynamické vytahování paží + rotace trupu, Uke dril bez síly",
+            "kihon: opravy chyb v ručních technikách a postojích",
+            "kata: opravy chyb ve směru a rytmu",
+            "hra: Pěnová tyč jako směr útoku"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Samurai reakce"
+            ],
+            "mobilita": [
+              "Dynamické vytahování paží + rotace trupu, Uke dril bez síly"
+            ],
+            "reakce": [
+              "Reakce na ukázanou lapu"
+            ],
+            "kihon": [
+              "opravy chyb v ručních technikách a postojích"
+            ],
+            "kata": [
+              "opravy chyb ve směru a rytmu"
+            ],
+            "hra": [
+              "Pěnová tyč jako směr útoku"
+            ]
+          }
+        },
+        {
+          "id": "kveten-week-3",
+          "weekNumber": 3,
+          "title": "Týden 3",
+          "theme": "Modelová zkouška a individuální zápis nedostatků",
+          "lessonGoal": "Modelová zkouška a individuální zápis nedostatků",
+          "content": [
+            "zahřátí: Dojo semafor",
+            "kihon: modelová zkouška Kihon Waza Dai Ichi",
+            "kata: modelová zkouška Fukyugata Ichi",
+            "hra: Ninja průchod",
+            "závěr: zapsat individuální nedostatky a říct dětem 1 konkrétní úkol"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Dojo semafor"
+            ],
+            "kihon": [
+              "modelová zkouška Kihon Waza Dai Ichi"
+            ],
+            "kata": [
+              "modelová zkouška Fukyugata Ichi"
+            ],
+            "hra": [
+              "Ninja průchod"
+            ],
+            "zaver": [
+              "zapsat individuální nedostatky a říct dětem 1 konkrétní úkol"
+            ]
+          }
+        },
+        {
+          "id": "kveten-week-4",
+          "weekNumber": 4,
+          "title": "Týden 4",
+          "theme": "Poslední opakování v pozitivní atmosféře",
+          "lessonGoal": "Poslední opakování v pozitivní atmosféře",
+          "content": [
+            "zahřátí: Stínový ninja",
+            "mobilita: krátká celotělová průprava",
+            "kihon: opakování klíčových technik bez nových prvků",
+            "kata: 1 až 2 klidná provedení Fukyugata Ichi",
+            "hra: Přehazovaná v postoji",
+            "závěr: nezahlcovat novými věcmi, držet klid a jistotu"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Stínový ninja"
+            ],
+            "mobilita": [
+              "krátká celotělová průprava"
+            ],
+            "kihon": [
+              "opakování klíčových technik bez nových prvků"
+            ],
+            "kata": [
+              "1 až 2 klidná provedení Fukyugata Ichi"
+            ],
+            "hra": [
+              "Přehazovaná v postoji"
+            ],
+            "zaver": [
+              "nezahlcovat novými věcmi, držet klid a jistotu"
+            ]
+          }
+        }
+      ],
+      "annualFocus": {
+        "id": "kveten",
+        "name": "Květen",
+        "focus": "ladění ke zkouškám",
+        "mainGoal": [
+          "opakování",
+          "jistota",
+          "odstranění největších chyb"
+        ],
+        "technicalGoal": [
+          "základní techniky",
+          "Kihon Waza Dai Ichi",
+          "Fukyugata Ichi"
+        ],
+        "movementGoal": [
+          "rychlost reakce",
+          "přesnost",
+          "rytmus",
+          "sebeovládání"
+        ],
+        "gameTypes": [
+          "kratší reakční hry 5–8 min",
+          "víc technických bloků",
+          "jednoduché stanoviště s pomůckami",
+          "lehké motivační soutěže"
+        ],
+        "checkpoint": [
+          "téměř plná zkoušková připravenost"
+        ]
+      }
+    },
+    {
+      "id": "cerven",
+      "name": "ČERVEN",
+      "mainGoal": "Jít ke zkoušce s klidem a jistotou.",
+      "technicalGoals": [
+        "udržet naučené",
+        "nezahlcovat"
+      ],
+      "movementGoals": [
+        "lehkost",
+        "soustředění",
+        "zdravé sebevědomí"
+      ],
+      "monthTools": [],
+      "checkpoint": "Zkoušky hotové. # Poznámka pro trenéry Každý měsíc můžete upravit podle: Směr ale držte:",
+      "weeks": [
+        {
+          "id": "cerven-week-1",
+          "weekNumber": 1,
+          "title": "Týden 1",
+          "theme": "Klidné opakování celého minima",
+          "lessonGoal": "Klidné opakování celého minima",
+          "content": [
+            "zahřátí: Karate socha",
+            "mobilita: krátká celotělová průprava",
+            "kihon: opakování základních technik a Kihon Waza Dai Ichi",
+            "kata: Fukyugata Ichi v klidném rytmu",
+            "hra: Dotyk na lapu",
+            "závěr: připomenout, že cílem je klid a jistota"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Karate socha"
+            ],
+            "mobilita": [
+              "krátká celotělová průprava"
+            ],
+            "kihon": [
+              "opakování základních technik a Kihon Waza Dai Ichi"
+            ],
+            "kata": [
+              "Fukyugata Ichi v klidném rytmu"
+            ],
+            "hra": [
+              "Dotyk na lapu"
+            ],
+            "zaver": [
+              "připomenout, že cílem je klid a jistota"
+            ]
+          }
+        },
+        {
+          "id": "cerven-week-2",
+          "weekNumber": 2,
+          "title": "Týden 2",
+          "theme": "Lehká modelová zkouška a oprava jen největších chyb",
+          "lessonGoal": "Lehká modelová zkouška a oprava jen největších chyb",
+          "content": [
+            "zahřátí: Dojo semafor",
+            "kihon: lehká modelová zkouška",
+            "kata: lehká modelová zkouška",
+            "hra: Míček o zeď",
+            "závěr: opravit jen největší chyby a vést děti pozitivně"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Dojo semafor"
+            ],
+            "kihon": [
+              "lehká modelová zkouška"
+            ],
+            "kata": [
+              "lehká modelová zkouška"
+            ],
+            "hra": [
+              "Míček o zeď"
+            ],
+            "zaver": [
+              "opravit jen největší chyby a vést děti pozitivně"
+            ]
+          }
+        },
+        {
+          "id": "cerven-week-3",
+          "weekNumber": 3,
+          "title": "Týden 3",
+          "theme": "Zkouška nebo poslední krátká příprava",
+          "lessonGoal": "Zkouška nebo poslední krátká příprava",
+          "content": [
+            "zahřátí: krátké zklidnění a mobilita",
+            "kihon: připomenutí klíčových bodů",
+            "kata: 1 klidné provedení",
+            "závěr: mentální příprava, dech, klid, pochvala"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "krátké zklidnění a mobilita"
+            ],
+            "kihon": [
+              "připomenutí klíčových bodů"
+            ],
+            "kata": [
+              "1 klidné provedení"
+            ],
+            "zaver": [
+              "mentální příprava, dech, klid, pochvala"
+            ]
+          }
+        },
+        {
+          "id": "cerven-week-4",
+          "weekNumber": 4,
+          "title": "Týden 4",
+          "theme": "Odlehčená lekce a radost z posunu",
+          "lessonGoal": "Odlehčená lekce a radost z posunu",
+          "content": [
+            "zahřátí: Stínový ninja",
+            "koordinace: Míček kolem těla",
+            "kihon: krátké opakování oblíbených technik",
+            "hra: Ninja průchod",
+            "závěr: pochvala, radost z posunu, uzavření období"
+          ],
+          "sections": {},
+          "tools": [],
+          "notesTemplate": {
+            "completed": "",
+            "incomplete": "",
+            "nextTime": "",
+            "trainerNotes": ""
+          },
+          "derivedSections": {
+            "zahrati": [
+              "Stínový ninja"
+            ],
+            "koordinace": [
+              "Míček kolem těla"
+            ],
+            "kihon": [
+              "krátké opakování oblíbených technik"
+            ],
+            "hra": [
+              "Ninja průchod"
+            ],
+            "zaver": [
+              "pochvala, radost z posunu, uzavření období"
+            ]
+          }
+        }
+      ],
+      "annualFocus": {
+        "id": "cerven",
+        "name": "Červen",
+        "focus": "zkouškové období",
+        "mainGoal": [
+          "děti mají jít ke zkoušce s klidem a jistotou"
+        ],
+        "technicalGoal": [
+          "udržet to, co umí",
+          "nezahlcovat je novými věcmi"
+        ],
+        "movementGoal": [
+          "lehkost",
+          "soustředění",
+          "pozitivní emoce",
+          "zdravé sebevědomí"
+        ],
+        "gameTypes": [
+          "kratší motivační hry",
+          "reakční hry v menších dávkách",
+          "hodně pozitivní zpětné vazby"
+        ],
+        "checkpoint": [
+          "zkouška",
+          "věděli, kde se skupina nachází,",
+          "navazovali na sebe,",
+          "drželi směr ke zkouškám,",
+          "ale mohli podle situace upravit konkrétní cvičení."
+        ]
+      }
+    }
+  ],
+  "annualOverview": [
+    {
+      "id": "zari",
+      "name": "Září",
+      "focus": "adaptační a vstupní období",
+      "mainGoal": [
+        "vytvořit režim dojo",
+        "naučit základní disciplínu",
+        "rozvíjet obecný pohybový základ"
+      ],
+      "technicalGoal": [
+        "základní postoje",
+        "základní techniky rukou",
+        "jednoduché přesuny",
+        "úvod do Kihon Waza Dai Ichi"
+      ],
+      "movementGoal": [
+        "reakce na signál",
+        "orientace v prostoru",
+        "koordinace rukou a nohou",
+        "práce s rovnováhou"
+      ],
+      "gameTypes": [
+        "Stínový ninja",
+        "Karate socha",
+        "Dojo semafor",
+        "Dotkni se kolena",
+        "jednoduché běžecké a chytací hry s pravidlem"
+      ],
+      "checkpoint": [
+        "dítě zná nástup, rei, základní pravidla dojo",
+        "umí stát v základním postoji a reagovat na jednoduchý povel"
+      ]
+    },
+    {
+      "id": "rijen",
+      "name": "Říjen",
+      "focus": "upevnění základů",
+      "mainGoal": [
+        "větší jistota v základních technikách",
+        "zlepšit koordinaci a rytmus"
+      ],
+      "technicalGoal": [
+        "pokračování Kihon Waza Dai Ichi",
+        "přesnější práce rukou",
+        "jednoduché spojení technik po dvojicích"
+      ],
+      "movementGoal": [
+        "rychlá reakce",
+        "správný start",
+        "přesnější načasování",
+        "držení postoje při pohybu"
+      ],
+      "gameTypes": [
+        "Samurai reakce",
+        "Karate paměť",
+        "Dotkni se kolena",
+        "barevné mety / reakce na barvu",
+        "Stínový ninja v karate postojích"
+      ],
+      "checkpoint": [
+        "dítě zvládá základní techniky s menší nápovědou",
+        "udrží pozornost v kratších blocích"
+      ]
+    },
+    {
+      "id": "listopad",
+      "name": "Listopad",
+      "focus": "stabilizace a rytmus",
+      "mainGoal": [
+        "opakování bez ztráty kvality",
+        "spojit pohyb s technikou"
+      ],
+      "technicalGoal": [
+        "Kihon Waza Dai Ichi ve větších celcích",
+        "jednoduché přechody mezi postoji",
+        "začátek orientace na Fukyugata Ichi"
+      ],
+      "movementGoal": [
+        "práce s rytmem",
+        "brzda a akcelerace",
+        "orientace vpřed / vzad / do stran"
+      ],
+      "gameTypes": [
+        "Dojo semafor",
+        "Ninja průchod",
+        "reakce na barvu a směr",
+        "žebřík + technický výstup",
+        "míček o zeď / chyť a reaguj"
+      ],
+      "checkpoint": [
+        "dítě zvládne větší část Kihon Waza Dai Ichi",
+        "reaguje na změnu pravidla bez velkého chaosu"
+      ]
+    },
+    {
+      "id": "prosinec",
+      "name": "Prosinec",
+      "focus": "předkontrolní období",
+      "mainGoal": [
+        "upevnit první půlku roku",
+        "lehká interní kontrola"
+      ],
+      "technicalGoal": [
+        "opakování základních technik",
+        "Kihon Waza Dai Ichi",
+        "první smysluplné bloky Fukyugata Ichi"
+      ],
+      "movementGoal": [
+        "reakce pod tlakem",
+        "disciplína v tréninku",
+        "práce ve dvojici"
+      ],
+      "gameTypes": [
+        "krátké duelové hry",
+        "Samurai reakce",
+        "Dotkni se kolena",
+        "Drop & Strike v lehké variantě",
+        "týmové reakční štafety"
+      ],
+      "checkpoint": [
+        "interní ověření: co skupina umí, co je třeba vrátit v lednu"
+      ]
+    },
+    {
+      "id": "leden",
+      "name": "Leden",
+      "focus": "návrat po pauze",
+      "mainGoal": [
+        "znovu nastartovat skupinu",
+        "vrátit základní jistotu"
+      ],
+      "technicalGoal": [
+        "zopakovat Kihon Waza Dai Ichi",
+        "vrátit základní techniky",
+        "znovu navázat Fukyugata Ichi"
+      ],
+      "movementGoal": [
+        "koordinace po pauze",
+        "všeobecná obratnost",
+        "disciplína a soustředění"
+      ],
+      "gameTypes": [
+        "Stínový ninja",
+        "Karate socha",
+        "kloboučkové honičky",
+        "žebřík",
+        "lehké švihadlové bloky"
+      ],
+      "checkpoint": [
+        "skupina je zpět v rytmu",
+        "děti ví, co se od nich čeká"
+      ]
+    },
+    {
+      "id": "unor",
+      "name": "Únor",
+      "focus": "specifické období pro zkoušku",
+      "mainGoal": [
+        "posunout trénink víc ke zkouškovému obsahu",
+        "zachovat atraktivitu hodin"
+      ],
+      "technicalGoal": [
+        "Kihon Waza Dai Ichi téměř celý",
+        "Fukyugata Ichi po částech",
+        "jistější techniky rukou i nohou"
+      ],
+      "movementGoal": [
+        "reakce na signál",
+        "práce s přesností",
+        "lepší propojení techniky a pohybu"
+      ],
+      "gameTypes": [
+        "barevné mety s technikou",
+        "Dojo semafor",
+        "Karate paměť",
+        "míčky ve dvojicích",
+        "lapy na přesnost"
+      ],
+      "checkpoint": [
+        "děti se blíží zkouškovému minimu",
+        "trenér ví, kdo potřebuje větší podporu"
+      ]
+    },
+    {
+      "id": "brezen",
+      "name": "Březen",
+      "focus": "předzkouškové období I",
+      "mainGoal": [
+        "posilovat jistotu",
+        "začít modelovat zkouškovou situaci"
+      ],
+      "technicalGoal": [
+        "Kihon Waza Dai Ichi bez velké pomoci",
+        "Fukyugata Ichi ve srozumitelné podobě",
+        "čistší postoje a směr pohybu"
+      ],
+      "movementGoal": [
+        "reakce",
+        "přesnost",
+        "soustředění pod lehkým tlakem"
+      ],
+      "gameTypes": [
+        "krátké reakční intervaly",
+        "Dotkni se kolena",
+        "Samurai reakce",
+        "jednoduché týmové soutěže s technickým prvkem",
+        "pěnové tyče jako signál / cíl / překážka"
+      ],
+      "checkpoint": [
+        "modelový mini test",
+        "označit děti: jisté / potřebují zopakovat / potřebují individuální pomoc"
+      ]
+    },
+    {
+      "id": "duben",
+      "name": "Duben",
+      "focus": "předzkouškové období II",
+      "mainGoal": [
+        "posun od “umí někdy” k “umí stabilně”",
+        "zlepšit technickou kázeň"
+      ],
+      "technicalGoal": [
+        "Kihon Waza Dai Ichi stabilně",
+        "Fukyugata Ichi stabilně",
+        "lepší nástup, rei, etiketa"
+      ],
+      "movementGoal": [
+        "udržet hravost, ale snížit chaos",
+        "kontrola těla",
+        "plynulost"
+      ],
+      "gameTypes": [
+        "kratší, přesnější bloky",
+        "lapy na přesnost",
+        "reakce na signál",
+        "míčky na periferní vnímání",
+        "žebřík + technika"
+      ],
+      "checkpoint": [
+        "děti by měly zvládat většinu zkouškového minima"
+      ]
+    },
+    {
+      "id": "kveten",
+      "name": "Květen",
+      "focus": "ladění ke zkouškám",
+      "mainGoal": [
+        "opakování",
+        "jistota",
+        "odstranění největších chyb"
+      ],
+      "technicalGoal": [
+        "základní techniky",
+        "Kihon Waza Dai Ichi",
+        "Fukyugata Ichi"
+      ],
+      "movementGoal": [
+        "rychlost reakce",
+        "přesnost",
+        "rytmus",
+        "sebeovládání"
+      ],
+      "gameTypes": [
+        "kratší reakční hry 5–8 min",
+        "víc technických bloků",
+        "jednoduché stanoviště s pomůckami",
+        "lehké motivační soutěže"
+      ],
+      "checkpoint": [
+        "téměř plná zkoušková připravenost"
+      ]
+    },
+    {
+      "id": "cerven",
+      "name": "Červen",
+      "focus": "zkouškové období",
+      "mainGoal": [
+        "děti mají jít ke zkoušce s klidem a jistotou"
+      ],
+      "technicalGoal": [
+        "udržet to, co umí",
+        "nezahlcovat je novými věcmi"
+      ],
+      "movementGoal": [
+        "lehkost",
+        "soustředění",
+        "pozitivní emoce",
+        "zdravé sebevědomí"
+      ],
+      "gameTypes": [
+        "kratší motivační hry",
+        "reakční hry v menších dávkách",
+        "hodně pozitivní zpětné vazby"
+      ],
+      "checkpoint": [
+        "zkouška",
+        "věděli, kde se skupina nachází,",
+        "navazovali na sebe,",
+        "drželi směr ke zkouškám,",
+        "ale mohli podle situace upravit konkrétní cvičení."
+      ]
+    }
+  ],
+  "exerciseDrawer": {
+    "categories": [
+      {
+        "id": "A",
+        "title": "DYNAMICKÉ ZAHŘÁTÍ A PRŮPRAVA"
+      },
+      {
+        "id": "B",
+        "title": "MOBILITA A PRŮPRAVA PRO TECHNIKY RUKOU"
+      },
+      {
+        "id": "C",
+        "title": "MOBILITA A PRŮPRAVA PRO KOPY"
+      },
+      {
+        "id": "D",
+        "title": "KOORDINACE"
+      },
+      {
+        "id": "E",
+        "title": "REAKCE"
+      },
+      {
+        "id": "F",
+        "title": "AKCE / VÝBUŠNOST"
+      },
+      {
+        "id": "G",
+        "title": "ROVNOVÁHA"
+      },
+      {
+        "id": "H",
+        "title": "SÍLA PRO DĚTI – BEZPEČNÁ A HRAVÁ"
+      },
+      {
+        "id": "I",
+        "title": "CVIČENÍ S MĚKKÝMI MÍČKY / TENISÁKY"
+      },
+      {
+        "id": "J",
+        "title": "LAPY A PĚNOVÉ TYČE"
+      },
+      {
+        "id": "K",
+        "title": "RYCHLÝ VÝBĚR PODLE CÍLE"
+      },
+      {
+        "id": "L",
+        "title": "POZNÁMKA PRO TRENÉRY"
+      }
+    ],
+    "exercises": [
+      {
+        "id": "A1",
+        "slug": "beh-se-zmenou-smeru",
+        "name": "Běh se změnou směru",
+        "categoryId": "A",
+        "categoryTitle": "DYNAMICKÉ ZAHŘÁTÍ A PRŮPRAVA",
+        "goal": "zahřátí, reakce, orientace",
+        "tools": "bez pomůcek / kloboučky",
+        "description": "děti běhají po prostoru, na signál mění směr, úroveň nebo způsob pohybu.",
+        "variants": "vpřed, vzad, stranou, dotyk země, obrat.",
+        "karateTransfer": "změna směru, reakce na povel.",
+        "coachNote": "nepřehnat délku; 2–4 min."
+      },
+      {
+        "id": "A2",
+        "slug": "dojo-semafor",
+        "name": "Dojo semafor",
+        "categoryId": "A",
+        "categoryTitle": "DYNAMICKÉ ZAHŘÁTÍ A PRŮPRAVA",
+        "goal": "sluchová reakce, sebeovládání",
+        "tools": "bez pomůcek",
+        "description": "trenér určí povely, např. go = krok vpřed, stop = freeze, geri = kopový pohyb, rei = pozdrav.",
+        "variants": "falešné povely, změna pravidla během hry.",
+        "karateTransfer": "okamžitá reakce a zastavení pohybu.",
+        "coachNote": ""
+      },
+      {
+        "id": "A3",
+        "slug": "karate-socha",
+        "name": "Karate socha",
+        "categoryId": "A",
+        "categoryTitle": "DYNAMICKÉ ZAHŘÁTÍ A PRŮPRAVA",
+        "goal": "rychlé zastavení, stabilita",
+        "tools": "bez pomůcek",
+        "description": "děti běhají, na povel vytvoří postoj.",
+        "variants": "zenkutsu, kiba, bojový postoj.",
+        "karateTransfer": "rychlá stabilizace těla.",
+        "coachNote": ""
+      },
+      {
+        "id": "A4",
+        "slug": "stinovy-ninja",
+        "name": "Stínový ninja",
+        "categoryId": "A",
+        "categoryTitle": "DYNAMICKÉ ZAHŘÁTÍ A PRŮPRAVA",
+        "goal": "koordinace, postřeh, orientace",
+        "tools": "bez pomůcek",
+        "description": "jedno dítě vede pohyb, druhé kopíruje.",
+        "variants": "jen karate postoje, jen ruce, jen úkroky.",
+        "karateTransfer": "čtení pohybu partnera.",
+        "coachNote": ""
+      },
+      {
+        "id": "B1",
+        "slug": "krouzeni-ramen-a-loktu-v-rytmu",
+        "name": "Kroužení ramen a loktů v rytmu",
+        "categoryId": "B",
+        "categoryTitle": "MOBILITA A PRŮPRAVA PRO TECHNIKY RUKOU",
+        "goal": "mobilita ramen, loktů, aktivace horní poloviny těla",
+        "tools": "bez pomůcek",
+        "description": "kroužení vpřed, vzad, střídání velkých a malých rozsahů, rytmizované počítáním.",
+        "variants": "",
+        "karateTransfer": "připravenost na bloky a údery.",
+        "coachNote": ""
+      },
+      {
+        "id": "B2",
+        "slug": "zapestni-vlna-a-sevreni-uvolneni",
+        "name": "Zápěstní vlna a sevření–uvolnění",
+        "categoryId": "B",
+        "categoryTitle": "MOBILITA A PRŮPRAVA PRO TECHNIKY RUKOU",
+        "goal": "mobilita zápěstí a prstů",
+        "tools": "bez pomůcek",
+        "description": "kroužení zápěstí, otáčení dlaní, rychlé střídání sevření a uvolnění.",
+        "variants": "",
+        "karateTransfer": "lepší kontrola ruky.",
+        "coachNote": ""
+      },
+      {
+        "id": "B3",
+        "slug": "dynamicke-vytahovani-pazi-rotace-trupu",
+        "name": "Dynamické vytahování paží + rotace trupu",
+        "categoryId": "B",
+        "categoryTitle": "MOBILITA A PRŮPRAVA PRO TECHNIKY RUKOU",
+        "goal": "aktivace ramen a středu těla",
+        "tools": "bez pomůcek",
+        "description": "střídavé přitažení loktů vzad, otevření hrudníku, rotace trupu s rukama v gardu.",
+        "variants": "",
+        "karateTransfer": "příprava na tsuki a uke.",
+        "coachNote": ""
+      },
+      {
+        "id": "B4",
+        "slug": "uke-dril-bez-sily",
+        "name": "Uke dril bez síly",
+        "categoryId": "B",
+        "categoryTitle": "MOBILITA A PRŮPRAVA PRO TECHNIKY RUKOU",
+        "goal": "průprava na age uke, gedan barai, uchi/soto linii",
+        "tools": "bez pomůcek",
+        "description": "pomalé a rytmické vedení drah bloků bez tlaku na výkon.",
+        "variants": "na počítání, v pohybu, se zastavením v kime.",
+        "karateTransfer": "motorický vzor.",
+        "coachNote": ""
+      },
+      {
+        "id": "B5",
+        "slug": "reakcni-ruce-na-barevny-signal",
+        "name": "Reakční ruce na barevný signál",
+        "categoryId": "B",
+        "categoryTitle": "MOBILITA A PRŮPRAVA PRO TECHNIKY RUKOU",
+        "goal": "rychlost rozhodnutí a přesnost rukou",
+        "tools": "barevné mety / kartičky",
+        "description": "každá barva znamená jinou ruční akci – dotyk, blokový náznak, tsuki.",
+        "variants": "",
+        "karateTransfer": "rozpoznání podnětu a volba reakce.",
+        "coachNote": ""
+      },
+      {
+        "id": "B6",
+        "slug": "penova-tyc-uhyb-blokovy-naznak",
+        "name": "Pěnová tyč – úhyb + blokový náznak",
+        "categoryId": "B",
+        "categoryTitle": "MOBILITA A PRŮPRAVA PRO TECHNIKY RUKOU",
+        "goal": "reakce, distance, ruce",
+        "tools": "pěnové tyče",
+        "description": "trenér lehce naznačuje směr tyčí, dítě reaguje úhybem nebo jednoduchým blokovým pohybem.",
+        "variants": "",
+        "karateTransfer": "načasování obrany.",
+        "coachNote": ""
+      },
+      {
+        "id": "C1",
+        "slug": "krouzeni-kycli-a-kolen",
+        "name": "Kroužení kyčlí a kolen",
+        "categoryId": "C",
+        "categoryTitle": "MOBILITA A PRŮPRAVA PRO KOPY",
+        "goal": "mobilita dolních končetin",
+        "tools": "bez pomůcek",
+        "description": "kroužení kyčlí, kolen, kotníků od menšího k většímu rozsahu.",
+        "variants": "",
+        "karateTransfer": "příprava na mae geri a postojovou práci.",
+        "coachNote": ""
+      },
+      {
+        "id": "C2",
+        "slug": "vypady-vpred-a-do-stran-s-navratem",
+        "name": "Výpady vpřed a do stran s návratem",
+        "categoryId": "C",
+        "categoryTitle": "MOBILITA A PRŮPRAVA PRO KOPY",
+        "goal": "otevření kyčlí, stabilita",
+        "tools": "bez pomůcek",
+        "description": "lehké dynamické výpady s kontrolovaným návratem.",
+        "variants": "",
+        "karateTransfer": "přenos váhy a pevný základ.",
+        "coachNote": ""
+      },
+      {
+        "id": "C3",
+        "slug": "houpani-nohou-vpred-stranou",
+        "name": "Houpání nohou vpřed / stranou",
+        "categoryId": "C",
+        "categoryTitle": "MOBILITA A PRŮPRAVA PRO KOPY",
+        "goal": "dynamický rozsah pohybu",
+        "tools": "stěna / partner / bez opory",
+        "description": "krátké kontrolované švihy malé až střední amplitudy.",
+        "variants": "",
+        "karateTransfer": "průprava na kopy.",
+        "coachNote": ""
+      },
+      {
+        "id": "C4",
+        "slug": "koleno-nahoru-podrz-poloz",
+        "name": "Koleno nahoru – podrž – polož",
+        "categoryId": "C",
+        "categoryTitle": "MOBILITA A PRŮPRAVA PRO KOPY",
+        "goal": "rovnováha a kontrola pro kopy",
+        "tools": "bez pomůcek",
+        "description": "zvednout koleno, krátce podržet, vrátit.",
+        "variants": "s dotykem pěnové tyče nebo mety.",
+        "karateTransfer": "komora pro mae geri.",
+        "coachNote": ""
+      },
+      {
+        "id": "C5",
+        "slug": "mae-geri-na-signal-bez-sily",
+        "name": "Mae geri na signál bez síly",
+        "categoryId": "C",
+        "categoryTitle": "MOBILITA A PRŮPRAVA PRO KOPY",
+        "goal": "technická reakce na povel",
+        "tools": "kloboučky / nízký cíl",
+        "description": "dítě reaguje na signál a provede nízký kontrolovaný mae geri.",
+        "variants": "",
+        "karateTransfer": "reakční kop bez chaosu.",
+        "coachNote": ""
+      },
+      {
+        "id": "C6",
+        "slug": "dotkni-se-mety-nohou",
+        "name": "Dotkni se mety nohou",
+        "categoryId": "C",
+        "categoryTitle": "MOBILITA A PRŮPRAVA PRO KOPY",
+        "goal": "přesnost dolních končetin",
+        "tools": "kloboučky / lapy nízko",
+        "description": "na povel dotknout se určeného cíle špičkou nebo nártem podle úrovně dětí.",
+        "variants": "",
+        "karateTransfer": "míření a kontrola nohy.",
+        "coachNote": ""
+      },
+      {
+        "id": "C7",
+        "slug": "dynamicka-pruprava-na-kopy-v-rade",
+        "name": "Dynamická průprava na kopy v řadě",
+        "categoryId": "C",
+        "categoryTitle": "MOBILITA A PRŮPRAVA PRO KOPY",
+        "goal": "organizovaná průprava celé skupiny",
+        "tools": "bez pomůcek",
+        "description": "koleno, výkopová dráha, návrat, odložení nohy – vše rytmicky a bez přetížení.",
+        "variants": "",
+        "karateTransfer": "přenos do kihonu kopů.",
+        "coachNote": ""
+      },
+      {
+        "id": "C8",
+        "slug": "staticke-protazeni-po-kopove-lekci",
+        "name": "Statické protažení po kopové lekci",
+        "categoryId": "C",
+        "categoryTitle": "MOBILITA A PRŮPRAVA PRO KOPY",
+        "goal": "závěrečné uvolnění",
+        "tools": "žíněnka / podložka",
+        "description": "lehké statické protažení adduktorů, hamstringů, lýtek a kyčlí až po hlavní části.",
+        "variants": "",
+        "karateTransfer": "regenerace a pohyblivost.",
+        "coachNote": "statika až po hlavní části, ne před výkonem."
+      },
+      {
+        "id": "D1",
+        "slug": "zebrik-zakladni-kroky",
+        "name": "Žebřík – základní kroky",
+        "categoryId": "D",
+        "categoryTitle": "KOORDINACE",
+        "goal": "frekvence nohou, rytmus",
+        "tools": "tréninkový žebřík",
+        "description": "jeden krok do pole, dva kroky do pole, stranou, in-in-out-out.",
+        "variants": "",
+        "karateTransfer": "lehčí práce nohou.",
+        "coachNote": ""
+      },
+      {
+        "id": "D2",
+        "slug": "zebrik-technicky-vystup",
+        "name": "Žebřík + technický výstup",
+        "categoryId": "D",
+        "categoryTitle": "KOORDINACE",
+        "goal": "koordinace + přenos do karate",
+        "tools": "žebřík",
+        "description": "po průchodu žebříkem následuje postoj a jednoduchá technika rukou.",
+        "variants": "",
+        "karateTransfer": "přechod z pohybu do techniky.",
+        "coachNote": ""
+      },
+      {
+        "id": "D3",
+        "slug": "kloboucky-slalom-vpred-a-vzad",
+        "name": "Kloboučky – slalom vpřed a vzad",
+        "categoryId": "D",
+        "categoryTitle": "KOORDINACE",
+        "goal": "orientace, změna směru",
+        "tools": "kloboučky",
+        "description": "",
+        "variants": "",
+        "karateTransfer": "práce nohou a maai.",
+        "coachNote": ""
+      },
+      {
+        "id": "D4",
+        "slug": "barevne-mety-dotkni-se-spravne",
+        "name": "Barevné mety – dotkni se správné",
+        "categoryId": "D",
+        "categoryTitle": "KOORDINACE",
+        "goal": "rozhodování a koordinace",
+        "tools": "barevné mety",
+        "description": "trenér vyvolá barvu, dítě se jí dotkne rukou nebo nohou.",
+        "variants": "",
+        "karateTransfer": "rychlá volba pohybu.",
+        "coachNote": ""
+      },
+      {
+        "id": "D5",
+        "slug": "karate-pamet",
+        "name": "Karate paměť",
+        "categoryId": "D",
+        "categoryTitle": "KOORDINACE",
+        "goal": "pracovní paměť + koordinace",
+        "tools": "bez pomůcek",
+        "description": "trenér ukáže 2–4 akce, dítě provede jen správnou kombinaci.",
+        "variants": "",
+        "karateTransfer": "technika pod mentální zátěží.",
+        "coachNote": ""
+      },
+      {
+        "id": "E1",
+        "slug": "samurai-reakce",
+        "name": "Samurai reakce",
+        "categoryId": "E",
+        "categoryTitle": "REAKCE",
+        "goal": "startovní reakce",
+        "tools": "pásek, malý kužel, pěnová tyč",
+        "description": "trenér pustí předmět, dítě jej chytá co nejrychleji.",
+        "variants": "",
+        "karateTransfer": "reakce na zahájení útoku.",
+        "coachNote": ""
+      },
+      {
+        "id": "E2",
+        "slug": "micek-o-zed",
+        "name": "Míček o zeď",
+        "categoryId": "E",
+        "categoryTitle": "REAKCE",
+        "goal": "ruka–oko, periferní vnímání",
+        "tools": "měkký míček / tenisák, zeď",
+        "description": "dítě hází míček o zeď a chytá; později přidáš druhý signál.",
+        "variants": "",
+        "karateTransfer": "sledování prostoru a rychlá reakce.",
+        "coachNote": ""
+      },
+      {
+        "id": "E3",
+        "slug": "dotkni-se-kolena",
+        "name": "Dotkni se kolena",
+        "categoryId": "E",
+        "categoryTitle": "REAKCE",
+        "goal": "reakce na pohyb partnera",
+        "tools": "bez pomůcek",
+        "description": "ve dvojici se jeden snaží dotknout kolena, druhý reaguje úhybem nebo změnou distance.",
+        "variants": "",
+        "karateTransfer": "kumite příprava.",
+        "coachNote": ""
+      },
+      {
+        "id": "E4",
+        "slug": "reakce-na-barvu-svetlo",
+        "name": "Reakce na barvu / světlo",
+        "categoryId": "E",
+        "categoryTitle": "REAKCE",
+        "goal": "vizuální reakce a volba akce",
+        "tools": "barevné mety / kartičky",
+        "description": "každá barva znamená jiný pohyb nebo techniku.",
+        "variants": "",
+        "karateTransfer": "rozhodování na podnět.",
+        "coachNote": ""
+      },
+      {
+        "id": "E5",
+        "slug": "drop-strike",
+        "name": "Drop & Strike",
+        "categoryId": "E",
+        "categoryTitle": "REAKCE",
+        "goal": "reakce + okamžitá akce",
+        "tools": "míček",
+        "description": "partner pustí míček a dítě reaguje gyaku tsuki a chycením / dotykem.",
+        "variants": "",
+        "karateTransfer": "timing vstupu.",
+        "coachNote": ""
+      },
+      {
+        "id": "F1",
+        "slug": "start-na-caru",
+        "name": "Start na čáru",
+        "categoryId": "F",
+        "categoryTitle": "AKCE / VÝBUŠNOST",
+        "goal": "výbušný první krok",
+        "tools": "čára / klobouček",
+        "description": "dítě reaguje na signál a vyrazí na krátkou vzdálenost.",
+        "variants": "",
+        "karateTransfer": "start do pohybu.",
+        "coachNote": ""
+      },
+      {
+        "id": "F2",
+        "slug": "prisunuti-technika",
+        "name": "Přisunutí + technika",
+        "categoryId": "F",
+        "categoryTitle": "AKCE / VÝBUŠNOST",
+        "goal": "přechod do útočné akce",
+        "tools": "bez pomůcek / lapy",
+        "description": "přisunutí vpřed a jednoduchá technika.",
+        "variants": "",
+        "karateTransfer": "vstup do útoku.",
+        "coachNote": ""
+      },
+      {
+        "id": "F3",
+        "slug": "skoky-pres-nizkou-prekazku",
+        "name": "Skoky přes nízkou překážku",
+        "categoryId": "F",
+        "categoryTitle": "AKCE / VÝBUŠNOST",
+        "goal": "pružnost, akce",
+        "tools": "pěnová tyč, kužely",
+        "description": "",
+        "variants": "",
+        "karateTransfer": "",
+        "coachNote": "nízké a bezpečné varianty."
+      },
+      {
+        "id": "F4",
+        "slug": "sprint-k-mete-navrat",
+        "name": "Sprint k metě + návrat",
+        "categoryId": "F",
+        "categoryTitle": "AKCE / VÝBUŠNOST",
+        "goal": "akcelerace, brzda",
+        "tools": "kloboučky",
+        "description": "",
+        "variants": "",
+        "karateTransfer": "krátké výbušné intervaly.",
+        "coachNote": ""
+      },
+      {
+        "id": "G1",
+        "slug": "ninja-rovnovaha",
+        "name": "Ninja rovnováha",
+        "categoryId": "G",
+        "categoryTitle": "ROVNOVÁHA",
+        "goal": "stabilita a střed těla",
+        "tools": "bez pomůcek",
+        "description": "stoj na jedné noze, partner lehce vychyluje.",
+        "variants": "",
+        "karateTransfer": "stabilita pro kopy.",
+        "coachNote": ""
+      },
+      {
+        "id": "G2",
+        "slug": "koleno-nahoru-dotyk-micku",
+        "name": "Koleno nahoru + dotyk míčku",
+        "categoryId": "G",
+        "categoryTitle": "ROVNOVÁHA",
+        "goal": "rovnováha s úkolem",
+        "tools": "měkký míček",
+        "description": "dítě drží koleno nahoře a chytá nebo přehazuje míček.",
+        "variants": "",
+        "karateTransfer": "kontrola těla.",
+        "coachNote": ""
+      },
+      {
+        "id": "G3",
+        "slug": "kiba-zenkutsu-freeze",
+        "name": "Kiba / zenkutsu freeze",
+        "categoryId": "G",
+        "categoryTitle": "ROVNOVÁHA",
+        "goal": "postojová stabilita",
+        "tools": "bez pomůcek",
+        "description": "po pohybu rychlý přechod do postoje a výdrž.",
+        "variants": "",
+        "karateTransfer": "jistota v postojích.",
+        "coachNote": ""
+      },
+      {
+        "id": "H1",
+        "slug": "sumo-tlaceni",
+        "name": "Sumo tlačení",
+        "categoryId": "H",
+        "categoryTitle": "SÍLA PRO DĚTI – BEZPEČNÁ A HRAVÁ",
+        "goal": "síla, stabilita, odvaha",
+        "tools": "kruh / vyznačený prostor",
+        "description": "",
+        "variants": "",
+        "karateTransfer": "práce boků a těžiště.",
+        "coachNote": ""
+      },
+      {
+        "id": "H2",
+        "slug": "upolove-hry-na-zinence",
+        "name": "Úpolové hry na žíněnce",
+        "categoryId": "H",
+        "categoryTitle": "SÍLA PRO DĚTI – BEZPEČNÁ A HRAVÁ",
+        "goal": "obecná síla a kontakt",
+        "tools": "žíněnka",
+        "description": "",
+        "variants": "",
+        "karateTransfer": "",
+        "coachNote": "bezpečně, bez tvrdých pádů."
+      },
+      {
+        "id": "H3",
+        "slug": "medicinak-zakladni-odhody",
+        "name": "Mediciňák – základní odhody",
+        "categoryId": "H",
+        "categoryTitle": "SÍLA PRO DĚTI – BEZPEČNÁ A HRAVÁ",
+        "goal": "trup, přenos síly, koordinace",
+        "tools": "lehký medicinbal",
+        "description": "odhod z hrudi, nad hlavou, od pasu vpřed.",
+        "variants": "",
+        "karateTransfer": "propojení středu těla a rukou.",
+        "coachNote": "pro děti lehké medicinbaly, kvalita nad vahou."
+      },
+      {
+        "id": "H4",
+        "slug": "medicinak-predani-ve-dvojici",
+        "name": "Mediciňák – předání ve dvojici",
+        "categoryId": "H",
+        "categoryTitle": "SÍLA PRO DĚTI – BEZPEČNÁ A HRAVÁ",
+        "goal": "síla + spolupráce",
+        "tools": "lehký medicinbal",
+        "description": "podání, přihrávka, lehký hod na krátkou vzdálenost.",
+        "variants": "",
+        "karateTransfer": "aktivní trup a práce paží.",
+        "coachNote": ""
+      },
+      {
+        "id": "H5",
+        "slug": "medicinak-drep-podani",
+        "name": "Mediciňák – dřep + podání",
+        "categoryId": "H",
+        "categoryTitle": "SÍLA PRO DĚTI – BEZPEČNÁ A HRAVÁ",
+        "goal": "nohy + trup",
+        "tools": "lehký medicinbal",
+        "description": "",
+        "variants": "",
+        "karateTransfer": "",
+        "coachNote": "jen jednoduché varianty, technicky čistě."
+      },
+      {
+        "id": "I1",
+        "slug": "chyt-po-odrazu",
+        "name": "Chyť po odrazu",
+        "categoryId": "I",
+        "categoryTitle": "CVIČENÍ S MĚKKÝMI MÍČKY / TENISÁKY",
+        "goal": "koordinace ruka–oko",
+        "tools": "měkký míček / tenisák",
+        "description": "odraz o zem nebo zeď a chycení.",
+        "variants": "",
+        "karateTransfer": "",
+        "coachNote": ""
+      },
+      {
+        "id": "I2",
+        "slug": "micek-a-barva",
+        "name": "Míček a barva",
+        "categoryId": "I",
+        "categoryTitle": "CVIČENÍ S MĚKKÝMI MÍČKY / TENISÁKY",
+        "goal": "reakční volba",
+        "tools": "míček + barevné mety",
+        "description": "dítě chytá míček a současně reaguje na barvu.",
+        "variants": "",
+        "karateTransfer": "",
+        "coachNote": ""
+      },
+      {
+        "id": "I3",
+        "slug": "prehazovana-v-postoji",
+        "name": "Přehazovaná v postoji",
+        "categoryId": "I",
+        "categoryTitle": "CVIČENÍ S MĚKKÝMI MÍČKY / TENISÁKY",
+        "goal": "postoj + reakce",
+        "tools": "měkký míček",
+        "description": "dvojice přehazují míček z karate postoje.",
+        "variants": "",
+        "karateTransfer": "držení těla při rušení.",
+        "coachNote": ""
+      },
+      {
+        "id": "I4",
+        "slug": "micek-kolem-tela",
+        "name": "Míček kolem těla",
+        "categoryId": "I",
+        "categoryTitle": "CVIČENÍ S MĚKKÝMI MÍČKY / TENISÁKY",
+        "goal": "obratnost, koordinace",
+        "tools": "míček",
+        "description": "obíhání míčku kolem pasu, kolen, hlavy.",
+        "variants": "",
+        "karateTransfer": "kontrola horní a dolní poloviny těla.",
+        "coachNote": ""
+      },
+      {
+        "id": "I5",
+        "slug": "dva-micky-pozor-a-rozhodni",
+        "name": "Dva míčky – pozor a rozhodni",
+        "categoryId": "I",
+        "categoryTitle": "CVIČENÍ S MĚKKÝMI MÍČKY / TENISÁKY",
+        "goal": "pozornost, reakce, inhibice",
+        "tools": "dva barevně odlišené míčky",
+        "description": "dítě reaguje jen na určený míček.",
+        "variants": "",
+        "karateTransfer": "selektivní pozornost.",
+        "coachNote": ""
+      },
+      {
+        "id": "I6",
+        "slug": "soutez-terorista-mekka-detska-verze",
+        "name": "Soutěž „terorista“ – měkká dětská verze",
+        "categoryId": "I",
+        "categoryTitle": "CVIČENÍ S MĚKKÝMI MÍČKY / TENISÁKY",
+        "goal": "postřeh, vyhýbání, prostorová orientace",
+        "tools": "měkké míčky",
+        "description": "",
+        "variants": "",
+        "karateTransfer": "",
+        "coachNote": "jen bezpečná, měkká verze a jasná pravidla."
+      },
+      {
+        "id": "J1",
+        "slug": "dotyk-na-lapu",
+        "name": "Dotyk na lapu",
+        "categoryId": "J",
+        "categoryTitle": "LAPY A PĚNOVÉ TYČE",
+        "goal": "přesnost techniky",
+        "tools": "lapy",
+        "description": "děti zasahují určený cíl bez tlaku na sílu.",
+        "variants": "",
+        "karateTransfer": "",
+        "coachNote": ""
+      },
+      {
+        "id": "J2",
+        "slug": "reakce-na-ukazanou-lapu",
+        "name": "Reakce na ukázanou lapu",
+        "categoryId": "J",
+        "categoryTitle": "LAPY A PĚNOVÉ TYČE",
+        "goal": "rychlá volba správného cíle",
+        "tools": "2 lapy",
+        "description": "",
+        "variants": "",
+        "karateTransfer": "přesnost a rozhodnutí.",
+        "coachNote": ""
+      },
+      {
+        "id": "J3",
+        "slug": "penova-tyc-jako-prekazka",
+        "name": "Pěnová tyč jako překážka",
+        "categoryId": "J",
+        "categoryTitle": "LAPY A PĚNOVÉ TYČE",
+        "goal": "úhyb, přeskok, změna výšky",
+        "tools": "pěnová tyč",
+        "description": "",
+        "variants": "",
+        "karateTransfer": "práce s úrovní těla.",
+        "coachNote": ""
+      },
+      {
+        "id": "J4",
+        "slug": "penova-tyc-jako-smer-utoku",
+        "name": "Pěnová tyč jako směr útoku",
+        "categoryId": "J",
+        "categoryTitle": "LAPY A PĚNOVÉ TYČE",
+        "goal": "reakce na linii pohybu",
+        "tools": "pěnová tyč",
+        "description": "",
+        "variants": "",
+        "karateTransfer": "obrana a timing.",
+        "coachNote": ""
+      }
+    ]
+  },
+  "monthlyTemplateHints": [
+    "Měsíc:",
+    "Školní rok:",
+    "Skupina:",
+    "Věk:",
+    "Pásy:",
+    "Hlavní trenér:",
+    "Druhý trenér:",
+    "Počet dětí:",
+    "Termín zkoušek:",
+    "technický:",
+    "pohybový:",
+    "zaměření: ruce / kopy / celé tělo",
+    "reakce:",
+    "koordinace:",
+    "orientace:",
+    "síla / akce:",
+    "rovnováha:",
+    "co fungovalo:",
+    "co nefungovalo:",
+    "co zopakovat:",
+    "na co navázat:",
+    "technický:",
+    "pohybový:",
+    "zaměření: ruce / kopy / celé tělo",
+    "reakce:",
+    "koordinace:",
+    "orientace:",
+    "síla / akce:",
+    "rovnováha:",
+    "co fungovalo:",
+    "co nefungovalo:",
+    "co zopakovat:",
+    "na co navázat:",
+    "technický:",
+    "pohybový:",
+    "zaměření: ruce / kopy / celé tělo",
+    "reakce:",
+    "koordinace:",
+    "orientace:",
+    "síla / akce:",
+    "rovnováha:",
+    "co fungovalo:",
+    "co nefungovalo:",
+    "co zopakovat:",
+    "na co navázat:",
+    "technický:",
+    "pohybový:",
+    "zaměření: ruce / kopy / celé tělo",
+    "reakce:",
+    "koordinace:",
+    "orientace:",
+    "síla / akce:",
+    "rovnováha:",
+    "co fungovalo:",
+    "co nefungovalo:",
+    "co zopakovat:",
+    "na co navázat:",
+    "technický:",
+    "pohybový:",
+    "zaměření: ruce / kopy / celé tělo",
+    "reakce:",
+    "koordinace:",
+    "orientace:",
+    "síla / akce:",
+    "rovnováha:",
+    "co fungovalo:",
+    "co nefungovalo:",
+    "co zopakovat:",
+    "na co navázat:",
+    "disciplína:",
+    "soustředění:",
+    "technická jistota:",
+    "připravenost ke zkoušce:"
+  ],
+  "toolRecommendations": [
+    "pěnové tyče",
+    "1 tréninkový žebřík",
+    "kloboučky",
+    "lapy",
+    "míčky",
+    "švihadla",
+    "stopky",
+    "píšťalka",
+    "druhý žebřík",
+    "minimum +",
+    "lehké medicinbaly",
+    "podložky / žíněnky",
+    "barevné kartičky",
+    "rozumný upgrade +",
+    "nízké překážky",
+    "bosu",
+    "další lapy",
+    "byly bezpečné,",
+    "šly rychle připravit,",
+    "šly použít pro více variant,",
+    "a nezdržovaly lekci."
+  ]
+}
