@@ -63,3 +63,26 @@ Pokud chceš sdílet stav s kolegou přes GitHub:
 - je to statická appka, ne víceuživatelský realtime editor.
 
 To je záměrně jednoduché první řešení, které jde hned hostovat na GitHub Pages.
+
+## Publikace na GitHub Pages
+
+Repo je připravený na automatický deploy přes GitHub Actions workflow:
+
+- [.github/workflows/training-planner-pages.yml](.github/workflows/training-planner-pages.yml)
+
+Co dělá:
+
+- po pushi do větve `main` přegeneruje planner data,
+- vezme obsah složky `tools/training_planner_web`,
+- publikuje ho na GitHub Pages.
+
+Po prvním pushi ještě v GitHubu zkontroluj:
+
+1. `Settings -> Pages`
+2. že je zdroj nastavený na `GitHub Actions`
+
+Výsledná adresa bude typicky:
+
+- `https://mikelmarek.github.io/karatekaTraining/`
+
+Protože aplikace používá relativní cesty k `index.html`, `app.js` i `data/planner-data.json`, nemusí se kvůli Pages doplňovat žádný speciální base path.

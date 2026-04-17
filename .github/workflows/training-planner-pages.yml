@@ -1,0 +1,58 @@
+name: Deploy training planner
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/training-planner-pages.yml'
+      - 'plan/**'
+      - 'tools/training_planner_web/**'
+      - 'karate_coach_assistant/package.json'
+      - 'karate_coach_assistant/package-lock.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: training-planner-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build and deploy planner
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: karate_coach_assistant/package-lock.json
+
+      - name: Install dependencies
+        working-directory: karate_coach_assistant
+        run: npm ci
+
+      - name: Rebuild planner data
+        working-directory: karate_coach_assistant
+        run: npm run planner:web:build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: tools/training_planner_web
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
