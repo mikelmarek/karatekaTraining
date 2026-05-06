@@ -1,4 +1,5 @@
 const STORAGE_KEY = 'karate-planner-local-state-v1';
+const AUTH_REQUIRED_ERROR = 'AUTH_REQUIRED';
 
 const EMPTY_SHARED_STATE = {
   version: 1,
@@ -67,10 +68,23 @@ const state = {
   selectedCategoryId: 'ALL',
   selectedTab: TAB_KEYS.calendar,
   searchQuery: '',
-  drawerNotice: ''
+  drawerNotice: '',
+  auth: {
+    username: null
+  }
 };
 
 const refs = {
+  authGate: document.getElementById('authGate'),
+  appShell: document.getElementById('appShell'),
+  loginForm: document.getElementById('loginForm'),
+  loginUsernameInput: document.getElementById('loginUsernameInput'),
+  loginPasswordInput: document.getElementById('loginPasswordInput'),
+  loginSubmitButton: document.getElementById('loginSubmitButton'),
+  loginError: document.getElementById('loginError'),
+  loginInfo: document.getElementById('loginInfo'),
+  sessionStatus: document.getElementById('sessionStatus'),
+  logoutButton: document.getElementById('logoutButton'),
   monthNav: document.getElementById('monthNav'),
   monthSummary: document.getElementById('monthSummary'),
   plannerTitle: document.getElementById('plannerTitle'),
@@ -105,21 +119,45 @@ const refs = {
   downloadSharedStateButton: document.getElementById('downloadSharedStateButton')
 };
 
-async function loadData() {
-  const [plannerResponse, sharedResponse] = await Promise.all([
-    fetch('./data/planner-data.json'),
-    fetch('./data/shared-state.json').catch(() => null)
-  ]);
+async function fetchJson(url, options = {}) {
+  const response = await fetch(url, {
+    credentials: 'same-origin',
+    ...options,
+    headers: {
+      ...(options.body ? { 'Content-Type': 'application/json' } : {}),
+      ...(options.headers || {})
+    }
+  });
 
-  if (!plannerResponse.ok) {
-    throw new Error('Nepodařilo se načíst planner-data.json');
+  if (response.status === 401) {
+    throw new Error(AUTH_REQUIRED_ERROR);
   }
 
-  state.data = await plannerResponse.json();
+  if (!response.ok) {
+    const payloadText = await response.text();
+
+    try {
+      const payload = JSON.parse(payloadText);
+      throw new Error(payload.error || `Request failed: ${response.status}`);
+    } catch {
+      throw new Error(payloadText || `Request failed: ${response.status}`);
+    }
+  }
+
+  return response.json();
+}
+
+async function loadData() {
+  const [plannerData, sharedState] = await Promise.all([
+    fetchJson('/api/planner/data'),
+    fetchJson('/api/planner/shared-state').catch(() => null)
+  ]);
+
+  state.data = plannerData;
   state.exerciseIndex = createExerciseIndex(state.data.exerciseDrawer.exercises);
 
-  if (sharedResponse && sharedResponse.ok) {
-    state.sharedState = await sharedResponse.json();
+  if (sharedState) {
+    state.sharedState = sharedState;
   }
 
   const initialMonth = state.data.calendar[0];
@@ -128,6 +166,81 @@ async function loadData() {
   state.selectedExerciseId = state.data.exerciseDrawer.exercises[0]?.id || null;
 
   render();
+}
+
+function setLoginError(message) {
+  refs.loginError.textContent = message;
+  refs.loginError.hidden = !message;
+}
+
+function setLoginInfo(message) {
+  refs.loginInfo.textContent = message;
+}
+
+function showAuthGate() {
+  refs.authGate.hidden = false;
+  refs.appShell.hidden = true;
+  document.body.classList.add('auth-only');
+  refs.loginPasswordInput.value = '';
+}
+
+function showAppShell() {
+  refs.authGate.hidden = true;
+  refs.appShell.hidden = false;
+  document.body.classList.remove('auth-only');
+  refs.sessionStatus.textContent = state.auth.username ? `Přihlášen: ${state.auth.username}` : '';
+}
+
+async function checkSession() {
+  try {
+    const session = await fetchJson('/api/planner/auth/session');
+    state.auth.username = session.username;
+    return true;
+  } catch (error) {
+    if (error.message === AUTH_REQUIRED_ERROR) {
+      return false;
+    }
+    throw error;
+  }
+}
+
+async function submitLogin(username, password) {
+  const payload = await fetchJson('/api/planner/auth/login', {
+    method: 'POST',
+    body: JSON.stringify({ username, password })
+  });
+  state.auth.username = payload.username;
+  return payload;
+}
+
+async function logout() {
+  try {
+    await fetchJson('/api/planner/auth/logout', {
+      method: 'POST',
+      body: JSON.stringify({})
+    });
+  } catch (error) {
+    if (error.message !== AUTH_REQUIRED_ERROR) {
+      console.warn(error);
+    }
+  }
+
+  state.auth.username = null;
+  showAuthGate();
+  setLoginError('');
+  setLoginInfo('Byl jsi odhlášen.');
+}
+
+async function bootstrapApp() {
+  if (await checkSession()) {
+    showAppShell();
+    await loadData();
+    return;
+  }
+
+  showAuthGate();
+  setLoginError('');
+  setLoginInfo('Přihlas se jménem a heslem. Po úspěšném přihlášení se odešle e-mailová notifikace.');
 }
 
 function loadLocalState() {
@@ -945,6 +1058,42 @@ function formatDate(value) {
 }
 
 function bindEvents() {
+  refs.loginForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const username = refs.loginUsernameInput.value.trim();
+    const password = refs.loginPasswordInput.value;
+
+    if (!username || !password) {
+      setLoginError('Vyplň jméno i heslo.');
+      return;
+    }
+
+    refs.loginSubmitButton.disabled = true;
+    setLoginError('');
+    setLoginInfo('Probíhá přihlášení...');
+
+    try {
+      await submitLogin(username, password);
+      showAppShell();
+      setLoginInfo('');
+      if (!state.data) {
+        await loadData();
+      }
+    } catch (error) {
+      console.error(error);
+      setLoginInfo('');
+      setLoginError(error.message === AUTH_REQUIRED_ERROR ? 'Přihlášení se nezdařilo.' : error.message);
+      showAuthGate();
+    } finally {
+      refs.loginSubmitButton.disabled = false;
+    }
+  });
+
+  refs.logoutButton.addEventListener('click', () => {
+    void logout();
+  });
+
   refs.calendarTabButton.addEventListener('click', () => setSelectedTab(TAB_KEYS.calendar));
   refs.drawerTabButton.addEventListener('click', () => setSelectedTab(TAB_KEYS.drawer));
   refs.closeExerciseModalButton.addEventListener('click', () => closeExerciseModal());
@@ -1015,7 +1164,8 @@ function mergePlainObjects(a = {}, b = {}) {
 }
 
 bindEvents();
-loadData().catch((error) => {
+bootstrapApp().catch((error) => {
   console.error(error);
-  refs.planSections.innerHTML = `<div class="empty-state">${error.message}</div>`;
+  showAuthGate();
+  setLoginError(error.message === AUTH_REQUIRED_ERROR ? 'Přístup vyžaduje přihlášení.' : `Nepodařilo se načíst aplikaci: ${error.message}`);
 });

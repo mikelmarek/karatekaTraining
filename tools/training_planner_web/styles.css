@@ -33,6 +33,11 @@ body {
   font-family: var(--font-body);
 }
 
+body.auth-only {
+  display: grid;
+  place-items: center;
+}
+
 button,
 input,
 textarea {
@@ -42,6 +47,82 @@ textarea {
 .app-shell {
   width: min(1600px, calc(100vw - 32px));
   margin: 18px auto 28px;
+}
+
+.auth-shell {
+  width: min(520px, calc(100vw - 32px));
+  margin: 32px auto;
+}
+
+.auth-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, rgba(255, 249, 242, 0.97), rgba(246, 237, 224, 0.94));
+  box-shadow: var(--shadow);
+  padding: 28px;
+}
+
+.auth-subtitle {
+  margin-bottom: 18px;
+}
+
+.login-form {
+  display: grid;
+  gap: 14px;
+}
+
+.login-form label {
+  display: grid;
+  gap: 6px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--text);
+}
+
+.login-form input:focus {
+  outline: 2px solid rgba(169, 65, 29, 0.25);
+  border-color: rgba(169, 65, 29, 0.35);
+}
+
+.auth-button {
+  border: 0;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #fff;
+  padding: 12px 16px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.auth-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px rgba(95, 58, 31, 0.14);
+}
+
+.auth-message {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+}
+
+.auth-error {
+  background: rgba(189, 59, 47, 0.1);
+  color: #8f1d13;
+}
+
+.auth-info {
+  background: rgba(47, 107, 69, 0.1);
+  color: #265639;
 }
 
 .topbar {
@@ -54,6 +135,21 @@ textarea {
   border-radius: var(--radius-xl);
   background: linear-gradient(135deg, rgba(255, 249, 242, 0.94), rgba(246, 237, 224, 0.92));
   box-shadow: var(--shadow);
+}
+
+.topbar-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.session-status {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  text-align: right;
 }
 
 .eyebrow {
@@ -742,9 +838,18 @@ textarea {
 }
 
 @media (max-width: 820px) {
+  body.auth-only {
+    display: block;
+  }
+
   .app-shell {
     width: min(100vw - 20px, 100%);
     margin: 10px auto 20px;
+  }
+
+  .auth-shell {
+    width: min(100vw - 20px, 520px);
+    margin: 14px auto;
   }
 
   .topbar,
@@ -757,6 +862,10 @@ textarea {
 
   .topbar {
     flex-direction: column;
+  }
+
+  .topbar-actions {
+    align-items: flex-start;
   }
 
   .planner-header-actions {

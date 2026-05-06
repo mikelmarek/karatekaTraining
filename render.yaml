@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: karatecoachassistant-planner-secure
+    runtime: node
+    rootDir: karate_coach_assistant
+    buildCommand: npm ci && npm run planner:web:build
+    startCommand: npm run planner:serve
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: PLANNER_HOST
+        value: 0.0.0.0
+      - key: PLANNER_AUTH_USERNAME
+        sync: false
+      - key: PLANNER_AUTH_PASSWORD_HASH
+        sync: false
+      - key: PLANNER_SESSION_SECRET
+        sync: false
+      - key: PLANNER_SESSION_TTL_HOURS
+        value: 168
+      - key: LOGIN_NOTIFY_TO
+        sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        sync: false
+      - key: SMTP_SECURE
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: SMTP_FROM
+        sync: false

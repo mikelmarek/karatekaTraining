@@ -156,6 +156,21 @@ Pro zjištění `chat_id` je připravený helper:
 
 ## Spuštění
 
+### Secure planner s loginem
+
+Pro chráněnou webovou verzi planneru s loginem a e-mailovým upozorněním po přihlášení použij:
+
+- `npm run planner:web:build`
+- `npm run planner:serve`
+
+Podrobný návod je v [docs/TRAINING_PLANNER_SECURE_ACCESS.md](docs/TRAINING_PLANNER_SECURE_ACCESS.md).
+
+Pro GitHub-ready nasazení je připravené i:
+
+- [../render.yaml](../render.yaml) pro Render Blueprint deploy z GitHubu,
+- [../.github/workflows/planner-secure-ci.yml](../.github/workflows/planner-secure-ci.yml) pro ověření secure login flow po pushi,
+- [../.github/workflows/training-planner-pages.yml](../.github/workflows/training-planner-pages.yml) pro veřejnou GitHub Pages variantu.
+
 ### Jednorázová kontrola
 
 - `npm run check`

@@ -1,0 +1,132 @@
+name: Validate secure planner
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/planner-secure-ci.yml'
+      - 'render.yaml'
+      - 'karate_coach_assistant/package.json'
+      - 'karate_coach_assistant/package-lock.json'
+      - 'karate_coach_assistant/src/plannerSecureServer.js'
+      - 'karate_coach_assistant/docs/TRAINING_PLANNER_SECURE_ACCESS.md'
+      - 'tools/training_planner_web/**'
+  pull_request:
+    paths:
+      - '.github/workflows/planner-secure-ci.yml'
+      - 'render.yaml'
+      - 'karate_coach_assistant/package.json'
+      - 'karate_coach_assistant/package-lock.json'
+      - 'karate_coach_assistant/src/plannerSecureServer.js'
+      - 'karate_coach_assistant/docs/TRAINING_PLANNER_SECURE_ACCESS.md'
+      - 'tools/training_planner_web/**'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: karate_coach_assistant
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: karate_coach_assistant/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Rebuild planner data
+        run: npm run planner:web:build
+
+      - name: Start secure planner
+        env:
+          PLANNER_HOST: 127.0.0.1
+          PLANNER_PORT: 4185
+          PLANNER_AUTH_USERNAME: tester
+          PLANNER_AUTH_PASSWORD: secret123
+          PLANNER_SESSION_SECRET: ci-secret-for-validation
+        run: |
+          node src/plannerSecureServer.js > /tmp/planner-secure.log 2>&1 &
+          echo $! > /tmp/planner-secure.pid
+
+      - name: Verify login flow
+        run: |
+          node --input-type=module <<'EOF'
+          const baseUrl = 'http://127.0.0.1:4185';
+
+          async function waitForServer() {
+            for (let attempt = 0; attempt < 30; attempt += 1) {
+              try {
+                const response = await fetch(`${baseUrl}/api/planner/auth/session`);
+                if (response.status === 401) {
+                  return;
+                }
+              } catch {
+              }
+              await new Promise((resolve) => setTimeout(resolve, 1000));
+            }
+
+            throw new Error('Secure planner server neběží včas.');
+          }
+
+          function extractSessionCookie(response) {
+            const setCookie = response.headers.get('set-cookie') || '';
+            const match = setCookie.match(/karate_planner_session=[^;]+/);
+            if (!match) {
+              throw new Error('V odpovědi chybí session cookie.');
+            }
+            return match[0];
+          }
+
+          await waitForServer();
+
+          const loginResponse = await fetch(`${baseUrl}/api/planner/auth/login`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ username: 'tester', password: 'secret123' })
+          });
+
+          if (!loginResponse.ok) {
+            throw new Error(`Login selhal se statusem ${loginResponse.status}.`);
+          }
+
+          const sessionCookie = extractSessionCookie(loginResponse);
+
+          const sessionResponse = await fetch(`${baseUrl}/api/planner/auth/session`, {
+            headers: { cookie: sessionCookie }
+          });
+          const sessionBody = await sessionResponse.json();
+
+          if (!sessionResponse.ok || sessionBody.username !== 'tester') {
+            throw new Error('Session endpoint nevrátil očekávaného uživatele.');
+          }
+
+          const dataResponse = await fetch(`${baseUrl}/api/planner/data`, {
+            headers: { cookie: sessionCookie }
+          });
+          const dataBody = await dataResponse.json();
+
+          if (!dataResponse.ok || !Array.isArray(dataBody.months)) {
+            throw new Error('Planner data endpoint nevrátil očekávaná data.');
+          }
+          EOF
+
+      - name: Stop secure planner
+        if: always()
+        run: |
+          if [ -f /tmp/planner-secure.pid ]; then
+            kill "$(cat /tmp/planner-secure.pid)" || true
+          fi
+          if [ -f /tmp/planner-secure.log ]; then
+            cat /tmp/planner-secure.log
+          fi

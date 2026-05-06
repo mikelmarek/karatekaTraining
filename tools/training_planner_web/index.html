@@ -7,7 +7,32 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <div class="app-shell">
+    <section id="authGate" class="auth-shell">
+      <div class="auth-card">
+        <p class="eyebrow">Secure Planner</p>
+        <h1>Přihlášení do planneru</h1>
+        <p class="subtitle auth-subtitle">
+          Přístup k tréninkovému plánu je chráněný. Po přihlášení se odešle upozornění na e-mail.
+        </p>
+
+        <form id="loginForm" class="login-form">
+          <label>
+            Jméno
+            <input id="loginUsernameInput" name="username" type="text" autocomplete="username" required />
+          </label>
+          <label>
+            Heslo
+            <input id="loginPasswordInput" name="password" type="password" autocomplete="current-password" required />
+          </label>
+          <button id="loginSubmitButton" type="submit" class="auth-button">Přihlásit se</button>
+        </form>
+
+        <p id="loginError" class="auth-message auth-error" hidden></p>
+        <p id="loginInfo" class="auth-message auth-info">Lokálně i z telefonu aplikaci otevírej přes běžící secure server.</p>
+      </div>
+    </section>
+
+    <div id="appShell" class="app-shell" hidden>
       <header class="topbar">
         <div>
           <p class="eyebrow">Okinawa Shorin-ryu</p>
@@ -15,6 +40,10 @@
           <p class="subtitle">
             Kalendář lekcí, detail tréninku, šuplík cviků a průběžné trenérské poznámky nad Markdown podklady.
           </p>
+        </div>
+        <div class="topbar-actions">
+          <p id="sessionStatus" class="session-status"></p>
+          <button id="logoutButton" type="button" class="ghost-button">Odhlásit</button>
         </div>
       </header>
 
