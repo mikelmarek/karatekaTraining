@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "buildCommand": "npm run planner:web:build && npm run planner:web:build:vercel",
+  "outputDirectory": "vercel-static",
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "api/[...path].js"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}

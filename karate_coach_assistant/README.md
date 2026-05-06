@@ -167,6 +167,7 @@ Podrobný návod je v [docs/TRAINING_PLANNER_SECURE_ACCESS.md](docs/TRAINING_PLA
 
 Pro GitHub-ready nasazení je připravené i:
 
+- [vercel.json](vercel.json) pro Vercel deploy z free/serverless modelu,
 - [../render.yaml](../render.yaml) pro Render Blueprint deploy z GitHubu,
 - [../.github/workflows/planner-secure-ci.yml](../.github/workflows/planner-secure-ci.yml) pro ověření secure login flow po pushi,
 - [../.github/workflows/training-planner-pages.yml](../.github/workflows/training-planner-pages.yml) pro veřejnou GitHub Pages variantu.
