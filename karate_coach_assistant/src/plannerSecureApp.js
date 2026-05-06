@@ -8,6 +8,7 @@ import bcrypt from 'bcryptjs';
 import dotenv from 'dotenv';
 import express from 'express';
 import nodemailer from 'nodemailer';
+import { readPersistedState, writePersistedState } from './statePersistence.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,6 +16,7 @@ const projectRoot = path.resolve(__dirname, '..');
 const workspaceRoot = path.resolve(projectRoot, '..');
 const plannerRoot = resolvePlannerRoot();
 const plannerDataRoot = resolvePlannerDataRoot();
+const plannerSharedStateTarget = resolvePlannerSharedStateTarget();
 
 dotenv.config({ path: path.join(projectRoot, '.env') });
 
@@ -43,9 +45,20 @@ const loginAttempts = new Map();
 app.set('trust proxy', true);
 app.use(express.json({ limit: '200kb' }));
 
+function createEmptyPlannerSharedState() {
+  return {
+    version: 2,
+    updatedAt: null,
+    updatedBy: null,
+    notesByLesson: {},
+    overridesByLesson: {},
+    history: []
+  };
+}
+
 function resolvePlannerRoot() {
   const vercelStaticRoot = path.join(projectRoot, 'vercel-static');
-  if (fsSync.existsSync(path.join(vercelStaticRoot, 'index.html'))) {
+  if (process.env.VERCEL && fsSync.existsSync(path.join(vercelStaticRoot, 'index.html'))) {
     return vercelStaticRoot;
   }
   return path.resolve(workspaceRoot, 'tools', 'training_planner_web');
@@ -53,14 +66,115 @@ function resolvePlannerRoot() {
 
 function resolvePlannerDataRoot() {
   const vercelDataRoot = path.join(projectRoot, 'vercel-data');
-  if (fsSync.existsSync(path.join(vercelDataRoot, 'planner-data.json'))) {
+  if (process.env.VERCEL && fsSync.existsSync(path.join(vercelDataRoot, 'planner-data.json'))) {
     return vercelDataRoot;
   }
   return path.join(path.resolve(workspaceRoot, 'tools', 'training_planner_web'), 'data');
 }
 
+function resolvePlannerSharedStateTarget() {
+  const explicitBackend = cleanEnv(process.env.PLANNER_SHARED_STATE_BACKEND);
+  const gistId = cleanEnv(
+    process.env.PLANNER_SHARED_STATE_GIST_ID
+    || process.env.KARATE_STATE_GIST_ID
+    || process.env.GITHUB_STATE_GIST_ID
+  );
+  const gistToken = cleanEnv(
+    process.env.PLANNER_SHARED_STATE_GIST_TOKEN
+    || process.env.KARATE_STATE_GIST_TOKEN
+    || process.env.GITHUB_STATE_TOKEN
+  );
+  const backend = explicitBackend || (gistId && gistToken ? 'github-gist' : 'local');
+
+  if (backend === 'github-gist') {
+    return {
+      stateBackend: 'github-gist',
+      stateFile: path.join(projectRoot, 'runtime', 'planner-shared-state.json'),
+      githubStateGistId: gistId,
+      githubStateFilename: cleanEnv(process.env.PLANNER_SHARED_STATE_FILENAME) || 'planner-shared-state.json',
+      githubStateToken: gistToken
+    };
+  }
+
+  return {
+    stateBackend: 'local',
+    stateFile: path.resolve(projectRoot, cleanEnv(process.env.PLANNER_SHARED_STATE_FILE) || './runtime/planner-shared-state.json'),
+    githubStateGistId: null,
+    githubStateFilename: null,
+    githubStateToken: null
+  };
+}
+
 function cleanEnv(value) {
   return (value || '').trim().replace(/^"|"$/g, '').replace(/^'|'$/g, '').trim();
+}
+
+function normalizePlannerSharedState(rawState) {
+  const state = rawState && typeof rawState === 'object' ? rawState : {};
+  return {
+    ...createEmptyPlannerSharedState(),
+    ...state,
+    notesByLesson: state.notesByLesson && typeof state.notesByLesson === 'object' ? state.notesByLesson : {},
+    overridesByLesson: state.overridesByLesson && typeof state.overridesByLesson === 'object' ? state.overridesByLesson : {},
+    history: Array.isArray(state.history) ? state.history : []
+  };
+}
+
+async function readPlannerSharedState() {
+  try {
+    const raw = await readPersistedState(plannerSharedStateTarget);
+    return normalizePlannerSharedState(JSON.parse(raw));
+  } catch (error) {
+    if (error.code !== 'ENOENT') {
+      throw error;
+    }
+
+    try {
+      const bootstrap = JSON.parse(await fs.readFile(path.join(plannerDataRoot, 'shared-state.json'), 'utf8'));
+      const normalized = normalizePlannerSharedState(bootstrap);
+      await writePlannerSharedState(normalized, { username: 'bootstrap', historyEntries: [] });
+      return normalized;
+    } catch (bootstrapError) {
+      if (bootstrapError.code !== 'ENOENT') {
+        throw bootstrapError;
+      }
+
+      const emptyState = createEmptyPlannerSharedState();
+      await writePlannerSharedState(emptyState, { username: 'bootstrap', historyEntries: [] });
+      return emptyState;
+    }
+  }
+}
+
+function normalizeHistoryEntries(historyEntries, username, timestamp) {
+  if (!Array.isArray(historyEntries)) {
+    return [];
+  }
+
+  return historyEntries
+    .filter((entry) => entry && typeof entry === 'object')
+    .map((entry) => ({
+      id: crypto.randomUUID(),
+      at: timestamp,
+      username,
+      lessonId: cleanEnv(entry.lessonId) || null,
+      lessonTitle: cleanEnv(entry.lessonTitle) || null,
+      monthName: cleanEnv(entry.monthName) || null,
+      type: cleanEnv(entry.type) || 'update',
+      summary: cleanEnv(entry.summary) || 'Úprava plánu',
+      fields: Array.isArray(entry.fields) ? entry.fields.map((value) => cleanEnv(value)).filter(Boolean) : []
+    }));
+}
+
+async function writePlannerSharedState(rawState, { username, historyEntries = [] }) {
+  const timestamp = new Date().toISOString();
+  const nextState = normalizePlannerSharedState(rawState);
+  const appendedHistory = normalizeHistoryEntries(historyEntries, username, timestamp);
+  nextState.updatedAt = timestamp;
+  nextState.updatedBy = username;
+  nextState.history = [...appendedHistory, ...nextState.history].slice(0, 250);
+  await writePersistedState(plannerSharedStateTarget, `${JSON.stringify(nextState, null, 2)}\n`);
+  return nextState;
 }
 
 function getSessionTtlSeconds() {
@@ -329,12 +443,29 @@ app.get('/api/planner/data', requireAuth, async (_req, res, next) => {
 
 app.get('/api/planner/shared-state', requireAuth, async (_req, res, next) => {
   try {
-    res.json(await readPlannerDataFile('shared-state.json'));
+    res.json(await readPlannerSharedState());
   } catch (error) {
     if (error.code === 'ENOENT') {
       res.status(404).json({ error: 'Sdílený JSON zatím neexistuje.' });
       return;
     }
+    next(error);
+  }
+});
+
+app.post('/api/planner/shared-state', requireAuth, async (req, res, next) => {
+  try {
+    if (!req.body?.state || typeof req.body.state !== 'object') {
+      res.status(400).json({ error: 'Chybí payload se shared state.' });
+      return;
+    }
+
+    const savedState = await writePlannerSharedState(req.body.state, {
+      username: req.auth.username,
+      historyEntries: req.body.historyEntries || []
+    });
+    res.json(savedState);
+  } catch (error) {
     next(error);
   }
 });

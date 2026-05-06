@@ -1,16 +1,19 @@
-const STORAGE_KEY = 'karate-planner-local-state-v1';
 const AUTH_REQUIRED_ERROR = 'AUTH_REQUIRED';
 
 const EMPTY_SHARED_STATE = {
-  version: 1,
+  version: 2,
   updatedAt: null,
+  updatedBy: null,
   notesByLesson: {},
-  overridesByLesson: {}
+  overridesByLesson: {},
+  history: []
 };
 
 const TAB_KEYS = {
   calendar: 'calendar',
-  drawer: 'drawer'
+  drawer: 'drawer',
+  history: 'history',
+  dojo: 'dojo'
 };
 
 const SECTION_LABELS = {
@@ -47,6 +50,9 @@ const EXERCISE_ALIAS_MAP = {
   'reakce na barvu': ['E4'],
   'reakce na barvu / svetlo': ['E4'],
   'reakce na svetlo': ['E4'],
+  'opice': ['D6'],
+  'opici draha': ['D6'],
+  'opici prekazkova draha': ['D6'],
   'lapy na presnost': ['J1'],
   'dvojice s mickem': ['I3'],
   'micky ve dvojici': ['I3'],
@@ -60,7 +66,6 @@ const state = {
   data: null,
   exerciseIndex: [],
   sharedState: structuredClone(EMPTY_SHARED_STATE),
-  localState: loadLocalState(),
   selectedMonthId: null,
   selectedLessonId: null,
   selectedExerciseId: null,
@@ -69,6 +74,14 @@ const state = {
   selectedTab: TAB_KEYS.calendar,
   searchQuery: '',
   drawerNotice: '',
+  pendingHistoryEntries: [],
+  saveTimer: null,
+  hasUnsavedChanges: false,
+  sync: {
+    status: 'idle',
+    message: 'Sdílený stav připravený.',
+    lastSavedAt: null
+  },
   auth: {
     username: null
   }
@@ -90,10 +103,18 @@ const refs = {
   plannerTitle: document.getElementById('plannerTitle'),
   plannerMeta: document.getElementById('plannerMeta'),
   sharedStateBadge: document.getElementById('sharedStateBadge'),
+  sharedStateStatus: document.getElementById('sharedStateStatus'),
   calendarTabButton: document.getElementById('calendarTabButton'),
   drawerTabButton: document.getElementById('drawerTabButton'),
+  historyTabButton: document.getElementById('historyTabButton'),
+  dojoTabButton: document.getElementById('dojoTabButton'),
   calendarView: document.getElementById('calendarView'),
   drawerView: document.getElementById('drawerView'),
+  historyView: document.getElementById('historyView'),
+  dojoView: document.getElementById('dojoView'),
+  historyList: document.getElementById('historyList'),
+  dojoRulesContent: document.getElementById('dojoRulesContent'),
+  dojoCoachGuideContent: document.getElementById('dojoCoachGuideContent'),
   exerciseModal: document.getElementById('exerciseModal'),
   exerciseModalContent: document.getElementById('exerciseModalContent'),
   closeExerciseModalButton: document.getElementById('closeExerciseModalButton'),
@@ -157,7 +178,12 @@ async function loadData() {
   state.exerciseIndex = createExerciseIndex(state.data.exerciseDrawer.exercises);
 
   if (sharedState) {
-    state.sharedState = sharedState;
+    state.sharedState = normalizeSharedState(sharedState);
+    state.sync.status = state.sharedState.updatedAt ? 'saved' : 'idle';
+    state.sync.message = state.sharedState.updatedAt
+      ? `Sdílený planner • ${formatDate(state.sharedState.updatedAt)}`
+      : 'Sdílený planner připravený';
+    state.sync.lastSavedAt = state.sharedState.updatedAt;
   }
 
   const initialMonth = state.data.calendar[0];
@@ -166,6 +192,17 @@ async function loadData() {
   state.selectedExerciseId = state.data.exerciseDrawer.exercises[0]?.id || null;
 
   render();
+}
+
+function normalizeSharedState(value) {
+  const sharedState = value && typeof value === 'object' ? value : {};
+  return {
+    ...structuredClone(EMPTY_SHARED_STATE),
+    ...sharedState,
+    notesByLesson: sharedState.notesByLesson && typeof sharedState.notesByLesson === 'object' ? sharedState.notesByLesson : {},
+    overridesByLesson: sharedState.overridesByLesson && typeof sharedState.overridesByLesson === 'object' ? sharedState.overridesByLesson : {},
+    history: Array.isArray(sharedState.history) ? sharedState.history : []
+  };
 }
 
 function setLoginError(message) {
@@ -243,22 +280,91 @@ async function bootstrapApp() {
   setLoginInfo('Přihlas se jménem a heslem. Po úspěšném přihlášení se odešle e-mailová notifikace.');
 }
 
-function loadLocalState() {
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) {
-    return structuredClone(EMPTY_SHARED_STATE);
-  }
-
-  try {
-    return { ...structuredClone(EMPTY_SHARED_STATE), ...JSON.parse(raw) };
-  } catch {
-    return structuredClone(EMPTY_SHARED_STATE);
-  }
+function setSyncState(status, message) {
+  state.sync.status = status;
+  state.sync.message = message;
+  renderHeader();
 }
 
-function saveLocalState() {
-  state.localState.updatedAt = new Date().toISOString();
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state.localState));
+function summarizeNoteFields(partial) {
+  const labels = [];
+  if (Object.hasOwn(partial, 'completed')) labels.push('co jsme stihli');
+  if (Object.hasOwn(partial, 'incomplete')) labels.push('co jsme nestihli');
+  if (Object.hasOwn(partial, 'nextTime')) labels.push('co příště přidat');
+  if (Object.hasOwn(partial, 'trainerNotes')) labels.push('další poznámky');
+  return labels;
+}
+
+function queueHistoryEntry(entry) {
+  const lesson = lessonById(entry.lessonId);
+  const month = lesson ? state.data.calendar.find((item) => item.weeks.some((week) => week.id === lesson.id)) : null;
+  const nextEntry = {
+    lessonId: entry.lessonId,
+    lessonTitle: entry.lessonTitle || lesson?.title || null,
+    monthName: entry.monthName || month?.name || null,
+    type: entry.type || 'update',
+    summary: entry.summary || 'Úprava plánu',
+    fields: [...new Set(entry.fields || [])]
+  };
+
+  const existingIndex = state.pendingHistoryEntries.findIndex(
+    (item) => item.lessonId === nextEntry.lessonId && item.type === nextEntry.type
+  );
+
+  if (existingIndex >= 0) {
+    const existing = state.pendingHistoryEntries[existingIndex];
+    state.pendingHistoryEntries[existingIndex] = {
+      ...existing,
+      summary: nextEntry.summary,
+      fields: [...new Set([...(existing.fields || []), ...(nextEntry.fields || [])])]
+    };
+    return;
+  }
+
+  state.pendingHistoryEntries.push(nextEntry);
+}
+
+function scheduleSharedStateSave() {
+  state.hasUnsavedChanges = true;
+  setSyncState('saving', 'Čeká na uložení do sdíleného planneru...');
+  window.clearTimeout(state.saveTimer);
+  state.saveTimer = window.setTimeout(() => {
+    void persistSharedState();
+  }, 700);
+}
+
+async function persistSharedState(force = false) {
+  window.clearTimeout(state.saveTimer);
+  state.saveTimer = null;
+
+  if (!force && !state.hasUnsavedChanges) {
+    return;
+  }
+
+  const historyEntries = [...state.pendingHistoryEntries];
+  state.pendingHistoryEntries = [];
+  setSyncState('saving', 'Ukládám sdílený planner...');
+
+  try {
+    const savedState = await fetchJson('/api/planner/shared-state', {
+      method: 'POST',
+      body: JSON.stringify({
+        state: state.sharedState,
+        historyEntries
+      })
+    });
+    state.sharedState = normalizeSharedState(savedState);
+    state.hasUnsavedChanges = false;
+    state.sync.lastSavedAt = state.sharedState.updatedAt;
+    setSyncState('saved', state.sharedState.updatedAt
+      ? `Uloženo ${formatDate(state.sharedState.updatedAt)}`
+      : 'Uloženo do sdíleného planneru.');
+    render();
+  } catch (error) {
+    state.pendingHistoryEntries = [...historyEntries, ...state.pendingHistoryEntries];
+    setSyncState('error', `Uložení selhalo: ${error.message}`);
+    throw error;
+  }
 }
 
 function downloadJson(filename, payload) {
@@ -327,27 +433,22 @@ function exerciseById(exerciseId) {
 function getLessonState(lessonId) {
   return {
     notes: {
-      ...(state.sharedState.notesByLesson?.[lessonId] || {}),
-      ...(state.localState.notesByLesson?.[lessonId] || {})
+      ...(state.sharedState.notesByLesson?.[lessonId] || {})
     },
-    overrides: mergeLessonOverrides(
-      state.sharedState.overridesByLesson?.[lessonId],
-      state.localState.overridesByLesson?.[lessonId]
-    )
+    overrides: mergeLessonOverrides(state.sharedState.overridesByLesson?.[lessonId])
   };
 }
 
-function mergeLessonOverrides(sharedOverrides = {}, localOverrides = {}) {
+function mergeLessonOverrides(sharedOverrides = {}) {
   const sharedAdded = sharedOverrides.addedItemsBySection || {};
-  const localAdded = localOverrides.addedItemsBySection || {};
 
   return {
-    selectedExercises: [...new Set([...(sharedOverrides.selectedExercises || []), ...(localOverrides.selectedExercises || [])])],
-    addedItemsBySection: mergeAddedItems(sharedAdded, localAdded)
+    selectedExercises: [...new Set([...(sharedOverrides.selectedExercises || [])])],
+    addedItemsBySection: mergeAddedItems(sharedAdded)
   };
 }
 
-function mergeAddedItems(sharedAdded, localAdded) {
+function mergeAddedItems(sharedAdded, localAdded = {}) {
   const keys = new Set([...Object.keys(sharedAdded), ...Object.keys(localAdded)]);
   const merged = {};
   for (const key of keys) {
@@ -362,11 +463,17 @@ function updateLessonNotes(partial) {
     return;
   }
 
-  state.localState.notesByLesson[lessonId] = {
-    ...(state.localState.notesByLesson[lessonId] || {}),
+  state.sharedState.notesByLesson[lessonId] = {
+    ...(state.sharedState.notesByLesson[lessonId] || {}),
     ...partial
   };
-  saveLocalState();
+  queueHistoryEntry({
+    lessonId,
+    type: 'notes',
+    summary: 'Úprava trenérských poznámek',
+    fields: summarizeNoteFields(partial)
+  });
+  scheduleSharedStateSave();
 }
 
 function updateLessonOverrides(mutator) {
@@ -375,10 +482,16 @@ function updateLessonOverrides(mutator) {
     return;
   }
 
-  const current = mergeLessonOverrides({}, state.localState.overridesByLesson[lessonId]);
+  const current = mergeLessonOverrides(state.sharedState.overridesByLesson[lessonId]);
   const next = mutator(current) || current;
-  state.localState.overridesByLesson[lessonId] = next;
-  saveLocalState();
+  state.sharedState.overridesByLesson[lessonId] = next;
+  queueHistoryEntry({
+    lessonId,
+    type: 'plan',
+    summary: 'Úprava obsahu lekce nebo vložených cviků',
+    fields: ['plán lekce']
+  });
+  scheduleSharedStateSave();
   renderPlanDetail();
 }
 
@@ -445,6 +558,8 @@ function render() {
   renderExerciseFilters();
   renderExerciseList();
   renderExerciseDetail();
+  renderHistoryView();
+  renderDojoView();
 }
 
 function renderHeader() {
@@ -453,16 +568,26 @@ function renderHeader() {
   refs.plannerMeta.textContent = currentMonth
     ? `${currentMonth.mainGoal} • ${currentMonth.weeks.length} týdenní lekce`
     : '';
-  refs.sharedStateBadge.textContent = state.sharedState.updatedAt
-    ? `Načtený sdílený JSON • ${formatDate(state.sharedState.updatedAt)}`
-    : 'Jen lokální úpravy';
+  refs.sharedStateBadge.textContent = state.sync.message || (state.sharedState.updatedAt
+    ? `Sdílený planner • ${formatDate(state.sharedState.updatedAt)}`
+    : 'Sdílený planner připravený');
+  refs.sharedStateBadge.classList.toggle('is-saving', state.sync.status === 'saving');
+  refs.sharedStateBadge.classList.toggle('is-error', state.sync.status === 'error');
+  refs.sharedStateBadge.classList.toggle('is-saved', state.sync.status === 'saved');
+  refs.sharedStateStatus.textContent = state.sharedState.updatedBy
+    ? `Poslední uložení: ${state.sharedState.updatedBy}${state.sharedState.updatedAt ? ` • ${formatDate(state.sharedState.updatedAt)}` : ''}`
+    : 'Sdílený stav zatím nemá uložené změny.';
 }
 
 function renderTabState() {
   refs.calendarTabButton.classList.toggle('active', state.selectedTab === TAB_KEYS.calendar);
   refs.drawerTabButton.classList.toggle('active', state.selectedTab === TAB_KEYS.drawer);
+  refs.historyTabButton.classList.toggle('active', state.selectedTab === TAB_KEYS.history);
+  refs.dojoTabButton.classList.toggle('active', state.selectedTab === TAB_KEYS.dojo);
   refs.calendarView.classList.toggle('active', state.selectedTab === TAB_KEYS.calendar);
   refs.drawerView.classList.toggle('active', state.selectedTab === TAB_KEYS.drawer);
+  refs.historyView.classList.toggle('active', state.selectedTab === TAB_KEYS.history);
+  refs.dojoView.classList.toggle('active', state.selectedTab === TAB_KEYS.dojo);
 }
 
 function renderMonthNav() {
@@ -1053,6 +1178,113 @@ function renderExerciseModal() {
   });
 }
 
+function renderHistoryView() {
+  if (!refs.historyList) {
+    return;
+  }
+
+  const history = [...(state.sharedState.history || [])];
+  refs.historyList.innerHTML = '';
+
+  if (!history.length) {
+    refs.historyList.innerHTML = '<div class="empty-state">Zatím tu nejsou žádné uložené změny. Jakmile upravíš týden nebo poznámky, objeví se tady historie.</div>';
+    return;
+  }
+
+  for (const entry of history) {
+    const card = document.createElement('article');
+    card.className = 'history-card';
+    const fieldsMarkup = (entry.fields || [])
+      .map((field) => `<span class="history-tag">${field}</span>`)
+      .join('');
+    card.innerHTML = `
+      <p class="eyebrow">${entry.type === 'notes' ? 'Poznámky' : 'Plán lekce'}</p>
+      <h4>${entry.monthName || 'Bez měsíce'} • ${entry.lessonTitle || 'Neurčená lekce'}</h4>
+      <p class="history-meta">${entry.username || 'neznámý trenér'} • ${entry.at ? formatDate(entry.at) : 'bez času'}</p>
+      <p class="history-summary">${entry.summary || 'Úprava sdíleného planneru'}</p>
+      ${fieldsMarkup ? `<div class="history-fields">${fieldsMarkup}</div>` : ''}
+    `;
+    refs.historyList.appendChild(card);
+  }
+}
+
+function renderDojoView() {
+  if (!state.data?.dojo) {
+    refs.dojoRulesContent.innerHTML = '<div class="empty-state">Pravidla dojo se nepodařilo načíst.</div>';
+    refs.dojoCoachGuideContent.innerHTML = '<div class="empty-state">Metodická poznámka se nepodařila načíst.</div>';
+    return;
+  }
+
+  refs.dojoRulesContent.innerHTML = renderMarkdownContent(state.data.dojo.childRulesMarkdown || '');
+  refs.dojoCoachGuideContent.innerHTML = renderMarkdownContent(state.data.dojo.coachGuideMarkdown || '');
+}
+
+function renderMarkdownContent(markdown) {
+  const lines = markdown.split(/\r?\n/);
+  const chunks = [];
+  let listBuffer = null;
+
+  const flushList = () => {
+    if (!listBuffer?.items.length) {
+      listBuffer = null;
+      return;
+    }
+
+    const tag = listBuffer.type === 'ol' ? 'ol' : 'ul';
+    chunks.push(`<${tag}>${listBuffer.items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</${tag}>`);
+    listBuffer = null;
+  };
+
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+    if (!line || line === '---') {
+      flushList();
+      continue;
+    }
+
+    const headingMatch = line.match(/^(#{1,3})\s+(.+)$/);
+    if (headingMatch) {
+      flushList();
+      const level = Math.min(headingMatch[1].length, 3);
+      chunks.push(`<h${level}>${escapeHtml(headingMatch[2])}</h${level}>`);
+      continue;
+    }
+
+    const orderedMatch = line.match(/^\d+\.\s+(.+)$/);
+    if (orderedMatch) {
+      if (!listBuffer || listBuffer.type !== 'ol') {
+        flushList();
+        listBuffer = { type: 'ol', items: [] };
+      }
+      listBuffer.items.push(orderedMatch[1]);
+      continue;
+    }
+
+    const bulletMatch = line.match(/^[-*]\s+(.+)$/);
+    if (bulletMatch) {
+      if (!listBuffer || listBuffer.type !== 'ul') {
+        flushList();
+        listBuffer = { type: 'ul', items: [] };
+      }
+      listBuffer.items.push(bulletMatch[1]);
+      continue;
+    }
+
+    flushList();
+    chunks.push(`<p>${escapeHtml(line)}</p>`);
+  }
+
+  flushList();
+  return chunks.join('');
+}
+
+function escapeHtml(value) {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;');
+}
+
 function formatDate(value) {
   return new Intl.DateTimeFormat('cs-CZ', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(value));
 }
@@ -1096,6 +1328,8 @@ function bindEvents() {
 
   refs.calendarTabButton.addEventListener('click', () => setSelectedTab(TAB_KEYS.calendar));
   refs.drawerTabButton.addEventListener('click', () => setSelectedTab(TAB_KEYS.drawer));
+  refs.historyTabButton.addEventListener('click', () => setSelectedTab(TAB_KEYS.history));
+  refs.dojoTabButton.addEventListener('click', () => setSelectedTab(TAB_KEYS.dojo));
   refs.closeExerciseModalButton.addEventListener('click', () => closeExerciseModal());
   refs.exerciseModal.addEventListener('click', (event) => {
     if (event.target === refs.exerciseModal) {
@@ -1122,17 +1356,11 @@ function bindEvents() {
   });
 
   refs.exportStateButton.addEventListener('click', () => {
-    downloadJson('karate-planner-local-state.json', state.localState);
+    downloadJson('karate-planner-shared-backup.json', state.sharedState);
   });
 
   refs.downloadSharedStateButton.addEventListener('click', () => {
-    const exportPayload = {
-      version: 1,
-      updatedAt: new Date().toISOString(),
-      notesByLesson: mergePlainObjects(state.sharedState.notesByLesson, state.localState.notesByLesson),
-      overridesByLesson: mergePlainObjects(state.sharedState.overridesByLesson, state.localState.overridesByLesson)
-    };
-    downloadJson('shared-state.json', exportPayload);
+    downloadJson('planner-shared-state.json', state.sharedState);
   });
 
   refs.importStateInput.addEventListener('change', async (event) => {
@@ -1142,25 +1370,36 @@ function bindEvents() {
     }
 
     const text = await file.text();
-    const parsed = JSON.parse(text);
-    state.localState = {
-      ...structuredClone(EMPTY_SHARED_STATE),
-      ...parsed
-    };
-    saveLocalState();
-    render();
+    const parsed = normalizeSharedState(JSON.parse(text));
+    state.sharedState = parsed;
+    queueHistoryEntry({
+      lessonId: state.selectedLessonId,
+      type: 'import',
+      summary: 'Obnova sdíleného planneru ze zálohy',
+      fields: ['import JSON']
+    });
+    await persistSharedState(true);
     event.target.value = '';
   });
 
-  refs.resetStateButton.addEventListener('click', () => {
-    state.localState = structuredClone(EMPTY_SHARED_STATE);
-    saveLocalState();
-    render();
+  refs.resetStateButton.addEventListener('click', async () => {
+    state.sharedState = structuredClone(EMPTY_SHARED_STATE);
+    queueHistoryEntry({
+      lessonId: state.selectedLessonId,
+      type: 'reset',
+      summary: 'Vymazání sdílených změn planneru',
+      fields: ['reset shared state']
+    });
+    await persistSharedState(true);
   });
-}
 
-function mergePlainObjects(a = {}, b = {}) {
-  return { ...a, ...b };
+  window.addEventListener('beforeunload', () => {
+    if (!state.hasUnsavedChanges) {
+      return;
+    }
+
+    void persistSharedState(true);
+  });
 }
 
 bindEvents();

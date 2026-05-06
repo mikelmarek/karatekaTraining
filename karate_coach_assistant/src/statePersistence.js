@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import path from 'node:path';
 import { loadStateFromGitHubGist, saveStateToGitHubGist } from './githubGistStateStore.js';
 
 function resolveStateTarget(stateTarget) {
@@ -48,6 +49,7 @@ export async function writePersistedState(stateTarget, content) {
     return;
   }
 
+  await fs.mkdir(path.dirname(target.stateFile), { recursive: true });
   await fs.writeFile(target.stateFile, content, 'utf8');
 }
 

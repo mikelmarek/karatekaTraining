@@ -11,7 +11,8 @@ Na rozdíl od GitHub Pages tahle varianta umí:
 - přihlašovací stránku,
 - kontrolu jména a hesla na serveru,
 - session cookie,
-- e-mailové upozornění po přihlášení.
+- e-mailové upozornění po přihlášení,
+- sdílené ukládání trenérských poznámek, úprav lekcí a historie změn.
 
 ## 1. Nastavení .env
 
@@ -31,9 +32,17 @@ SMTP_SECURE=true
 SMTP_USER=tvuj@email.cz
 SMTP_PASS=google_app_password
 SMTP_FROM=Karate Planner <tvuj@email.cz>
+
+# doporučeno pro sdílení mezi trenéry a pro Vercel
+PLANNER_SHARED_STATE_BACKEND=github-gist
+PLANNER_SHARED_STATE_GIST_ID=tvuj_gist_id
+PLANNER_SHARED_STATE_GIST_TOKEN=tvuj_gist_token
+PLANNER_SHARED_STATE_FILENAME=planner-shared-state.json
 ```
 
 Pokud nechceš mít heslo v .env čitelně, můžeš místo PLANNER_AUTH_PASSWORD použít PLANNER_AUTH_PASSWORD_HASH s bcrypt hashem.
+
+Pokud `PLANNER_SHARED_STATE_BACKEND` nenastavíš, planner se pokusí použít gist automaticky z dostupných proměnných `PLANNER_SHARED_STATE_GIST_*`, `KARATE_STATE_GIST_*` nebo `GITHUB_STATE_*`. Když nic z toho není k dispozici, spadne na lokální soubor `./runtime/planner-shared-state.json`.
 
 ## 2. Lokální spuštění
 
@@ -101,6 +110,10 @@ Environment variables na Vercelu:
 - `SMTP_USER`
 - `SMTP_PASS`
 - `SMTP_FROM`
+- `PLANNER_SHARED_STATE_BACKEND=github-gist`
+- `PLANNER_SHARED_STATE_GIST_ID`
+- `PLANNER_SHARED_STATE_GIST_TOKEN`
+- `PLANNER_SHARED_STATE_FILENAME=planner-shared-state.json`
 
 Poznámka: Vercel může být pro tento lehký planner dostupný i ve free režimu, zatímco Render ti může u web service nabídnout rovnou placený Starter tarif.
 

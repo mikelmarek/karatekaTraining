@@ -58,6 +58,8 @@
               <div class="badge-row">
                 <button id="calendarTabButton" class="chip-button active">Kalendář</button>
                 <button id="drawerTabButton" class="chip-button">Šuplík cviků</button>
+                <button id="historyTabButton" class="chip-button">Historie</button>
+                <button id="dojoTabButton" class="chip-button">Pravidla dojo</button>
               </div>
             </div>
           </div>
@@ -133,14 +135,15 @@
                   <span id="sharedStateBadge" class="state-badge">Sdílení: bez sdíleného JSON</span>
                 </summary>
                 <p class="utility-copy">
-                  Má smysl jen pokud si změny předáváte mezi trenéry přes JSON soubor. Jinak stačí lokální úpravy v prohlížeči.
+                  Změny se ukládají do sdíleného planner stavu pro další přihlášení i pro druhého trenéra. Tady si můžeš udělat zálohu, obnovu nebo celý sdílený stav vyčistit.
                 </p>
+                <p id="sharedStateStatus" class="utility-copy"></p>
                 <div class="utility-actions">
-                  <button id="exportStateButton" class="ghost-button small-button">Export lokálních změn</button>
+                  <button id="exportStateButton" class="ghost-button small-button">Stáhnout zálohu</button>
                   <button id="downloadSharedStateButton" class="ghost-button small-button">Stáhnout sdílený JSON</button>
-                  <label class="ghost-button small-button file-label" for="importStateInput">Import změn</label>
+                  <label class="ghost-button small-button file-label" for="importStateInput">Obnovit ze zálohy</label>
                   <input id="importStateInput" type="file" accept="application/json" hidden />
-                  <button id="resetStateButton" class="ghost-button small-button">Vymazat lokální změny</button>
+                  <button id="resetStateButton" class="ghost-button small-button">Vymazat sdílené změny</button>
                 </div>
               </details>
             </section>
@@ -167,6 +170,39 @@
               <div id="exerciseList" class="exercise-list"></div>
               <section id="exerciseDetail" class="focus-card exercise-detail"></section>
             </div>
+          </div>
+
+          <div id="historyView" class="tab-view">
+            <section class="history-view">
+              <div class="drawer-view-header">
+                <div>
+                  <h3>Historie změn</h3>
+                  <p>Poslední uložené zásahy do týdnů, poznámek a vložených cviků.</p>
+                </div>
+              </div>
+              <div id="historyList" class="history-list"></div>
+            </section>
+          </div>
+
+          <div id="dojoView" class="tab-view">
+            <section class="dojo-view">
+              <div class="drawer-view-header">
+                <div>
+                  <h3>Pravidla dojo</h3>
+                  <p>Krátká pravidla pro děti a metodická opora pro druhého trenéra.</p>
+                </div>
+              </div>
+              <div class="dojo-layout">
+                <article class="focus-card dojo-card">
+                  <p class="eyebrow">Pro děti</p>
+                  <div id="dojoRulesContent" class="markdown-content"></div>
+                </article>
+                <article class="focus-card dojo-card">
+                  <p class="eyebrow">Pro trenéra</p>
+                  <div id="dojoCoachGuideContent" class="markdown-content"></div>
+                </article>
+              </div>
+            </section>
           </div>
         </section>
       </main>

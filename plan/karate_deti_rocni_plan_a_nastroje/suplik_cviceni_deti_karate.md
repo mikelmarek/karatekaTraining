@@ -182,6 +182,14 @@ U každého cvičení je:
 **Popis:** trenér ukáže 2–4 akce, dítě provede jen správnou kombinaci.  
 **Karate přenos:** technika pod mentální zátěží.
 
+## D6. Opičí dráha
+**Cíl:** koordinace, obratnost, reakce na změnu úkolu  
+**Pomůcky:** žebřík, kloboučky, mety, nízká překážka, lapy nebo pytel  
+**Popis:** vytvoří se krátká dráha: průchod žebříkem, slalom mezi kloboučky, dotyk barvy nebo mety, přelezení či přeskočení nízké překážky a zakončení technikou na lapu nebo pytel.  
+**Varianta:** změna pořadí stanovišť, běh vpřed/vzad, přidání reakčního signálu nebo práce ve dvojicích na čas.  
+**Karate přenos:** přechod z obecné koordinace do techniky pod lehkým tlakem a v pohybu.  
+**Poznámka pro trenéra:** držet krátkou dráhu, plynulý provoz a bezpečné rozestupy; cíl je kvalita pohybu, ne chaos.
+
 ---
 
 # E. REAKCE

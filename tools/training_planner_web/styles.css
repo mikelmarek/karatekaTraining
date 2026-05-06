@@ -417,6 +417,27 @@ h1 {
   user-select: none;
 }
 
+.state-badge.is-saving {
+  border-style: solid;
+  border-color: rgba(169, 65, 29, 0.3);
+  background: rgba(169, 65, 29, 0.08);
+  color: var(--accent-strong);
+}
+
+.state-badge.is-error {
+  border-style: solid;
+  border-color: rgba(143, 29, 19, 0.28);
+  background: rgba(189, 59, 47, 0.08);
+  color: #8f1d13;
+}
+
+.state-badge.is-saved {
+  border-style: solid;
+  border-color: rgba(47, 107, 69, 0.24);
+  background: rgba(47, 107, 69, 0.08);
+  color: var(--green);
+}
+
 .plan-detail {
   padding-top: 0;
 }
@@ -431,6 +452,11 @@ h1 {
 
 .drawer-view-header {
   padding: 0 24px 18px;
+}
+
+.history-view,
+.dojo-view {
+  padding-bottom: 24px;
 }
 
 .drawer-search {
@@ -792,6 +818,87 @@ textarea {
   margin-top: 14px;
 }
 
+.history-list {
+  display: grid;
+  gap: 12px;
+  padding: 0 24px;
+}
+
+.history-card {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 251, 245, 0.86);
+}
+
+.history-card h4 {
+  margin-bottom: 6px;
+}
+
+.history-meta {
+  color: var(--muted);
+  font: 600 0.82rem/1.4 var(--font-heading);
+}
+
+.history-summary {
+  margin: 10px 0 0;
+}
+
+.history-fields {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.history-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(169, 65, 29, 0.08);
+  color: var(--accent-strong);
+  font: 600 0.76rem/1 var(--font-heading);
+}
+
+.dojo-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 0 24px;
+}
+
+.dojo-card {
+  min-height: 320px;
+}
+
+.markdown-content {
+  display: grid;
+  gap: 12px;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  font-size: 1rem;
+  color: var(--accent-strong);
+}
+
+.markdown-content p,
+.markdown-content ul,
+.markdown-content ol {
+  margin: 0;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  padding-left: 22px;
+}
+
+.markdown-content li + li {
+  margin-top: 6px;
+}
+
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -832,7 +939,8 @@ textarea {
 }
 
 @media (max-width: 1200px) {
-  .drawer-layout {
+  .drawer-layout,
+  .dojo-layout {
     grid-template-columns: 1fr;
   }
 }

@@ -13,7 +13,9 @@ const SOURCES = {
   annualPlan: path.join(PLAN_DIR, 'karate_deti_rocni_plan_a_nastroje', 'rocni_plan_deti_karate_6_12.md'),
   exerciseDrawer: path.join(PLAN_DIR, 'karate_deti_rocni_plan_a_nastroje', 'suplik_cviceni_deti_karate.md'),
   monthlyTemplate: path.join(PLAN_DIR, 'mesicni_sablona_treninkoveho_planu_deti_karate.md'),
-  toolsGuide: path.join(PLAN_DIR, 'karate_deti_rocni_plan_a_nastroje', 'pomucky_pro_detske_treninky.md')
+  toolsGuide: path.join(PLAN_DIR, 'karate_deti_rocni_plan_a_nastroje', 'pomucky_pro_detske_treninky.md'),
+  dojoRules: path.join(PLAN_DIR, 'pravidla_deti', 'pravidla_dojo_a4_pro_deti.md'),
+  dojoCoachGuide: path.join(PLAN_DIR, 'pravidla_deti', 'vedeni_neklidne_skupiny_deti_poznamka_pro_druheho_trenera.md')
 };
 
 function slugify(value) {
@@ -407,12 +409,14 @@ function parseSimpleBullets(content) {
 }
 
 async function buildPlannerData() {
-  const [monthlyPlanContent, annualPlanContent, exerciseDrawerContent, templateContent, toolsGuideContent] = await Promise.all([
+  const [monthlyPlanContent, annualPlanContent, exerciseDrawerContent, templateContent, toolsGuideContent, dojoRulesContent, dojoCoachGuideContent] = await Promise.all([
     fs.readFile(SOURCES.monthlyPlan, 'utf8'),
     fs.readFile(SOURCES.annualPlan, 'utf8'),
     fs.readFile(SOURCES.exerciseDrawer, 'utf8'),
     fs.readFile(SOURCES.monthlyTemplate, 'utf8'),
-    fs.readFile(SOURCES.toolsGuide, 'utf8')
+    fs.readFile(SOURCES.toolsGuide, 'utf8'),
+    fs.readFile(SOURCES.dojoRules, 'utf8'),
+    fs.readFile(SOURCES.dojoCoachGuide, 'utf8')
   ]);
 
   const calendarMonths = parseMonthlyPlan(monthlyPlanContent);
@@ -436,7 +440,11 @@ async function buildPlannerData() {
     annualOverview: annualMonths,
     exerciseDrawer,
     monthlyTemplateHints: templateBullets,
-    toolRecommendations
+    toolRecommendations,
+    dojo: {
+      childRulesMarkdown: dojoRulesContent,
+      coachGuideMarkdown: dojoCoachGuideContent
+    }
   };
 
   await fs.mkdir(DATA_DIR, { recursive: true });

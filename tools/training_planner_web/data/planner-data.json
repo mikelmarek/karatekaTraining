@@ -1,11 +1,13 @@
 {
-  "generatedAt": "2026-05-06T11:41:18.525Z",
+  "generatedAt": "2026-05-06T15:06:12.412Z",
   "sources": {
     "monthlyPlan": "plan/mesicni_treninkovy_plan_deti_karate_6_12.md",
     "annualPlan": "plan/karate_deti_rocni_plan_a_nastroje/rocni_plan_deti_karate_6_12.md",
     "exerciseDrawer": "plan/karate_deti_rocni_plan_a_nastroje/suplik_cviceni_deti_karate.md",
     "monthlyTemplate": "plan/mesicni_sablona_treninkoveho_planu_deti_karate.md",
-    "toolsGuide": "plan/karate_deti_rocni_plan_a_nastroje/pomucky_pro_detske_treninky.md"
+    "toolsGuide": "plan/karate_deti_rocni_plan_a_nastroje/pomucky_pro_detske_treninky.md",
+    "dojoRules": "plan/pravidla_deti/pravidla_dojo_a4_pro_deti.md",
+    "dojoCoachGuide": "plan/pravidla_deti/vedeni_neklidne_skupiny_deti_poznamka_pro_druheho_trenera.md"
   },
   "calendar": [
     {
@@ -2870,6 +2872,19 @@
         "coachNote": ""
       },
       {
+        "id": "D6",
+        "slug": "opici-draha",
+        "name": "Opičí dráha",
+        "categoryId": "D",
+        "categoryTitle": "KOORDINACE",
+        "goal": "koordinace, obratnost, reakce na změnu úkolu",
+        "tools": "žebřík, kloboučky, mety, nízká překážka, lapy nebo pytel",
+        "description": "vytvoří se krátká dráha: průchod žebříkem, slalom mezi kloboučky, dotyk barvy nebo mety, přelezení či přeskočení nízké překážky a zakončení technikou na lapu nebo pytel.",
+        "variants": "změna pořadí stanovišť, běh vpřed/vzad, přidání reakčního signálu nebo práce ve dvojicích na čas.",
+        "karateTransfer": "přechod z obecné koordinace do techniky pod lehkým tlakem a v pohybu.",
+        "coachNote": "držet krátkou dráhu, plynulý provoz a bezpečné rozestupy; cíl je kvalita pohybu, ne chaos."
+      },
+      {
         "id": "E1",
         "slug": "samurai-reakce",
         "name": "Samurai reakce",
@@ -3319,5 +3334,9 @@
     "šly rychle připravit,",
     "šly použít pro více variant,",
     "a nezdržovaly lekci."
-  ]
+  ],
+  "dojo": {
+    "childRulesMarkdown": "# PRAVIDLA DOJO\n\n## V dojo chci být dobrý parťák\n\n### 1. Když trenér mluví, stojím a poslouchám.\n\n### 2. Po signálu hned zastavím.\n\n### 3. Cvičím bezpečně.\nNemlátím kolem sebe.\nNestrkám do ostatních.\n\n### 4. Neruším druhé děti.\nKaždý má právo dobře trénovat.\n\n### 5. Chovám se s respektem.\nK trenérovi, k dětem i k dojo.\n\n---\n\n## Když pravidla držím\n- můžu dobře cvičit,\n- zlepšuju se,\n- pomáhám celé skupině,\n- trénink nás víc baví.\n\n## Když pravidla poruším\n1. upozornění,\n2. krátká pauza mimo cvičení,\n3. návrat až po zklidnění.\n\n---\n\n## V dojo platí\n### KLID\n### RESPEKT\n### BEZPEČÍ\n### SOUSTŘEDĚNÍ\n",
+    "coachGuideMarkdown": "# Vedení neklidné dětské skupiny – poznámka pro druhého trenéra\n\n## Pro jakou situaci je tento postup\n- skupina kolem 25 až 30 dětí,\n- část dětí pracuje dobře,\n- část dětí je neklidná, ruší, mlátí kolem sebe nebo nevydrží v režimu dojo,\n- cílem není děti donekonečna napomínat, ale udržet kvalitu hodiny pro většinu.\n\n## Hlavní princip\nNeřešíme každé dítě dlouhou domluvou.\nŘídíme skupinu systémem.\n\nCo chceme:\n- jasný režim,\n- krátké a srozumitelné pokyny,\n- rychlé zastavení rušení,\n- ochranu dětí, které chtějí pracovat,\n- předvídatelné důsledky.\n\n## Co je cíl trenéra\n- udržet bezpečnost,\n- udržet pozornost skupiny,\n- neztrácet polovinu hodiny napomínáním,\n- věnovat co nejvíc času dětem, které pracují,\n- vracet rušivé děti zpět do režimu co nejjednodušší cestou.\n\n## Základní pravidlo pro oba trenéry\nNepřetahujeme se s dětmi slovně.\n\nPoužíváme:\n- krátký pokyn,\n- jasný důsledek,\n- klidný hlas,\n- stejný postup pokaždé.\n\nNepoužíváme:\n- dlouhé vysvětlování v afektu,\n- opakované napomínání bez důsledku,\n- křik přes celou tělocvičnu,\n- ponižování dítěte před skupinou.\n\n## Tři pravidla hodiny\n1. Když trenér mluví, stojím a dívám se.\n2. Když cvičím, nezasahuji do druhých.\n3. Kdo ruší, jde na chvíli mimo aktivitu.\n\n## Jak vedeme hodinu\n\n## Zahájení\n- nástup rychle,\n- připomenout 3 pravidla v jedné větě,\n- připomenout stop signál,\n- nezačínat dlouhým výkladem.\n\n## Instrukce\n- ukázka,\n- jedna krátká věta,\n- start.\n\nInstrukce držet krátké.\nJakmile výklad trvá dlouho, neklidná část skupiny se rozpadá.\n\n## Bloky v lekci\n- krátké bloky 3 až 5 minut,\n- častější změna činnosti,\n- rychlé přechody,\n- minimum prostojů.\n\n## Stop signál\nPoužíváme jeden stálý signál pro celou skupinu.\n\nNapříklad:\n- povel rei,\n- tlesknutí ve stejném rytmu,\n- písknutí,\n- zvednutá ruka a ticho.\n\nSignál se nemění podle nálady trenéra.\n\n## Role hlavního a druhého trenéra\n\n## Hlavní trenér\n- vede skupinu,\n- zadává pokyny,\n- drží rytmus lekce,\n- řeší celek,\n- nelepí se dlouho na jedno problémové dítě.\n\n## Druhý trenér\n- stojí tak, aby viděl problémové děti,\n- rychle dořeší jednotlivce bez zastavení celé hodiny,\n- rozděluje děti do prostoru,\n- pomáhá přesunout dítě mimo aktivitu,\n- vrací dítě zpět až ve chvíli, kdy je připravené.\n\n## Co dělá druhý trenér při rušení\nPokud dítě:\n- mlátí kolem sebe,\n- strká do druhých,\n- leze do instrukce,\n- schválně rozbíjí cvičení,\n\npostup je tento:\n1. oslovit jménem,\n2. dát krátký pokyn,\n3. pokud nepřijde změna, ihned vyřadit z konkrétní aktivity.\n\nPříklad:\n- Matěji, ruce k sobě.\n- Matěji, teď jdeš na minutu bokem.\n\nBez další debaty.\n\n## Eskalační systém\n1. krátké upozornění jménem,\n2. krátké vyřazení z aktivity,\n3. přesun vedle trenéra,\n4. informace rodiči po hodině, pokud se problém opakuje.\n\n## Důležité\nNevyřazujeme dítě na dlouho.\nJde o krátké přerušení, ne o půl hodiny trestu.\n\nNávrat:\n- už jsi připraven,\n- tak zpátky,\n- bez dalšího komentáře.\n\n## Jak rozmístit problémové děti\n- nikdy je nenechat v jednom hloučku,\n- rozdělit je do prostoru,\n- nedávat je do stejné dvojice,\n- postavit je vedle klidnějších dětí,\n- při nástupu jim dát předem určené místo.\n\n## Co funguje lépe než napomínání\n- rychlá změna činnosti,\n- jasné role,\n- zaměstnání rukou a nohou,\n- konkrétní úkol,\n- pochvala za okamžité srovnání.\n\n## Mikrorole pro neklidné děti\nJen pokud drží režim:\n- držet metu,\n- rozdat míčky,\n- ukázat místo startu,\n- sbírat pomůcky,\n- stát první v řadě.\n\nFunkce není odměna za chaos.\nFunkce je nástroj, jak dítě zaměstnat a vrátit do režimu.\n\n## Co máme sledovat a chválit\nNechválíme obecně.\nChválíme přesně to, co chceme vidět.\n\nPříklady:\n- tahle řada je hned připravená,\n- výborně, stop po signálu,\n- dnes dobré zastavení bez strkání,\n- tohle je správný nástup do řady.\n\n## Co nedělat\n- neřešit každé rušení dlouhou řečí,\n- nezastavovat celou hodinu kvůli jednomu dítěti,\n- nehádát se s dítětem před ostatními,\n- nedávat neklidné děti schválně k sobě,\n- nenechat důsledek vyšumět.\n\n## Kdy už dát informaci rodiči\n- dítě opakovaně ohrožuje druhé,\n- dlouhodobě rozbíjí hodinu i přes stejný systém,\n- po několika trénincích není žádný posun,\n- běžné vedení skupiny už nestačí.\n\nMluvit věcně:\n- co dítě dělá,\n- jaké pravidlo porušuje,\n- co jsme už zkoušeli,\n- co potřebujeme změnit.\n\n## Krátký závěr pro oba trenéry\nNaší povinností není věnovat většinu energie několika dětem, které hodinu rozbíjejí.\nNaší povinností je ochránit bezpečnost a kvalitu tréninku pro celou skupinu.\n\nKdyž budeme oba držet stejný systém, skupina to rychle pochopí.\n"
+  }
 }
